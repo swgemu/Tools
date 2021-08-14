@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTree version="1.3.0">
+	<Node BranchName="aware" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="1074780145">
+		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="LookForTarget" Type="Decorator" uid="2877429880">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1842231240">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2100210710">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2453213506">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckProspectIsType" Type="Single" uid="2897258589">
+							<Settings condition="PLAYER"/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2845873207">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckProspectJediTrial" Type="Single" uid="119310356">
+							<Settings/>
+						</Condition>
+					</Node>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="680465367">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckProspectInRange" Type="Single" uid="14270026">
+						<Settings condition="32.0"/>
+					</Condition>
+				</Node>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="954339847">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1358554592">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="EraseBlackboard" Type="Leaf" uid="2583246458">
+					<Settings param="aggroMod"/>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="EraseBlackboard" Type="Leaf" uid="966727443">
+					<Settings param="targetProspect"/>
+				</Node>
+			</Node>
+		</Node>
+	</Node>
+</BehaviorTree>

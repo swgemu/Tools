@@ -1,0 +1,534 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LibData version="1.2.4">
+  <!-- ====================================================================================================================== -->
+  <library name="example_general_nodes">
+    <!-- ********************************************************************************************************* -->
+    <!-- TASKS -->
+    <node class="Task" type="Leaf" name="Abort">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Aborts execution of specified behavior tree branch"/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="string" name="target" description="Behavior tree branch name"/>
+      <attribute type="string" name="file" description="Relative path to the file containing pointed behavior tree branch. \n Leave it empty if you are targeting branch from the current file."/>
+    </node>
+    <!---->
+    <node class="Task" type="Decorator" name="Delay">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Decorator that does execute it's child \n only once per certain period of time. \n Remembers time of last child execution."/>
+      <shape name="triangle"/>
+      <events/>
+      <attribute type="float" name="delay" min="0.0" description="Pause between child launches in seconds."/>
+      <attribute type="bool" name="autostart" description="If = False then Delay ends immediately with state Completed \n on each launch, if required period of time is not passed yet. \n Otherwise, launches an execution of it's child node. \n If = True then Delay will have state Running until required period of time \n will not be passed. Then it will automatically launch it's child."/>
+      <attribute type="float" name="delta" min="0.0" description="Floating interval for calculating delay time. \n Every launch delay will be randomly picked \n from interval [ delay-delta; delay+delta ]"/>
+    </node>
+    <!---->
+    <node class="Task" type="Decorator" name="IF">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="yes"/>
+      <description text="Executes it's child if condition result is not equal to zero. \n Otherwise ends with state Failed."/>
+      <shape name="triangle"/>
+      <events/>
+      <attribute type="bool" name="complete_on_check_fail" description="If = True then this node will end with state Completed \n (instead of Failed) if condition result equals to zero."/>
+    </node>
+    <!---->
+    <node class="Task" type="Composite" name="Parallel">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Set of simultaneously executing nodes. All nodes are launched at once. \n Finish conditions are configured by attributes fail_once and complete_once. \n If both attributes = False then Parallel will continue it's execution until \n all of it's children will not be finished. \n In that case, Parallel finishes with state Completed only if half or more \n of it's children finished with state Completed. It finishes with state Failed otherwise."/>
+      <shape name="parallel"/>
+      <events/>
+      <attribute type="bool" name="fail_once" description="If = True then Parallel will finish immediately with state Failed \n if one of it's children ends with state Failed."/>
+      <attribute type="bool" name="complete_once" description="If = True then Parallel will finish immediately with state Completed \n if one of it's children ends with state Completed."/>
+    </node>
+    <!---->
+    <node class="Task" type="Leaf" name="Pause">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Pauses execution of specified behavior tree branch. \n This branch will gone into state Paused \n and it's update() method will not be invoked."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="string" name="target" description="Behavior tree branch name"/>
+      <attribute type="string" name="file" description="Relative path to the file containing pointed behavior tree branch. \n Leave it empty if you are targeting branch from the current file."/>
+    </node>
+    <!---->
+    <node class="Task" type="Decorator" name="Repeater">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Automatically restarts it's child for specified number of times. \n This is simple loop."/>
+      <shape name="triangle"/>
+      <events/>
+      <attribute type="int" name="count" default="-1" min="-1" description="Number of restarts. \n If it is less than 0 then \n this loop is infinite."/>
+      <attribute type="bool" name="end_on_complete" description="If = True then Repeater will finish after first success execution of it's child."/>
+      <attribute type="bool" name="end_on_fail" description="If = True then Repeater will finish after first failed execution of it's child."/>
+    </node>
+    <!---->
+    <node class="Task" type="Leaf" name="Restart">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Restarts specified behavior tree branch."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="string" name="target" description="Behavior tree branch name"/>
+      <attribute type="string" name="file" description="Relative path to the file containing pointed behavior tree branch. \n Leave it empty if you are targeting branch from the current file."/>
+    </node>
+    <!---->
+    <node class="Task" type="Leaf" name="Resume">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Continues execution of specified behavior tree branch \n (if it was paused before)."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="string" name="target" description="Behavior tree branch name"/>
+      <attribute type="string" name="file" description="Relative path to the file containing pointed behavior tree branch. \n Leave it empty if you are targeting branch from the current file."/>
+    </node>
+    <!---->
+    <node class="Task" type="Composite" name="Selector">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="An analogue of if( A or B or C ). \n Tryes to execute first of it's children and if it finishes \n with state Completed then Selector finishes with state Completed too. \n Otherwise, it selects next child and launches it, and so on. \n If all children will be failed then Selector fails too."/>
+      <shape name="selector"/>
+      <events/>
+      <attribute type="bool" name="predict" description="If = True then Selector will try to execute \n a child which have finished with state \n Completed during last Selector execution."/>
+      <attribute type="bool" name="continue_while_waiting" description="If = True then Selector will launch next child \n while current executing child have state Waiting."/>
+      <attribute type="bool" name="continue_while_paused" description="If = True then Selector will launch next child \n while current executing child have state Paused."/>
+    </node>
+    <!---->
+    <node class="Task" type="Composite" name="Sequence">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Sequence of nodes. \n An analogue of if( A and B and C ). \n Executes all it's children sequentially. \n Next child will be launched only after \n current child will finish with state Completed. \n If current child fails then Sequence fails too."/>
+      <shape name="sequence"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="Leaf" name="SetValue">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Writes value to the Blackboard variable."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="string" name="variable" description="Name / path of the variable in the Blackboard."/>
+      <attribute type="string" name="type" default="int" available="bool;char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Variable type."/>
+      <dynamic_attribute name="value" depend_on="type" description="Value.">
+        <unit keys="double" type="double"/>
+        <unit keys="float" type="float"/>
+        <unit keys="int64" type="int64"/>
+        <unit keys="uchar" type="uchar"/>
+        <unit keys="char" type="char"/>
+        <unit keys="ushort" type="ushort"/>
+        <unit keys="bool" type="bool" default="True"/>
+        <unit keys="int" type="int"/>
+        <unit keys="uint64" type="uint64"/>
+        <unit keys="uint" type="uint"/>
+        <unit keys="short" type="short"/>
+      </dynamic_attribute>
+    </node>
+    <!---->
+    <node class="Task" type="Composite" name="Switch">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="yes"/>
+      <description text="Executes one of it's children nodes. \n The choice of which node must be executed is \n based on the result of binded condition. \n This condition returns an integer value \n which is used to switch between different branches. \n This integer value must be in interval [ 0; number-of-children ). \n If not, then Swith will end with state Failed."/>
+      <shape name="switch"/>
+      <events/>
+      <attribute type="bool" name="monitor" available="False|only on begin|Check condition only on launch;True|on each step|Check condition on each step" description="If = True then binded conditon will be checked \n on each step (frame). This makes it possible to switch \n branches dynamically if something would change in the world."/>
+    </node>
+    <!---->
+    <node class="Task" type="Decorator" name="Terminator">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Disguises finish state of it's child. \n It ends with state Completed or Failed \n always (based on flag [fail]). \n It does not matter if it's child completes \n or fails."/>
+      <shape name="triangle"/>
+      <events/>
+      <attribute type="bool" name="fail" description="If = True then Terminator would end with state Failed \n each time it's child node finishes. Otherwise, it ends with \n state Completed always."/>
+    </node>
+    <!---->
+    <node class="Task" type="Decorator" name="Inverter">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Inverts child finish state. \n If child fails then Inverter completes \n with state Completed. \n If child completes then Inverter fails."/>
+      <shape name="triangle"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="Decorator" name="Text" debugDefault="yes">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Writes text to Blackboard text buffer. \n This text should be displayed on screen. \n Usually this decorator is used for debugging behavior."/>
+      <shape name="triangle"/>
+      <events/>
+      <attribute type="string" name="text" default="no-text-to-display" description="The text"/>
+      <attribute type="bool" name="state" default="True" available="False|dont display|Do not display child state;True|display|Display child state" description="If = True then also child state would be written \n to Blackboard text buffer (Running, Waiting, etc.)."/>
+      <attribute type="bool" name="debugState" description="If = True then also this Text decorator's state (not child state!) \n would be written to Blackboard text buffer. \n There is no need to display this state in usual debug mode, \n it is highly specific."/>
+    </node>
+    <!---->
+    <node class="Task" type="Leaf" name="TransferValue">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Assigns one Blackboard var to another."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="string" name="to" description="Name of Blackboard destination-variable."/>
+      <attribute type="string" name="from" description="Name of Blackboard source-variable."/>
+      <attribute type="string" name="type_from" default="int" available="bool;char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double;waypoint|fds::WayPoint;geopoint|fds::GeoPoint;point3d|fds::Point3d;point3f|fds::Point3f;route|fds::Route" description="Type of source-variable."/>
+      <dynamic_attribute name="type_to" depend_on="type_from" description="Type of destination-variable.">
+        <unit keys="char;double;float;int;int64;short;uchar;uint;uint64;ushort" type="string" default="int" available="bool;char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double"/>
+        <unit keys="waypoint" type="string" default="waypoint" available="waypoint|fds::WayPoint;geopoint|fds::GeoPoint"/>
+        <unit keys="geopoint" type="string" default="geopoint" available="waypoint|fds::WayPoint;geopoint|fds::GeoPoint"/>
+        <unit keys="point3d" type="string" default="point3d" available="point3d|fds::Point3d;point3f|fds::Point3f"/>
+        <unit keys="point3f" type="string" default="point3f" available="point3d|fds::Point3d;point3f|fds::Point3f"/>
+        <unit keys="route" type="string" default="route" available="route|fds::Route"/>
+        <unit keys="bool" type="string" default="bool" available="bool"/>
+      </dynamic_attribute>
+    </node>
+    <!---->
+    <node class="Task" type="Leaf" name="VoidTask">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Empty node. Does nothing and ends with state Completed. \n If attribute [time] is not equal to 0 then continues \n running for specified period of time. \n Otherwise, finishes instantly."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="float" name="time" min="-1.0" description="Execution time in seconds. \n If greater than 0 then VoidTask executes for [time] seconds. \n If less than 0 then VoidTask executes infinitely long. \n If equal to 0 then VoidTask finishes instantly."/>
+    </node>
+    <!---->
+    <node class="Task" type="Decorator" name="WHILE">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="yes"/>
+      <description text="Executes it's child until it's binded condition is not equal to 0. \n Частота проверки условия зависит \n от значения атрибута monitor. \n Если restart_on_complete = False и restart_on_fail = False, \n но monitor = True, то этот декоратор работает \n как монитор условия. \n Если и monitor = False, то этот декоратор \n работает аналогично декоратору IF."/>
+      <shape name="triangle"/>
+      <events/>
+      <attribute type="bool" name="finish_with_last_state" description="If = True then this decorator finishes with last child finish state. \n Otherwise, this decorator finishes with state Completed \n if child have been successfully executed AT LEAST one time."/>
+      <attribute type="bool" name="restart_on_complete" default="True" description="If = True then child node will be restarted \n each time it finish with state Completed."/>
+      <attribute type="bool" name="monitor" description="If = True then binded condition will be checked \n on each step. Otherwise - the condition will be checked \n only on each restart (including first child launch)."/>
+      <attribute type="bool" name="restart_on_fail" description="If = True then child node will be restarted \n each time it finish with state Failed."/>
+    </node>
+    <!---->
+    <!-- ********************************************************************************************************* -->
+    <!-- CONDITIONS -->
+    <node class="Condition" type="Composite" name="AND">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="if (A and B and C) return 1; else return 0;"/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="Constant">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Returns specified INTEGER value."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="string" name="type" default="int" available="bool;char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG" description="Constant type (bool or different integer types only; \n no floating point numbers)."/>
+      <dynamic_attribute name="value" depend_on="type" description="Returned value.">
+		<unit keys="bool" type="bool"/>
+        <unit keys="char" type="char"/>
+        <unit keys="int" type="int"/>
+        <unit keys="int64" type="int64"/>
+        <unit keys="short" type="short"/>
+        <unit keys="uchar" type="uchar"/>
+        <unit keys="uint" type="uint"/>
+        <unit keys="uint64" type="uint64"/>
+        <unit keys="ushort" type="ushort"/>
+      </dynamic_attribute>
+    </node>
+    <!---->
+    <node class="Condition" type="Decorator" name="Converter">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Converts result of child condition check \n to the value from specified conversion table."/>
+      <shape name="triangle_small"/>
+      <events/>
+      <attribute type="int" name="default" description="Default value. \n Used in case when there is no \n possible [from] value in the table."/>
+      <array type="int" name="table/from" description="Possible input values."/>
+      <array type="int" name="table/to" description="Converted output values."/>
+    </node>
+    <!---->
+    <node class="Condition" type="Composite" name="Equal">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks all children results for equalty."/>
+      <shape name="diamond_eq"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="EqualToValue">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Возвращает True, если значение указанной переменной \n равно заданному значению."/>
+      <shape name="diamond_eq"/>
+      <events/>
+      <attribute type="string" name="variable" description="Имя переменной в блэкборде"/>
+      <attribute type="string" name="type" default="int" available="bool;char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Тип переменной"/>
+      <dynamic_attribute name="precision" depend_on="type" description="Точность сравнения">
+        <unit keys="double;float" type="float" default="1e-06" min="0.0"/>
+      </dynamic_attribute>
+      <dynamic_attribute name="value" depend_on="type" description="Значение">
+        <unit keys="int64" type="int64"/>
+        <unit keys="bool" type="bool" default="True"/>
+        <unit keys="char" type="char"/>
+        <unit keys="ushort" type="ushort"/>
+        <unit keys="uchar" type="uchar"/>
+        <unit keys="short" type="short"/>
+        <unit keys="int" type="int"/>
+        <unit keys="uint64" type="uint64"/>
+        <unit keys="uint" type="uint"/>
+        <unit keys="double;float" type="float"/>
+      </dynamic_attribute>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="EqualToVariable">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Возвращает True, если значения двух переменных равны"/>
+      <shape name="diamond_eq"/>
+      <events/>
+      <attribute type="string" name="variable1" description="Имя 1й переменной в блэкборде"/>
+      <attribute type="string" name="variable2" description="Имя 2й переменной в блэкборде"/>
+      <attribute type="string" name="type1" default="int" available="bool;char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Тип 1й переменной"/>
+      <dynamic_attribute name="precision" depend_on="type1" description="Точность сравнения">
+        <unit keys="double;float" type="float" default="1e-06" min="0.0"/>
+      </dynamic_attribute>
+      <dynamic_attribute name="type2" depend_on="type1" description="Тип 2й переменной">
+        <unit keys="bool;char;int;int64;short;uchar;uint;uint64;ushort" type="string" default="int" available="bool;char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG"/>
+        <unit keys="double;float" type="string" default="float" available="float;double;bool;char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG"/>
+      </dynamic_attribute>
+    </node>
+    <!---->
+    <node class="Condition" type="Composite" name="Greater">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Проверяет, что A больше B."/>
+      <shape name="diamond_greater"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="GreaterOrEqualToValue">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Возвращает True, если значение переменной \n больше или равно заданному значению"/>
+      <shape name="diamond_greater_eq"/>
+      <events/>
+      <attribute type="string" name="variable" description="Имя переменной в блэкборде"/>
+      <attribute type="string" name="type" default="int" available="char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Тип переменной"/>
+      <dynamic_attribute name="value" depend_on="type" description="Значение">
+        <unit keys="ushort" type="ushort"/>
+        <unit keys="int" type="int"/>
+        <unit keys="uint" type="uint"/>
+        <unit keys="int64" type="int64"/>
+        <unit keys="uint64" type="uint64"/>
+        <unit keys="double;float" type="float"/>
+        <unit keys="char" type="char"/>
+        <unit keys="uchar" type="uchar"/>
+        <unit keys="short" type="short"/>
+      </dynamic_attribute>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="GreaterOrEqualToVariable">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Возвращает True, если значение 1й переменной \n больше или равно значению \n 2й переменной"/>
+      <shape name="diamond_greater_eq"/>
+      <events/>
+      <attribute type="string" name="variable1" description="Имя 1й переменной в блэкборде"/>
+      <attribute type="string" name="variable2" description="Имя 2й переменной в блэкборде"/>
+      <attribute type="string" name="type1" default="int" available="char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Тип 1й переменной"/>
+      <attribute type="string" name="type2" default="int" available="char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Тип 2й переменной"/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="GreaterThanValue">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Возвращает True, если значение переменной \n больше заданного значения"/>
+      <shape name="diamond_greater"/>
+      <events/>
+      <attribute type="string" name="variable" description="Имя переменной в блэкборде"/>
+      <attribute type="string" name="type" default="int" available="char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Тип переменной"/>
+      <dynamic_attribute name="value" depend_on="type" description="Значение">
+        <unit keys="short" type="short"/>
+        <unit keys="ushort" type="ushort"/>
+        <unit keys="int" type="int"/>
+        <unit keys="uint" type="uint"/>
+        <unit keys="uchar" type="uchar"/>
+        <unit keys="uint64" type="uint64"/>
+        <unit keys="int64" type="int64"/>
+        <unit keys="double;float" type="float"/>
+        <unit keys="char" type="char"/>
+      </dynamic_attribute>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="GreaterThanVariable">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Возвращает True, если значение 1й переменной \n больше значения 2й переменной"/>
+      <shape name="diamond_greater"/>
+      <events/>
+      <attribute type="string" name="variable1" description="Имя 1й переменной в блэкборде"/>
+      <attribute type="string" name="variable2" description="Имя 2й переменной в блэкборде"/>
+      <attribute type="string" name="type1" default="int" available="char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Тип 1й переменной"/>
+      <attribute type="string" name="type2" default="int" available="char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Тип 2й переменной"/>
+    </node>
+    <!---->
+    <node class="Condition" type="Composite" name="Less">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Проверяет, что A меньше B."/>
+      <shape name="diamond_less"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="LessOrEqualToValue">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Возвращает True, если значение переменной \n меньше или равно заданному значению"/>
+      <shape name="diamond_less_eq"/>
+      <events/>
+      <attribute type="string" name="variable" description="Имя переменной в блэкборде"/>
+      <attribute type="string" name="type" default="int" available="char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Тип переменной"/>
+      <dynamic_attribute name="value" depend_on="type" description="Значение">
+        <unit keys="ushort" type="ushort"/>
+        <unit keys="int" type="int"/>
+        <unit keys="uint" type="uint"/>
+        <unit keys="int64" type="int64"/>
+        <unit keys="uint64" type="uint64"/>
+        <unit keys="double;float" type="float"/>
+        <unit keys="uchar" type="uchar"/>
+        <unit keys="char" type="char"/>
+        <unit keys="short" type="short"/>
+      </dynamic_attribute>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="LessOrEqualToVariable">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Возвращает True, если значение 1й переменной \n меньше или равно значению \n 2й переменной"/>
+      <shape name="diamond_less_eq"/>
+      <events/>
+      <attribute type="string" name="variable1" description="Имя 1й переменной в блэкборде"/>
+      <attribute type="string" name="variable2" description="Имя 2й переменной в блэкборде"/>
+      <attribute type="string" name="type1" default="int" available="char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Тип 1й переменной"/>
+      <attribute type="string" name="type2" default="int" available="char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Тип 2й переменной"/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="LessThanValue">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Возвращает True, если значение переменной \n меньше заданного значения"/>
+      <shape name="diamond_less"/>
+      <events/>
+      <attribute type="string" name="variable" description="Имя переменной в блэкборде"/>
+      <attribute type="string" name="type" default="int" available="char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Тип переменной"/>
+      <dynamic_attribute name="value" depend_on="type" description="Значение">
+        <unit keys="double;float" type="float"/>
+        <unit keys="char" type="char"/>
+        <unit keys="short" type="short"/>
+        <unit keys="ushort" type="ushort"/>
+        <unit keys="int64" type="int64"/>
+        <unit keys="int" type="int"/>
+        <unit keys="uint" type="uint"/>
+        <unit keys="uchar" type="uchar"/>
+        <unit keys="uint64" type="uint64"/>
+      </dynamic_attribute>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="LessThanVariable">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Возвращает True, если значение 1й переменной \n меньше значения 2й переменной"/>
+      <shape name="diamond_less"/>
+      <events/>
+      <attribute type="string" name="variable1" description="Имя 1й переменной в блэкборде"/>
+      <attribute type="string" name="variable2" description="Имя 2й переменной в блэкборде"/>
+      <attribute type="string" name="type1" default="int" available="char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Тип 1й переменной"/>
+      <attribute type="string" name="type2" default="int" available="char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Тип 2й переменной"/>
+    </node>
+    <!---->
+    <node class="Condition" type="Composite" name="OR">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Объединение набора условий по ИЛИ. \n Возвращает 1, если хотя бы одно \n условие при проверке вернуло 1."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="SimpleTranslator">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Узел для обратной совместимости.\nИспользуйте GetValue вместо этого узла."/>
+      <shape name="diamond_arrow"/>
+      <events/>
+      <attribute type="string" name="variable" description="Имя переменной в блэкборде"/>
+      <attribute type="string" name="type" default="uint" available="bool;char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Тип переменной"/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="GetValue">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Возвращает значение указанной переменной,\nпреобразованное к типу int."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="string" name="type" default="uint" available="bool;char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Тип переменной"/>
+      <attribute type="string" name="variable" description="Имя переменной в блэкборде"/>
+      <dynamic_attribute name="multiplier" depend_on="type" description="Множитель. Значение переменной умножается\nна этот множитель перед преобразованием к int.">
+        <unit keys="double" type="float" default="1"/>
+        <unit keys="float" type="float" default="1"/>
+      </dynamic_attribute>
+    </node>
+    <!---->
+    <node class="Condition" type="Decorator" name="StraightConverter">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Преобразует результат проверки дочернего \n условия по заданной таблице. \n Отличие от обычного конвертера: \n Значение является индексом в \n задаваемой таблице возвращаемых значений."/>
+      <shape name="triangle_small"/>
+      <events/>
+      <attribute type="int" name="default" description="Значение по-умолчанию. \n Используется в случае, если \n значения нет в таблице."/>
+      <array type="int" name="table/case" description="Возвращаемые табличные значения."/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="StraightTranslator">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Преобразует значение переменной в int, и \n возвращает по нему табличное значение. \n Отличие от обычного транслятора: \n Значение переменной является индексом в \n задаваемой таблице возвращаемых значений."/>
+      <shape name="diamond_arrow"/>
+      <events/>
+      <attribute type="string" name="variable" description="Имя переменной в блэкборде"/>
+      <attribute type="int" name="switch/default" description="Значение по-умолчанию. \n Используется в случае, если \n значения переменной нет в таблице."/>
+      <attribute type="string" name="type" default="uint" available="char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Тип переменной"/>
+      <array type="int" name="switch/table/case" description="Возвращаемые табличные значения."/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="TRUE">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="При проверке всегда возвращает 1."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Decorator" name="Not">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Инвертирует результат проверки дочернего условия."/>
+      <shape name="triangle_small"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="Translator">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Преобразует значение переменной в int, и \n возвращает по нему табличное значение."/>
+      <shape name="diamond_arrow"/>
+      <events/>
+      <attribute type="string" name="variable" description="Имя переменной в блэкборде"/>
+      <attribute type="int" name="switch/default" description="Значение по-умолчанию. \n Используется в случае, если \n значения переменной нет в таблице."/>
+      <attribute type="string" name="type" default="uint" available="char;uchar|unsigned char;short;ushort|unsigned short;int;uint|unsigned int;int64|LONGLONG;uint64|ULONGLONG;float;double" description="Тип переменной"/>
+      <array type="int" name="switch/table/to" description="Возвращаемые табличные значения."/>
+      <array type="int" name="switch/table/from" description="Возможные значения переменной."/>
+    </node>
+    <!---->
+    <!-- ********************************************************************************************************* -->
+  </library>
+  <!-- ====================================================================================================================== -->
+</LibData>

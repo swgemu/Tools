@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTree version="1.3.0">
+	<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="0.0" sceneY="-150.0" uid="1376095212" vAuto="1" vx="0.0" vy="0.0">
+		<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="0.0" sceneY="-77.0" uid="3155384762" vAuto="1" vx="0.0" vy="73.0"/>
+	</Node>
+	<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-109.0" sceneY="-136.0" uid="4145361906" vAuto="1" vx="0.0" vy="0.0">
+		<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-109.0" sceneY="-63.0" uid="3684932154" vAuto="1" vx="0.0" vy="73.0"/>
+	</Node>
+</BehaviorTree>

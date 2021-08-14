@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTree version="1.3.0">
+	<Node BranchName="fail" Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="1376095212">
+		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="Dummy" Type="Leaf" uid="3155384762">
+			<Settings/>
+		</Node>
+	</Node>
+	<Node BranchName="succeed" Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="4145361906">
+		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="Dummy" Type="Leaf" uid="3684932154">
+			<Settings/>
+		</Node>
+	</Node>
+</BehaviorTree>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTree version="1.3.0">
+	<Node BranchName="idle" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2602839395">
+		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1196938563">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2159332246">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="2297306633">
+					<Settings condition="PATROLLING"/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="2901314389">
+				<Settings key="moveMode" val="WALK"/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3579768154">
+				<Settings slot="MOVE"/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="3694282813">
+				<Settings duration="5.0"/>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="4089440207">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="4147395704">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3397268825">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="1668930524">
+						<Settings condition="OBLIVIOUS"/>
+					</Condition>
+				</Node>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="4036559077">
+				<Settings key="moveMode" val="RUN"/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="5946488">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1805516334">
+					<Settings slot="MOVE"/>
+				</Node>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="2339011119">
+			<Settings duration="-1.0"/>
+		</Node>
+	</Node>
+	<Node BranchName="move" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="3554620412">
+		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="5634087">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2198896283">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="803210878">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckPosture" Type="Single" uid="2465258569">
+						<Settings condition="UPRIGHT"/>
+					</Condition>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3810468866">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckDestination" Type="Single" uid="2565025743">
+						<Settings condition="0.0"/>
+					</Condition>
+				</Node>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="1780994926">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1891282080">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1556803780">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckSpeed" Type="Single" uid="1543236352">
+						<Settings condition="0.0"/>
+					</Condition>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="CompleteMove" Type="Leaf" uid="2113831125">
+					<Settings/>
+				</Node>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="FindNextPosition" Type="Leaf" uid="4111934468">
+			<Settings/>
+		</Node>
+	</Node>
+	<Node BranchName="target" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2727643421">
+		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="564148782">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="1610025830">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1588174195">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2487017921">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckPetCommand" Type="Single" uid="1805084865">
+							<Settings condition="PET_GUARD"/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="4088629427">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="GetProspectFromTarget" Type="Leaf" uid="4093395222">
+							<Settings/>
+						</Node>
+					</Node>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3411899925">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2270135938">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2800276185">
+							<Settings/>
+							<Condition Lib="SWGEmuNodes" Name="CheckPetCommand" Type="Single" uid="3458904446">
+								<Settings condition="PET_ATTACK"/>
+							</Condition>
+						</Node>
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2865585610">
+							<Settings/>
+							<Condition Lib="SWGEmuNodes" Name="CheckPetCommand" Type="Single" uid="2172835025">
+								<Settings condition="PET_SPECIAL_ATTACK1"/>
+							</Condition>
+						</Node>
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2606935716">
+							<Settings/>
+							<Condition Lib="SWGEmuNodes" Name="CheckPetCommand" Type="Single" uid="2878990487">
+								<Settings condition="PET_SPECIAL_ATTACK2"/>
+							</Condition>
+						</Node>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="508259610">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="GetProspectFromCommand" Type="Leaf" uid="4137584383">
+							<Settings/>
+						</Node>
+					</Node>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="89792960">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1114936193">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckPetCommand" Type="Single" uid="4248996732">
+							<Settings condition="PET_PATROL"/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="1679932869">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="312457495">
+							<Settings/>
+							<Node Lib="SWGEmuNodes" Name="GetProspectFromThreatMap" Type="Leaf" uid="312307422">
+								<Settings/>
+							</Node>
+							<Node Lib="SWGEmuNodes" Name="GetProspectFromDefenders" Type="Leaf" uid="869980090">
+								<Settings/>
+							</Node>
+						</Node>
+					</Node>
+				</Node>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2780806186">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="494241456">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckTargetIsValid" Type="Single" uid="2930289772">
+						<Settings/>
+					</Condition>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="734829524">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="532716569">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="DropProspectFromDefenders" Type="Leaf" uid="2355980134">
+							<Settings/>
+						</Node>
+						<Node Lib="SWGEmuNodes" Name="EraseBlackboard" Type="Leaf" uid="3244187974">
+							<Settings param="targetProspect"/>
+						</Node>
+					</Node>
+				</Node>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="SetDefenderFromProspect" Type="Leaf" uid="2191514309">
+				<Settings/>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="31729507">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="ExitCombat" Type="Leaf" uid="3430063290">
+				<Settings clearDefenders="1"/>
+			</Node>
+		</Node>
+	</Node>
+</BehaviorTree>

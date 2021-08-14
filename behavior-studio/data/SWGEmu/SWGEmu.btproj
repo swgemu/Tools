@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<btproject name="SWGEmu project file">
+	<alphabet path="../../config/behavior_alphabet.xml"/>
+	<shapelib path="../../config/diagram_shapes.xml"/>
+	<library path="node_library.xml"/>
+	<behavior_tree path="trees/default.xml"/>
+	<behavior_tree path="trees/test.xml"/>
+	<behavior_tree path="trees/pet.xml"/>
+	<behavior_tree path="trees/static.xml"/>
+	<behavior_tree path="trees/escort.xml"/>
+	<behavior_tree path="trees/deathWatch.xml"/>
+	<behavior_tree path="trees/enclaveSentinel.xml"/>
+	<behavior_tree path="trees/villageRaider.xml"/>
+</btproject>

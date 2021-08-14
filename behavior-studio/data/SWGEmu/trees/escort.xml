@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTree version="1.3.0">
+	<Node BranchName="run" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2928311771">
+		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3097333621">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="3216658477">
+				<Settings key="moveMode" val="RUN"/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3054819924">
+				<Settings slot="MOVE"/>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="599779045">
+			<Settings duration="-1.0"/>
+		</Node>
+	</Node>
+	<Node BranchName="walk" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="437268100">
+		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1489268495">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="4183990835">
+				<Settings key="moveMode" val="WALK"/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3093889889">
+				<Settings slot="MOVE"/>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="70283378">
+			<Settings duration="-1.0"/>
+		</Node>
+	</Node>
+</BehaviorTree>
