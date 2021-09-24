@@ -115,9 +115,9 @@
 								</Condition>
 							</Node>
 						</Node>
-						<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2514366141">
+						<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2555066128">
 							<Settings/>
-							<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="655091525">
+							<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3457280844">
 								<Settings/>
 								<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2660217776">
 									<Settings/>
@@ -129,7 +129,7 @@
 									<Settings slot="AGGRO"/>
 								</Node>
 							</Node>
-							<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="2679002934">
+							<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="302020086">
 								<Settings slot="SCARE"/>
 							</Node>
 						</Node>
@@ -138,6 +138,24 @@
 						<Settings slot="LOOKAT"/>
 					</Node>
 				</Node>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3313602446">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="4160853308">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckIsKiller" Type="Single" uid="2059317409">
+					<Settings/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3550292336">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckProspectIsIncapacitated" Type="Single" uid="282140730">
+					<Settings/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1616859664">
+				<Settings slot="KILL"/>
 			</Node>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="3482658823">
@@ -208,6 +226,24 @@
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="EraseBlackboard" Type="Leaf" uid="4004759019">
 			<Settings param="followRange"/>
+		</Node>
+	</Node>
+	<Node BranchName="kill" Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3446643166">
+		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3121274485">
+			<Settings/>
+			<Condition Lib="SWGEmuNodes" Name="CheckProspectInRange" Type="Single" uid="1800910595">
+				<Settings condition="0.0"/>
+			</Condition>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3171471690">
+			<Settings/>
+			<Condition Lib="SWGEmuNodes" Name="CheckProspectLOS" Type="Single" uid="3828589773">
+				<Settings/>
+			</Condition>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="KillProspect" Type="Leaf" uid="1512963980">
+			<Settings/>
 		</Node>
 	</Node>
 	<Node BranchName="look" Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2391667584">
@@ -407,6 +443,33 @@
 				</Node>
 				<Node Lib="SWGEmuNodes" Name="SetDefenderFromProspect" Type="Leaf" uid="1198270730">
 					<Settings/>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="2169906593">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="801245995">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2064919983">
+							<Settings/>
+							<Condition Lib="SWGEmuNodes" Name="CheckProspectIsType" Type="Single" uid="1297959577">
+								<Settings condition="PLAYER"/>
+							</Condition>
+						</Node>
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2449360311">
+							<Settings/>
+							<Condition Lib="SWGEmuNodes" Name="CheckIsKiller" Type="Single" uid="1840187439">
+								<Settings/>
+							</Condition>
+						</Node>
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2430725850">
+							<Settings/>
+							<Condition Lib="SWGEmuNodes" Name="CheckProspectIsIncapacitated" Type="Single" uid="455203671">
+								<Settings/>
+							</Condition>
+						</Node>
+						<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="474513793">
+							<Settings slot="KILL"/>
+						</Node>
+					</Node>
 				</Node>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="2799331507">

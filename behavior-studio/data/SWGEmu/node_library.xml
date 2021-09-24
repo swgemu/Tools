@@ -154,6 +154,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Task" type="Leaf" name="KillProspect">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Checks passed to follow incapacitated player and kill when in range."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Task" type="Leaf" name="Leash">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
@@ -285,7 +293,7 @@
       <description text="Holds modular reference to entire tree."/>
       <shape name="hexagon"/>
       <events/>
-      <attribute type="text" name="slot" default="NONE" available="NONE|NONE;AWARE;IDLE;ATTACK;EQUIP;TARGET;MOVE;LOOKAT;AGGRO;SCARE" description=""/>
+      <attribute type="text" name="slot" default="NONE" available="NONE|NONE;AWARE;KILL;IDLE;ATTACK;EQUIP;TARGET;MOVE;LOOKAT;AGGRO;SCARE" description=""/>
     </node>
     <!---->
     <node class="Task" type="Decorator" name="UntilFailure">
@@ -443,6 +451,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Condition" type="Single" name="CheckIsKiller">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if AI is killer."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Condition" type="Single" name="CheckOutdoors">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
@@ -506,6 +522,14 @@
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
       <description text="Checks that targetProspect on blackboard is the target of the last command given. Returns false if self is not a pet."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckProspectIsIncapacitated">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if prospect is incapacitated."/>
       <shape name="diamond"/>
       <events/>
     </node>
