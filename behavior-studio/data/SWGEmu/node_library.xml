@@ -540,7 +540,7 @@
       <description text="Check the target prospect against the type specified."/>
       <shape name="diamond"/>
       <events/>
-      <attribute type="text" name="condition" default="PLAYER" available="PLAYER;CREATURE;NPC;TANGIBLE;AGENT" description=""/>
+      <attribute type="text" name="condition" default="PLAYERTYPE" available="PLAYERTYPE;CREATURETYPE;NPCTYPE;TANGIBLETYPE;AGENTTYPE" description=""/>
     </node>
     <!---->
     <node class="Condition" type="Single" name="CheckProspectJediTrial">

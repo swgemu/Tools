@@ -1,43 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <BehaviorTree version="1.3.0">
-	<Node BranchName="aware" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="1074780145">
+	<Node BranchName="aware" Lib="SWGEmuNodes" Name="LookForTarget" Type="Decorator" uid="2877429880">
 		<Settings/>
-		<Node Lib="SWGEmuNodes" Name="LookForTarget" Type="Decorator" uid="2877429880">
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1842231240">
 			<Settings/>
-			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1842231240">
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="680465367">
 				<Settings/>
-				<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2100210710">
+				<Condition Lib="SWGEmuNodes" Name="CheckProspectInRange" Type="Single" uid="14270026">
+					<Settings condition="32.0"/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="565703857">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2453213506">
 					<Settings/>
-					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2453213506">
-						<Settings/>
-						<Condition Lib="SWGEmuNodes" Name="CheckProspectIsType" Type="Single" uid="2897258589">
-							<Settings condition="PLAYER"/>
-						</Condition>
-					</Node>
-					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2845873207">
-						<Settings/>
-						<Condition Lib="SWGEmuNodes" Name="CheckProspectJediTrial" Type="Single" uid="119310356">
-							<Settings/>
-						</Condition>
-					</Node>
+					<Condition Lib="SWGEmuNodes" Name="CheckProspectIsType" Type="Single" uid="2897258589">
+						<Settings condition="PLAYERTYPE"/>
+					</Condition>
 				</Node>
-				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="680465367">
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2845873207">
 					<Settings/>
-					<Condition Lib="SWGEmuNodes" Name="CheckProspectInRange" Type="Single" uid="14270026">
-						<Settings condition="32.0"/>
+					<Condition Lib="SWGEmuNodes" Name="CheckProspectJediTrial" Type="Single" uid="119310356">
+						<Settings/>
 					</Condition>
 				</Node>
 			</Node>
-		</Node>
-		<Node Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="954339847">
-			<Settings/>
-			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1358554592">
+			<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="2718719330">
 				<Settings/>
-				<Node Lib="SWGEmuNodes" Name="EraseBlackboard" Type="Leaf" uid="2583246458">
-					<Settings param="aggroMod"/>
+				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="808385479">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3267863872">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckIsKiller" Type="Single" uid="1762706722">
+							<Settings/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="849527437">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckProspectIsIncapacitated" Type="Single" uid="1024379378">
+							<Settings/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="4140801574">
+						<Settings slot="KILL"/>
+					</Node>
 				</Node>
-				<Node Lib="SWGEmuNodes" Name="EraseBlackboard" Type="Leaf" uid="966727443">
-					<Settings param="targetProspect"/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2654446403">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3473260042">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckAggroDelayPast" Type="Single" uid="2428064963">
+						<Settings/>
+					</Condition>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1223216548">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckTargetIsValid" Type="Single" uid="601133795">
+						<Settings/>
+					</Condition>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="SetAlert" Type="Leaf" uid="4191492022">
+					<Settings duration="6.0" show="1"/>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="CalculateAggroMod" Type="Leaf" uid="1530216695">
+					<Settings/>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="2630611784">
+					<Settings slot="AGGRO"/>
 				</Node>
 			</Node>
 		</Node>
