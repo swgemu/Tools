@@ -9,7 +9,7 @@
 				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="709193771">
 					<Settings/>
 					<Condition Lib="SWGEmuNodes" Name="CheckProspectIsType" Type="Single" uid="1717463806">
-						<Settings condition="PLAYER"/>
+						<Settings condition="PLAYERTYPE"/>
 					</Condition>
 				</Node>
 				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="742936927">
