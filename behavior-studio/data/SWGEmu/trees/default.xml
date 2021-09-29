@@ -96,67 +96,49 @@
 						<Settings condition="0.0"/>
 					</Condition>
 				</Node>
-				<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2851498991">
+				<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1945988400">
+					<Settings slot="LOOKAT"/>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2161122682">
 					<Settings/>
-					<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2161122682">
+					<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="1918093601">
 						<Settings/>
-						<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="1918093601">
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3395891290">
 							<Settings/>
-							<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3395891290">
-								<Settings/>
-								<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="1548623514">
-									<Settings condition="WATCHING"/>
-								</Condition>
-							</Node>
-							<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2148110810">
-								<Settings/>
-								<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="3238596965">
-									<Settings condition="STALKING"/>
-								</Condition>
-							</Node>
+							<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="1548623514">
+								<Settings condition="WATCHING"/>
+							</Condition>
 						</Node>
-						<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2555066128">
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2148110810">
 							<Settings/>
-							<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3457280844">
-								<Settings/>
-								<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2660217776">
-									<Settings/>
-									<Condition Lib="SWGEmuNodes" Name="CheckAggroDelayPast" Type="Single" uid="1619483218">
-										<Settings/>
-									</Condition>
-								</Node>
-								<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="2566615919">
-									<Settings slot="AGGRO"/>
-								</Node>
-							</Node>
-							<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="302020086">
-								<Settings slot="SCARE"/>
-							</Node>
+							<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="3238596965">
+								<Settings condition="STALKING"/>
+							</Condition>
 						</Node>
 					</Node>
-					<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1945988400">
-						<Settings slot="LOOKAT"/>
+					<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2555066128">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3457280844">
+							<Settings/>
+							<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2660217776">
+								<Settings/>
+								<Condition Lib="SWGEmuNodes" Name="CheckAggroDelayPast" Type="Single" uid="1619483218">
+									<Settings/>
+								</Condition>
+							</Node>
+							<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="2566615919">
+								<Settings slot="AGGRO"/>
+							</Node>
+						</Node>
+						<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="302020086">
+							<Settings slot="SCARE"/>
+						</Node>
 					</Node>
 				</Node>
 			</Node>
 		</Node>
-		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3313602446">
-			<Settings/>
-			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="4160853308">
-				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckIsKiller" Type="Single" uid="2059317409">
-					<Settings/>
-				</Condition>
-			</Node>
-			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3550292336">
-				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckProspectIsIncapacitated" Type="Single" uid="282140730">
-					<Settings/>
-				</Condition>
-			</Node>
-			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1616859664">
-				<Settings slot="KILL"/>
-			</Node>
+		<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1616859664">
+			<Settings slot="KILL"/>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="3482658823">
 			<Settings/>
@@ -230,6 +212,18 @@
 	</Node>
 	<Node BranchName="kill" Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3446643166">
 		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2438979001">
+			<Settings/>
+			<Condition Lib="SWGEmuNodes" Name="CheckIsKiller" Type="Single" uid="1145316404">
+				<Settings/>
+			</Condition>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3202537488">
+			<Settings/>
+			<Condition Lib="SWGEmuNodes" Name="CheckProspectIsIncapacitated" Type="Single" uid="3792349256">
+				<Settings/>
+			</Condition>
+		</Node>
 		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3121274485">
 			<Settings/>
 			<Condition Lib="SWGEmuNodes" Name="CheckProspectInRange" Type="Single" uid="1800910595">
@@ -256,6 +250,12 @@
 					<Settings condition="OBLIVIOUS"/>
 				</Condition>
 			</Node>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1654495102">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="196345155">
+					<Settings condition="WATCHING"/>
+				</Condition>
+			</Node>
 			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="4062139516">
 				<Settings/>
 				<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="1006667864">
@@ -272,8 +272,20 @@
 		<Node Lib="SWGEmuNodes" Name="SetFollowState" Type="Leaf" uid="4076527471">
 			<Settings state="WATCHING"/>
 		</Node>
-		<Node Lib="SWGEmuNodes" Name="SetAlert" Type="Leaf" uid="1583995406">
-			<Settings duration="6.0" show="1"/>
+		<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="411818367">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3870509434">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckProspectIsIncapacitated" Type="Single" uid="673698221">
+					<Settings/>
+				</Condition>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="2037171568">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="SetAlert" Type="Leaf" uid="1583995406">
+				<Settings duration="10.0" show="1"/>
+			</Node>
 		</Node>
 	</Node>
 	<Node BranchName="move" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="95757095">
