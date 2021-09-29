@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <BehaviorTree version="1.3.0">
+	<Node BranchName="move" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="824192424">
+		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="1974555353">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="887883781">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2074092638">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckPosture" Type="Single" uid="2988186562">
+						<Settings condition="UPRIGHT"/>
+					</Condition>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2904768555">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckDestination" Type="Single" uid="396744437">
+						<Settings condition="0.0"/>
+					</Condition>
+				</Node>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="FindNextPosition" Type="Leaf" uid="3085578776">
+			<Settings/>
+		</Node>
+	</Node>
 	<Node BranchName="run" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2928311771">
 		<Settings/>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3097333621">
