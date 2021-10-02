@@ -12,23 +12,18 @@ addAiTemplate("aggroDefault", aggroDefault)
 attackDefault = {
 	{id="4024177786",	name="Sequence",	pid="none"},
 	{id="2812006626",	name="RandomSelector",	pid="4024177786"},
+	{id="169743063",	name="WriteBlackboard",	pid="2812006626",	args={key="attackType", val=DEFAULT}},
+	{id="1932903383",	name="WriteBlackboard",	pid="2812006626",	args={key="attackType", val=DEFAULT}},
 	{id="2322819263",	name="WriteBlackboard",	pid="2812006626",	args={key="attackType", val=DEFAULT}},
-	{id="1793608263",	name="EraseBlackboard",	pid="2812006626",	args={param="attackType"}},
-	{id="1011850080",	name="EraseBlackboard",	pid="2812006626",	args={param="attackType"}},
-	{id="2342191700",	name="EraseBlackboard",	pid="2812006626",	args={param="attackType"}},
 	{id="1163120514",	name="EraseBlackboard",	pid="2812006626",	args={param="attackType"}},
-	{id="2329787886",	name="SelectAttack",	pid="4024177786",	args={attackNum=-1}},
-	{id="180351178",	name="EnqueueAttack",	pid="4024177786"},
-	{id="302238494",	name="Selector",	pid="4024177786"},
-	{id="3604417668",	name="Sequence",	pid="302238494"},
+	{id="3280863871",	name="Sequence",	pid="4024177786"},
+	{id="3604417668",	name="Sequence",	pid="3280863871"},
+	{id="2582933389",	name="SelectAttack",	pid="3604417668",	args={attackNum=-1}},
 	{id="763264896",	name="If",	pid="3604417668"},
 	{id="1728591479",	name="CheckAttackInRange",	pid="763264896"},
 	{id="807085653",	name="If",	pid="3604417668"},
 	{id="728357096",	name="CheckAttackIsValid",	pid="807085653"},
-	{id="285069068",	name="Sequence",	pid="302238494"},
-	{id="4146066819",	name="WriteBlackboard",	pid="285069068",	args={key="attackType", val=DEFAULT}},
-	{id="2582933389",	name="SelectAttack",	pid="285069068",	args={attackNum=-1}},
-	{id="2327622682",	name="EnqueueAttack",	pid="285069068"}}
+	{id="2327622682",	name="EnqueueAttack",	pid="3280863871"}}
 addAiTemplate("attackDefault", attackDefault)
 
 awareDefault = {
@@ -36,6 +31,8 @@ awareDefault = {
 	{id="48836146",	name="LookForTarget",	pid="4104990252"},
 	{id="1957246555",	name="Sequence",	pid="48836146"},
 	{id="2060697202",	name="CalculateAggroMod",	pid="1957246555"},
+	{id="3737222462",	name="AlwaysSucceed",	pid="1957246555"},
+	{id="1292932650",	name="TreeSocket",	pid="3737222462",	args={slot=STALK}},
 	{id="3934686138",	name="If",	pid="1957246555"},
 	{id="3559324712",	name="CheckProspectInRange",	pid="3934686138",	args={condition=0.0}},
 	{id="1945988400",	name="TreeSocket",	pid="1957246555",	args={slot=LOOKAT}},
@@ -96,12 +93,15 @@ addAiTemplate("killDefault", killDefault)
 lookDefault = {
 	{id="2391667584",	name="Sequence",	pid="none"},
 	{id="3448746212",	name="Selector",	pid="2391667584"},
-	{id="1241082520",	name="If",	pid="3448746212"},
-	{id="3119101863",	name="CheckFollowState",	pid="1241082520",	args={condition=OBLIVIOUS}},
-	{id="1654495102",	name="If",	pid="3448746212"},
-	{id="196345155",	name="CheckFollowState",	pid="1654495102",	args={condition=WATCHING}},
-	{id="4062139516",	name="If",	pid="3448746212"},
-	{id="1006667864",	name="CheckFollowState",	pid="4062139516",	args={condition=PATROLLING}},
+	{id="1895019503",	name="Not",	pid="3448746212"},
+	{id="1241082520",	name="If",	pid="1895019503"},
+	{id="3119101863",	name="CheckFollowState",	pid="1241082520",	args={condition=FOLLOWING}},
+	{id="318778165",	name="Not",	pid="3448746212"},
+	{id="1654495102",	name="If",	pid="318778165"},
+	{id="196345155",	name="CheckFollowState",	pid="1654495102",	args={condition=FLEEING}},
+	{id="2281069980",	name="Not",	pid="3448746212"},
+	{id="4062139516",	name="If",	pid="2281069980"},
+	{id="1006667864",	name="CheckFollowState",	pid="4062139516",	args={condition=LEASHING}},
 	{id="1650016708",	name="If",	pid="2391667584"},
 	{id="638753146",	name="CheckProspectLOS",	pid="1650016708"},
 	{id="4076527471",	name="SetFollowState",	pid="2391667584",	args={state=WATCHING}},
@@ -162,6 +162,24 @@ scareDefault = {
 	{id="2633134651",	name="RunAway",	pid="9692099",	args={dist=64.0}},
 	{id="3135988450",	name="SetAlert",	pid="9692099",	args={duration=10.0, show=0}}}
 addAiTemplate("scareDefault", scareDefault)
+
+stalkDefault = {
+	{id="1672513422",	name="Sequence",	pid="none"},
+	{id="3739778054",	name="If",	pid="1672513422"},
+	{id="4188555031",	name="CheckIsStalker",	pid="3739778054"},
+	{id="842511065",	name="Not",	pid="1672513422"},
+	{id="970505057",	name="If",	pid="842511065"},
+	{id="2130079230",	name="CheckIsInCombat",	pid="970505057"},
+	{id="3337736172",	name="If",	pid="1672513422"},
+	{id="3024166838",	name="CheckTargetIsValid",	pid="3337736172"},
+	{id="1047936480",	name="If",	pid="1672513422"},
+	{id="1298894483",	name="CheckProspectLOS",	pid="1047936480"},
+	{id="2548145200",	name="Not",	pid="1672513422"},
+	{id="4223807049",	name="If",	pid="2548145200"},
+	{id="3347717967",	name="CheckFollowState",	pid="4223807049",	args={condition=STALKING}},
+	{id="1993075065",	name="StalkProspect",	pid="1672513422"},
+	{id="2442951800",	name="TreeSocket",	pid="1672513422",	args={slot=MOVE}}}
+addAiTemplate("stalkDefault", stalkDefault)
 
 targetDefault = {
 	{id="4111738087",	name="Selector",	pid="none"},

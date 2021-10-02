@@ -287,13 +287,21 @@
       <attribute type="text" name="state" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING;EVADING" description="Follow state enumerations."/>
     </node>
     <!---->
+    <node class="Task" type="Leaf" name="StalkProspect">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="New node created by user."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Task" type="Leaf" name="TreeSocket">
       <children class="Task" use="yes"/>
       <children class="Condition" use="no"/>
       <description text="Holds modular reference to entire tree."/>
       <shape name="hexagon"/>
       <events/>
-      <attribute type="text" name="slot" default="NONE" available="NONE|NONE;AWARE;KILL;IDLE;ATTACK;EQUIP;TARGET;MOVE;LOOKAT;AGGRO;SCARE" description=""/>
+      <attribute type="text" name="slot" default="NONE" available="NONE|NONE;AWARE;KILL;IDLE;ATTACK;EQUIP;TARGET;MOVE;LOOKAT;AGGRO;SCARE;STALK" description=""/>
     </node>
     <!---->
     <node class="Task" type="Decorator" name="UntilFailure">
@@ -455,6 +463,14 @@
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
       <description text="Checks if AI is killer."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Composite" name="CheckIsStalker">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="New node created by user."/>
       <shape name="diamond"/>
       <events/>
     </node>
