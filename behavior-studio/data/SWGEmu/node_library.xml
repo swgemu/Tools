@@ -104,6 +104,15 @@
       <events/>
     </node>
     <!---->
+    <node class="Task" type="Leaf" name="Flee">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="AI Flee action. Always succeeds. Delay codition is until next check in seconds."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="int" name="delay" description=""/>
+    </node>
+    <!---->
     <node class="Task" type="Leaf" name="GeneratePatrol">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
@@ -270,6 +279,14 @@
       <attribute type="bool" name="show" default="True" description="Show alert flytext?"/>
     </node>
     <!---->
+    <node class="Task" type="Leaf" name="SetAttackPosture">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Chance to set AIs attack posture."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Task" type="Leaf" name="SetDefenderFromProspect">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
@@ -380,6 +397,15 @@
       <shape name="diamond"/>
       <events/>
       <attribute type="float" name="condition" description="Check distance for destination."/>
+    </node>
+    <!---->
+    <node class="Condition" type="Composite" name="CheckFlee">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Check is AI should FLEE when their HAM drops below the given condition."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="float" name="condition" description=""/>
     </node>
     <!---->
     <node class="Condition" type="Single" name="CheckFollowAggression">
