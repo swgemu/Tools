@@ -64,6 +64,9 @@
 			<Node Lib="SWGEmuNodes" Name="EnqueueAttack" Type="Leaf" uid="2327622682">
 				<Settings/>
 			</Node>
+			<Node Lib="SWGEmuNodes" Name="SetAttackPosture" Type="Leaf" uid="179413845">
+				<Settings/>
+			</Node>
 		</Node>
 	</Node>
 	<Node BranchName="aware" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="4104990252">
@@ -318,6 +321,18 @@
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="Leash" Type="Leaf" uid="4131275375">
 				<Settings/>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="439475086">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1464671058">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckFlee" Type="Composite" uid="683224492">
+					<Settings condition="0.1"/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="Flee" Type="Leaf" uid="3377670639">
+				<Settings delay="15"/>
 			</Node>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="ParallelSelector" Type="Composite" uid="3937110156">

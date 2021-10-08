@@ -41,9 +41,6 @@
 				</Node>
 			</Node>
 		</Node>
-		<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="2339011119">
-			<Settings duration="-1.0"/>
-		</Node>
 	</Node>
 	<Node BranchName="move" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="3554620412">
 		<Settings/>
