@@ -211,6 +211,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Task" type="Leaf" name="PetReturn">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="For pets: This function will set their follow object to the player that gave them their last command."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Task" type="Composite" name="RandomSelector">
       <children class="Task" use="yes"/>
       <children class="Condition" use="yes"/>
@@ -399,7 +407,7 @@
       <attribute type="float" name="condition" description="Check distance for destination."/>
     </node>
     <!---->
-    <node class="Condition" type="Composite" name="CheckFlee">
+    <node class="Condition" type="Single" name="CheckFlee">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
       <description text="Check is AI should FLEE when their HAM drops below the given condition."/>
@@ -507,6 +515,15 @@
       <description text="Checks if self is outdoors (does not have a parent)."/>
       <shape name="diamond"/>
       <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckOwnerInRange">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks is pet owner is in given range."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="float" name="condition" default="128.0" description=""/>
     </node>
     <!---->
     <node class="Condition" type="Single" name="CheckPetCommand">
