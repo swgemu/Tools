@@ -29,8 +29,17 @@
 				</Condition>
 			</Node>
 		</Node>
-		<Node Lib="SWGEmuNodes" Name="SetFollowState" Type="Leaf" uid="3351684077">
-			<Settings state="FOLLOWING"/>
+		<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="308986874">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="PetReturn" Type="Leaf" uid="2381505880">
+				<Settings/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="SetFollowState" Type="Leaf" uid="3351684077">
+				<Settings state="FOLLOWING"/>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="303550960">
+			<Settings key="moveMode" val="RUN"/>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="559248213">
 			<Settings slot="MOVE"/>
@@ -75,6 +84,30 @@
 				<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1805516334">
 					<Settings slot="MOVE"/>
 				</Node>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="691694066">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="27856860">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckPetCommand" Type="Single" uid="3534465851">
+					<Settings condition="PET_STAY"/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3007878385">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckRetreat" Type="Single" uid="855976028">
+					<Settings condition="5"/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="1430990324">
+				<Settings key="moveMode" val="RUN"/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="Leash" Type="Leaf" uid="3088088980">
+				<Settings/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3026536590">
+				<Settings slot="MOVE"/>
 			</Node>
 		</Node>
 	</Node>
@@ -182,11 +215,20 @@
 				</Node>
 				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="89792960">
 					<Settings/>
-					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1114936193">
+					<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="1148349928">
 						<Settings/>
-						<Condition Lib="SWGEmuNodes" Name="CheckPetCommand" Type="Single" uid="4248996732">
-							<Settings condition="PET_PATROL"/>
-						</Condition>
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1114936193">
+							<Settings/>
+							<Condition Lib="SWGEmuNodes" Name="CheckPetCommand" Type="Single" uid="4248996732">
+								<Settings condition="PET_PATROL"/>
+							</Condition>
+						</Node>
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="4288585165">
+							<Settings/>
+							<Condition Lib="SWGEmuNodes" Name="CheckPetCommand" Type="Single" uid="4090806799">
+								<Settings condition="PET_STAY"/>
+							</Condition>
+						</Node>
 					</Node>
 					<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="312457495">
 						<Settings/>
@@ -223,11 +265,20 @@
 					</Node>
 				</Node>
 			</Node>
-			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1977209620">
+			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3396084436">
 				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckOwnerInRange" Type="Single" uid="706949249">
-					<Settings condition="128.0"/>
-				</Condition>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2519156342">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckTargetInOwnerRange" Type="Single" uid="3430728011">
+						<Settings condition="128.0"/>
+					</Condition>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1977209620">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckOwnerInRange" Type="Single" uid="706949249">
+						<Settings condition="128.0"/>
+					</Condition>
+				</Node>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="SetDefenderFromProspect" Type="Leaf" uid="2191514309">
 				<Settings/>

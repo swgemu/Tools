@@ -520,7 +520,7 @@
     <node class="Condition" type="Single" name="CheckOwnerInRange">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
-      <description text="Checks is pet owner is in given range."/>
+      <description text="Checks if  pet owner is in given range."/>
       <shape name="diamond"/>
       <events/>
       <attribute type="float" name="condition" default="128.0" description=""/>
@@ -660,6 +660,15 @@
       <shape name="diamond"/>
       <events/>
       <attribute type="float" name="condition" description="Speed to be above."/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckTargetInOwnerRange">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if pet prospect target is in range of owner."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="float" name="condition" default="128.0" description=""/>
     </node>
     <!---->
     <node class="Condition" type="Single" name="CheckTargetIsValid">
