@@ -312,6 +312,15 @@
       <attribute type="text" name="state" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING;EVADING" description="Follow state enumerations."/>
     </node>
     <!---->
+    <node class="Task" type="Leaf" name="StageRangedWeapon">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Stages the pets ranged weapon."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="text" name="val" description=""/>
+    </node>
+    <!---->
     <node class="Task" type="Leaf" name="StalkProspect">
       <children class="Task" use="yes"/>
       <children class="Condition" use="no"/>
@@ -677,6 +686,23 @@
       <description text="Checks that the proposed target (targetProspect on the blackboard) is valid."/>
       <shape name="diamond"/>
       <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckUseRanged">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if pet has the use ranged weapon toggled on."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckWeaponIsRanged">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="New node created by user."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="text" name="condition" description=""/>
     </node>
     <!---->
     <!-- ********************************************************************************************************* -->

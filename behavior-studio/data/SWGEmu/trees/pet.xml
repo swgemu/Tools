@@ -45,6 +45,99 @@
 			<Settings slot="MOVE"/>
 		</Node>
 	</Node>
+	<Node BranchName="equip" Lib="SWGEmuNodes" Name="ParallelSequence" Type="Composite" uid="1108669613">
+		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3049624129">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="UpdateRangeToFollow" Type="Leaf" uid="2950077037">
+				<Settings/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="3308237866">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2437000641">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1185099605">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckUseRanged" Type="Single" uid="2759587382">
+							<Settings/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2987581746">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1695730033">
+							<Settings/>
+							<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3227837017">
+								<Settings/>
+								<Condition Lib="SWGEmuNodes" Name="CheckWeaponIsRanged" Type="Single" uid="2534499086">
+									<Settings condition="PRIMARYWEAPON"/>
+								</Condition>
+							</Node>
+							<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="1381132896">
+								<Settings key="stagedWeapon" val="PRIMARYWEAPON"/>
+							</Node>
+						</Node>
+						<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3632826513">
+							<Settings/>
+							<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1157658447">
+								<Settings/>
+								<Condition Lib="SWGEmuNodes" Name="CheckWeaponIsRanged" Type="Single" uid="1155398833">
+									<Settings condition="SECONDARYWEAPON"/>
+								</Condition>
+							</Node>
+							<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="353950556">
+								<Settings key="stagedWeapon" val="SECONDARYWEAPON"/>
+							</Node>
+						</Node>
+					</Node>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1749301565">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3831253223">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckFollowInWeaponRange" Type="Single" uid="3554588378">
+							<Settings condition="PRIMARYWEAPON"/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="124074494">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckFollowClosestIdealRange" Type="Single" uid="417335643">
+							<Settings condition="PRIMARYWEAPON"/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="1808660918">
+						<Settings key="stagedWeapon" val="PRIMARYWEAPON"/>
+					</Node>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="970080915">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3704650182">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckFollowInWeaponRange" Type="Single" uid="4045449539">
+							<Settings condition="SECONDARYWEAPON"/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3110803999">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckFollowClosestIdealRange" Type="Single" uid="3581580359">
+							<Settings condition="SECONDARYWEAPON"/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="1322099622">
+						<Settings key="stagedWeapon" val="SECONDARYWEAPON"/>
+					</Node>
+				</Node>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="EquipStagedWeapon" Type="Leaf" uid="3132206392">
+				<Settings/>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="EraseBlackboard" Type="Leaf" uid="50350698">
+			<Settings param="stagedWeapon"/>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="EraseBlackboard" Type="Leaf" uid="3927914430">
+			<Settings param="followRange"/>
+		</Node>
+	</Node>
 	<Node BranchName="idle" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2602839395">
 		<Settings/>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1196938563">
@@ -217,6 +310,12 @@
 					<Settings/>
 					<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="1148349928">
 						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1780096631">
+							<Settings/>
+							<Condition Lib="SWGEmuNodes" Name="CheckPetCommand" Type="Single" uid="3175965712">
+								<Settings condition="PET_RANGED_ATTACK"/>
+							</Condition>
+						</Node>
 						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1114936193">
 							<Settings/>
 							<Condition Lib="SWGEmuNodes" Name="CheckPetCommand" Type="Single" uid="4248996732">
