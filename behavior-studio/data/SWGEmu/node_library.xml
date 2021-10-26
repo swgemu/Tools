@@ -284,7 +284,7 @@
       <shape name="ring"/>
       <events/>
       <attribute type="float" name="duration" description="Seconds to be alert. Should be positive."/>
-      <attribute type="bool" name="show" default="True" description="Show alert flytext?"/>
+      <attribute type="text" name="show" default="0" description="Show alert flytext?"/>
     </node>
     <!---->
     <node class="Task" type="Leaf" name="SetAttackPosture">
