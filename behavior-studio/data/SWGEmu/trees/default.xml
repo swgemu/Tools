@@ -491,6 +491,12 @@
 				<Settings/>
 			</Condition>
 		</Node>
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1616171750">
+			<Settings/>
+			<Condition Lib="SWGEmuNodes" Name="CheckOutdoors" Type="Single" uid="3970049935">
+				<Settings/>
+			</Condition>
+		</Node>
 		<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="2548145200">
 			<Settings/>
 			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="4223807049">
