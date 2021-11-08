@@ -6,12 +6,12 @@
 				<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-16.5" sceneY="45.5" uid="2074092638" vAuto="1" vx="-53.0" vy="69.5">
 					<Condition expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-16.5" sceneY="115.0" uid="2988186562" vAuto="1" vx="0.0" vy="69.5"/>
 				</Node>
-				<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="81.0" sceneY="45.5" uid="2904768555" vAuto="1" vx="44.5" vy="69.5">
+				<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="81.0" sceneY="45.5" uid="2904768555" vAuto="1" vx="0.0" vy="69.5">
 					<Condition expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="81.0" sceneY="115.0" uid="396744437" vAuto="1" vx="0.0" vy="69.5"/>
 				</Node>
 			</Node>
 		</Node>
-		<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="185.5" sceneY="-93.5" uid="3085578776" vAuto="1" vx="97.5" vy="69.5"/>
+		<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="185.5" sceneY="-93.5" uid="3085578776" vAuto="1" vx="0.0" vy="69.5"/>
 	</Node>
 	<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-73.0" sceneY="-137.0" uid="2928311771" vAuto="1" vx="0.0" vy="0.0">
 		<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-95.5" sceneY="-67.5" uid="3097333621" vAuto="1" vx="-22.5" vy="69.5">
@@ -23,8 +23,8 @@
 	<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-73.0" sceneY="-155.0" uid="437268100" vAuto="1" vx="0.0" vy="0.0">
 		<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-95.5" sceneY="-85.5" uid="1489268495" vAuto="1" vx="-22.5" vy="69.5">
 			<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-133.5" sceneY="-16.0" uid="4183990835" vAuto="1" vx="-38.0" vy="69.5"/>
-			<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-45.0" sceneY="-16.0" uid="3093889889" vAuto="1" vx="50.5" vy="69.5"/>
+			<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-45.0" sceneY="-16.0" uid="3093889889" vAuto="1" vx="0.0" vy="69.5"/>
 		</Node>
-		<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="15.5" sceneY="-85.5" uid="70283378" vAuto="1" vx="88.5" vy="69.5"/>
+		<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="15.5" sceneY="-85.5" uid="70283378" vAuto="1" vx="0.0" vy="69.5"/>
 	</Node>
 </BehaviorTree>

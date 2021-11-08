@@ -69,96 +69,135 @@
 			</Node>
 		</Node>
 	</Node>
-	<Node BranchName="aware" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="4104990252">
+	<Node BranchName="aware" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="4203407615">
 		<Settings/>
-		<Node Lib="SWGEmuNodes" Name="LookForTarget" Type="Decorator" uid="48836146">
+		<Node Lib="SWGEmuNodes" Name="LookForTarget" Type="Decorator" uid="1249379660">
 			<Settings/>
-			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1957246555">
+			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1806193610">
 				<Settings/>
-				<Node Lib="SWGEmuNodes" Name="CalculateAggroMod" Type="Leaf" uid="2060697202">
+				<Node Lib="SWGEmuNodes" Name="CalculateAggroMod" Type="Leaf" uid="1216252065">
 					<Settings/>
 				</Node>
-				<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="3737222462">
+				<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="3272345327">
 					<Settings/>
-					<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3798138477">
+					<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3080558973">
 						<Settings/>
-						<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="4026101168">
+						<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="1816592184">
 							<Settings/>
-							<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3684427339">
+							<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1491613169">
 								<Settings/>
-								<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="613062510">
+								<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="2200708579">
 									<Settings condition="WATCHING"/>
 								</Condition>
 							</Node>
 						</Node>
-						<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1292932650">
+						<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="474617061">
 							<Settings slot="STALK"/>
 						</Node>
 					</Node>
 				</Node>
-				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3934686138">
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3394370660">
 					<Settings/>
-					<Condition Lib="SWGEmuNodes" Name="CheckProspectInRange" Type="Single" uid="3559324712">
+					<Condition Lib="SWGEmuNodes" Name="CheckProspectInRange" Type="Single" uid="1278976041">
 						<Settings condition="0.0"/>
 					</Condition>
 				</Node>
-				<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="2522462640">
+				<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="1799248528">
 					<Settings/>
-					<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1945988400">
+					<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3025856600">
 						<Settings slot="LOOKAT"/>
 					</Node>
 				</Node>
-				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2161122682">
+				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3702045485">
 					<Settings/>
-					<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="1918093601">
+					<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="3753019142">
 						<Settings/>
-						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3395891290">
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="115067313">
 							<Settings/>
-							<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="1548623514">
+							<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="922359392">
 								<Settings condition="WATCHING"/>
 							</Condition>
 						</Node>
-						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2148110810">
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2011944136">
 							<Settings/>
-							<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="3238596965">
+							<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="3410143777">
 								<Settings condition="STALKING"/>
 							</Condition>
 						</Node>
 					</Node>
-					<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2555066128">
+					<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2798415930">
 						<Settings/>
-						<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3457280844">
+						<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="188522178">
 							<Settings/>
-							<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2660217776">
+							<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2785404516">
 								<Settings/>
-								<Condition Lib="SWGEmuNodes" Name="CheckAggroDelayPast" Type="Single" uid="1619483218">
+								<Condition Lib="SWGEmuNodes" Name="CheckAggroDelayPast" Type="Single" uid="178753499">
 									<Settings/>
 								</Condition>
 							</Node>
-							<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="2566615919">
+							<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3940938445">
 								<Settings slot="AGGRO"/>
 							</Node>
 						</Node>
-						<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="302020086">
+						<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3558245448">
 							<Settings slot="SCARE"/>
 						</Node>
 					</Node>
 				</Node>
 			</Node>
 		</Node>
-		<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="4258747390">
+		<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="574247012">
 			<Settings slot="KILL"/>
 		</Node>
-		<Node Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="3482658823">
+		<Node Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="1890417720">
 			<Settings/>
-			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3501565905">
+			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2435336978">
 				<Settings/>
-				<Node Lib="SWGEmuNodes" Name="EraseBlackboard" Type="Leaf" uid="2093683538">
+				<Node Lib="SWGEmuNodes" Name="EraseBlackboard" Type="Leaf" uid="57489269">
 					<Settings param="aggroMod"/>
 				</Node>
-				<Node Lib="SWGEmuNodes" Name="EraseBlackboard" Type="Leaf" uid="4067732234">
+				<Node Lib="SWGEmuNodes" Name="EraseBlackboard" Type="Leaf" uid="2315536834">
 					<Settings param="targetProspect"/>
 				</Node>
+			</Node>
+		</Node>
+	</Node>
+	<Node BranchName="crackdownScan" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="688534916">
+		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3269996958">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1824436907">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckCrackdownScanner" Type="Single" uid="2380017041">
+					<Settings/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="LookForPlayer" Type="Decorator" uid="2904764039">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2120293750">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3355601546">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckProspectIsType" Type="Single" uid="3223870287">
+							<Settings condition="PLAYERTYPE"/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2557331632">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckProspectInRange" Type="Single" uid="3227701225">
+							<Settings condition="12.0"/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="ContrabandScan" Type="Leaf" uid="1840897137">
+						<Settings/>
+					</Node>
+				</Node>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="1246036558">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="EraseBlackboard" Type="Leaf" uid="1955645295">
+				<Settings param="targetProspect"/>
 			</Node>
 		</Node>
 	</Node>
@@ -433,6 +472,9 @@
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3497802169">
 			<Settings slot="AWARE"/>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="772402747">
+			<Settings slot="CRACKDOWNSCAN"/>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="2514877899">
 			<Settings slot="IDLE"/>

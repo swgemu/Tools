@@ -36,6 +36,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Task" type="Leaf" name="ContrabandScan">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Attempts to run Contraband scan on prospect target."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Task" type="Leaf" name="DropProspectFromDefenders">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
@@ -113,6 +121,14 @@
       <attribute type="int" name="delay" description=""/>
     </node>
     <!---->
+    <node class="Task" type="Leaf" name="FollowSquadLeader">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="This leaf task will check for an observer and attempt to follow the first agent listed on the observer list."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Task" type="Leaf" name="GeneratePatrol">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
@@ -176,6 +192,14 @@
       <children class="Condition" use="no"/>
       <description text="Calls the leash logic. Always succeeds."/>
       <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="Decorator" name="LookForPlayer">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="yes"/>
+      <description text="Finds and sets a PLAYER target for use in the child. \n  \n Tries multiple target prospects until a non-failure result is returned and returns that result. If no non-failures are returned or no targets are found, failure is returned."/>
+      <shape name="triangle"/>
       <events/>
     </node>
     <!---->
@@ -284,7 +308,7 @@
       <shape name="ring"/>
       <events/>
       <attribute type="float" name="duration" description="Seconds to be alert. Should be positive."/>
-      <attribute type="text" name="show" default="0" description="Show alert flytext?"/>
+      <attribute type="text" name="show" default="false" description="Show alert flytext?"/>
     </node>
     <!---->
     <node class="Task" type="Leaf" name="SetAttackPosture">
@@ -335,7 +359,7 @@
       <description text="Holds modular reference to entire tree."/>
       <shape name="hexagon"/>
       <events/>
-      <attribute type="text" name="slot" default="NONE" available="NONE|NONE;AWARE;KILL;IDLE;ATTACK;EQUIP;TARGET;MOVE;LOOKAT;AGGRO;SCARE;STALK" description=""/>
+      <attribute type="text" name="slot" default="NONE" available="NONE|NONE;AWARE;KILL;IDLE;ATTACK;EQUIP;TARGET;MOVE;LOOKAT;AGGRO;SCARE;STALK;CRACKDOWNSCAN" description=""/>
     </node>
     <!---->
     <node class="Task" type="Decorator" name="UntilFailure">
@@ -403,6 +427,22 @@
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
       <description text="Checks that the set attack is valid."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckCrackdownFollowTarget">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks the follow target for crackdown tree to make sure the follow target is not null or dead."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckCrackdownScanner">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Returns true if AI has SCANNING_FOR_CONTRABAND bitmask."/>
       <shape name="diamond"/>
       <events/>
     </node>
@@ -490,6 +530,14 @@
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
       <description text="Checks to see if self has any patrol points defined."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckIsDroid">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Returns true if agent is droid."/>
       <shape name="diamond"/>
       <events/>
     </node>

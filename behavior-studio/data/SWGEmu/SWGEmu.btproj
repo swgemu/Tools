@@ -11,4 +11,5 @@
 	<behavior_tree path="trees/deathWatch.xml"/>
 	<behavior_tree path="trees/enclaveSentinel.xml"/>
 	<behavior_tree path="trees/villageRaider.xml"/>
+	<behavior_tree path="trees/crackdown.xml"/>
 </btproject>
