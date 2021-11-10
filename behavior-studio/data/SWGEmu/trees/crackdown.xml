@@ -134,6 +134,15 @@
 							</Condition>
 						</Node>
 					</Node>
+					<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="3125047964">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2832653366">
+							<Settings/>
+							<Condition Lib="SWGEmuNodes" Name="CheckIsStationary" Type="Single" uid="1213774863">
+								<Settings/>
+							</Condition>
+						</Node>
+					</Node>
 					<Node Lib="SWGEmuNodes" Name="GeneratePatrol" Type="Leaf" uid="2865816838">
 						<Settings distFromHome="15.0" numPoints="5"/>
 					</Node>

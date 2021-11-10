@@ -566,6 +566,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Condition" type="Single" name="CheckIsStationary">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks the agent to see if the have the creature flag STATIONARY."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Condition" type="Single" name="CheckOutdoors">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
