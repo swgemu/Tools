@@ -68,7 +68,7 @@
 				<Settings/>
 				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2567586958">
 					<Settings/>
-					<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="433044007">
+					<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="433044007">
 						<Settings condition="WATCHING"/>
 					</Condition>
 				</Node>
@@ -95,7 +95,7 @@
 				<Settings/>
 				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2821616316">
 					<Settings/>
-					<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="300585033">
+					<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="300585033">
 						<Settings condition="WATCHING"/>
 					</Condition>
 				</Node>
@@ -118,30 +118,24 @@
 					</Condition>
 				</Node>
 			</Node>
-			<Node Lib="SWGEmuNodes" Name="SetFollowState" Type="Leaf" uid="89199125">
+			<Node Lib="SWGEmuNodes" Name="SetMovementState" Type="Leaf" uid="2197066161">
 				<Settings state="PATROLLING"/>
 			</Node>
-			<Node Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="2166615744">
+			<Node Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="3914885239">
 				<Settings/>
-				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1840242268">
+				<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="3251981835">
 					<Settings/>
-					<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="257849292">
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3784279889">
 						<Settings/>
-						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3784279889">
+						<Condition Lib="SWGEmuNodes" Name="CheckHasPatrol" Type="Single" uid="4166375638">
 							<Settings/>
-							<Condition Lib="SWGEmuNodes" Name="CheckHasPatrol" Type="Single" uid="4166375638">
-								<Settings/>
-							</Condition>
-						</Node>
+						</Condition>
 					</Node>
-					<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="3125047964">
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1983393494">
 						<Settings/>
-						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2832653366">
+						<Condition Lib="SWGEmuNodes" Name="CheckIsStationary" Type="Single" uid="4120748463">
 							<Settings/>
-							<Condition Lib="SWGEmuNodes" Name="CheckIsStationary" Type="Single" uid="1213774863">
-								<Settings/>
-							</Condition>
-						</Node>
+						</Condition>
 					</Node>
 					<Node Lib="SWGEmuNodes" Name="GeneratePatrol" Type="Leaf" uid="2865816838">
 						<Settings distFromHome="15.0" numPoints="5"/>
@@ -176,7 +170,7 @@
 				<Settings/>
 				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1931706343">
 					<Settings/>
-					<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="3855939006">
+					<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="3855939006">
 						<Settings condition="PATROLLING"/>
 					</Condition>
 				</Node>
@@ -192,19 +186,19 @@
 			<Settings/>
 			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="4006686023">
 				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="1956271224">
+				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="1956271224">
 					<Settings condition="OBLIVIOUS"/>
 				</Condition>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3477974716">
 				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="1793565763">
+				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="1793565763">
 					<Settings condition="WATCHING"/>
 				</Condition>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3305550153">
 				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="1751494098">
+				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="1751494098">
 					<Settings condition="FOLLOWING"/>
 				</Condition>
 			</Node>
@@ -224,7 +218,7 @@
 				</Condition>
 			</Node>
 		</Node>
-		<Node Lib="SWGEmuNodes" Name="SetFollowState" Type="Leaf" uid="3588181178">
+		<Node Lib="SWGEmuNodes" Name="SetMovementState" Type="Leaf" uid="3588181178">
 			<Settings state="FOLLOWING"/>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="348153104">
@@ -242,7 +236,7 @@
 				<Settings/>
 				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="4114823391">
 					<Settings/>
-					<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="2314700981">
+					<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="2314700981">
 						<Settings condition="FLEEING"/>
 					</Condition>
 				</Node>

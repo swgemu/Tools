@@ -24,7 +24,7 @@
 			<Settings/>
 			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1629721978">
 				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="854873693">
+				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="854873693">
 					<Settings condition="PATROLLING"/>
 				</Condition>
 			</Node>
@@ -34,7 +34,7 @@
 			<Node Lib="SWGEmuNodes" Name="PetReturn" Type="Leaf" uid="2381505880">
 				<Settings/>
 			</Node>
-			<Node Lib="SWGEmuNodes" Name="SetFollowState" Type="Leaf" uid="3351684077">
+			<Node Lib="SWGEmuNodes" Name="SetMovementState" Type="Leaf" uid="3351684077">
 				<Settings state="FOLLOWING"/>
 			</Node>
 		</Node>
@@ -144,7 +144,7 @@
 			<Settings/>
 			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2159332246">
 				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckFollowState" Type="Single" uid="2297306633">
+				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="2297306633">
 					<Settings condition="PATROLLING"/>
 				</Condition>
 			</Node>

@@ -327,7 +327,7 @@
       <events/>
     </node>
     <!---->
-    <node class="Task" type="Leaf" name="SetFollowState">
+    <node class="Task" type="Leaf" name="SetMovementState">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
       <description text="Sets the follow state to state. Fails if targetProspect is not written to the blackboard and tries to set WATCHING, STALKING, or FOLLOWING."/>
@@ -509,15 +509,6 @@
       <attribute type="text" name="condition" default="UPRIGHT" available="INVALID;UPRIGHT;CROUCHED;PRONE;SNEAKING;BLOCKING;CLIMBING;FLYING;LYINGDOWN;SITTING;SKILLANIMATING;DRIVINGVEHICLE;RIDINGCREATURE;KNOCKEDDOWN;INCAPACITATED;DEAD" description="Posture enumerations."/>
     </node>
     <!---->
-    <node class="Condition" type="Single" name="CheckFollowState">
-      <children class="Task" use="no"/>
-      <children class="Condition" use="yes"/>
-      <description text="Returns SUCCESS if follow state is the same as condition."/>
-      <shape name="diamond"/>
-      <events/>
-      <attribute type="text" name="condition" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING" description="Follow state enumerations."/>
-    </node>
-    <!---->
     <node class="Condition" type="Single" name="CheckHasFollow">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
@@ -572,6 +563,15 @@
       <description text="Checks the agent to see if the have the creature flag STATIONARY."/>
       <shape name="diamond"/>
       <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckMovementState">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Returns SUCCESS if follow state is the same as condition."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="text" name="condition" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING" description="Follow state enumerations."/>
     </node>
     <!---->
     <node class="Condition" type="Single" name="CheckOutdoors">
