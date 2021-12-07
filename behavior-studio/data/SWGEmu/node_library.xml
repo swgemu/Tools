@@ -139,6 +139,15 @@
       <attribute type="int" name="numPoints" description="An integer number of patrol points to generate."/>
     </node>
     <!---->
+    <node class="Task" type="Leaf" name="GetHealTarget">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Finds a healable target from the targets defender list."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="float" name="range" default="60.0" description=""/>
+    </node>
+    <!---->
     <node class="Task" type="Leaf" name="GetProspectFromCommand">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
@@ -167,6 +176,14 @@
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
       <description text="Updates targetProspect on the blackboard with a target from the threat map. Value is erased if failure. Succeeds if new target was found and written to blackboard."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="Leaf" name="HealTarget">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Executes heal action on chosen heal target."/>
       <shape name="ring"/>
       <events/>
     </node>
@@ -267,6 +284,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Task" type="Leaf" name="RestorePetPatrols">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Adds the pet patrol points back to the pet if the control device has any stored."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Task" type="Leaf" name="RunAway">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
@@ -330,10 +355,10 @@
     <node class="Task" type="Leaf" name="SetMovementState">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
-      <description text="Sets the follow state to state. Fails if targetProspect is not written to the blackboard and tries to set WATCHING, STALKING, or FOLLOWING."/>
+      <description text="Sets the movement state to state. Fails if targetProspect is not written to the blackboard and tries to set movement state."/>
       <shape name="ring"/>
       <events/>
-      <attribute type="text" name="state" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING;EVADING" description="Follow state enumerations."/>
+      <attribute type="text" name="state" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING;EVADING;PATHING_HOME;FOLLOW_FORMATION;MOVING_TO_HEAL" description="Follow state enumerations."/>
     </node>
     <!---->
     <node class="Task" type="Leaf" name="StageRangedWeapon">
@@ -359,7 +384,7 @@
       <description text="Holds modular reference to entire tree."/>
       <shape name="hexagon"/>
       <events/>
-      <attribute type="text" name="slot" default="NONE" available="NONE|NONE;AWARE;KILL;IDLE;ATTACK;EQUIP;TARGET;MOVE;LOOKAT;AGGRO;SCARE;STALK;CRACKDOWNSCAN" description=""/>
+      <attribute type="text" name="slot" default="NONE" available="NONE|NONE;AWARE;KILL;IDLE;ATTACK;EQUIP;TARGET;MOVE;LOOKAT;AGGRO;SCARE;STALK;CRACKDOWNSCAN;HEAL" description=""/>
     </node>
     <!---->
     <node class="Task" type="Decorator" name="UntilFailure">
@@ -525,10 +550,26 @@
       <events/>
     </node>
     <!---->
+    <node class="Condition" type="Single" name="CheckHealChance">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks that the heal timer has passed and rolls chance to heal."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Condition" type="Single" name="CheckIsDroid">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
       <description text="Returns true if agent is droid."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckIsHealer">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks for the healer bitmask."/>
       <shape name="diamond"/>
       <events/>
     </node>
@@ -571,7 +612,7 @@
       <description text="Returns SUCCESS if follow state is the same as condition."/>
       <shape name="diamond"/>
       <events/>
-      <attribute type="text" name="condition" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING" description="Follow state enumerations."/>
+      <attribute type="text" name="condition" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING;EVADING;PATHING_HOME;FOLLOW_FORMATION;MOVING_TO_HEAL" description="Follow state enumerations."/>
     </node>
     <!---->
     <node class="Condition" type="Single" name="CheckOutdoors">

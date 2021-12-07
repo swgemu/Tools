@@ -157,6 +157,24 @@
 			<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="3694282813">
 				<Settings duration="5.0"/>
 			</Node>
+			<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="673054985">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3420280652">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="700494132">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="983575004">
+							<Settings/>
+							<Condition Lib="SWGEmuNodes" Name="CheckHasPatrol" Type="Single" uid="3966243347">
+								<Settings/>
+							</Condition>
+						</Node>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="RestorePetPatrols" Type="Leaf" uid="4116302239">
+						<Settings/>
+					</Node>
+				</Node>
+			</Node>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="4089440207">
 			<Settings/>
