@@ -558,6 +558,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Condition" type="Single" name="CheckHomeIsCell">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Check is the AI's home location is in a cell."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Condition" type="Single" name="CheckIsDroid">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
@@ -570,6 +578,14 @@
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
       <description text="Checks for the healer bitmask."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckIsHome">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if the AI is at their home location."/>
       <shape name="diamond"/>
       <events/>
     </node>

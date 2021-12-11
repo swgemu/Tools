@@ -69,6 +69,8 @@ lookCrackdown = {
 	{id="3613339524",	name="Selector",	pid="526604206"},
 	{id="4006686023",	name="If",	pid="3613339524"},
 	{id="1956271224",	name="CheckMovementState",	pid="4006686023",	args={condition=OBLIVIOUS}},
+	{id="2813165004",	name="If",	pid="3613339524"},
+	{id="2976651463",	name="CheckMovementState",	pid="2813165004",	args={condition=PATHING_HOME}},
 	{id="3477974716",	name="If",	pid="3613339524"},
 	{id="1793565763",	name="CheckMovementState",	pid="3477974716",	args={condition=WATCHING}},
 	{id="3305550153",	name="If",	pid="3613339524"},

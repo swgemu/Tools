@@ -190,6 +190,12 @@
 					<Settings condition="OBLIVIOUS"/>
 				</Condition>
 			</Node>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2813165004">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="2976651463">
+					<Settings condition="PATHING_HOME"/>
+				</Condition>
+			</Node>
 			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3477974716">
 				<Settings/>
 				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="1793565763">

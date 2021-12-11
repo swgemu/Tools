@@ -334,6 +334,24 @@
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="4072235030">
 			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="401182658">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2752118648">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckHomeIsCell" Type="Single" uid="1816846537">
+						<Settings/>
+					</Condition>
+				</Node>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="487154563">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3807314026">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="1384587681">
+						<Settings condition="PATHING_HOME"/>
+					</Condition>
+				</Node>
+			</Node>
 			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3483017378">
 				<Settings/>
 				<Condition Lib="SWGEmuNodes" Name="CheckOutdoors" Type="Single" uid="776089883">
@@ -342,6 +360,27 @@
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="GeneratePatrol" Type="Leaf" uid="1547268873">
 				<Settings distFromHome="10.0" numPoints="5"/>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="4129527278">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3690571869">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="4009188085">
+					<Settings condition="PATHING_HOME"/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="663900148">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckDestination" Type="Single" uid="3881405125">
+					<Settings condition="0.0"/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="1596358304">
+				<Settings key="moveMode" val="WALK"/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1979932461">
+				<Settings slot="MOVE"/>
 			</Node>
 		</Node>
 	</Node>
@@ -375,10 +414,13 @@
 			<Settings state="WATCHING"/>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="SetAlert" Type="Leaf" uid="1819260193">
-			<Settings duration="10.0" show="false"/>
+			<Settings duration="5.0" show="false"/>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="KillProspect" Type="Leaf" uid="1512963980">
 			<Settings/>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="SetMovementState" Type="Leaf" uid="1587481576">
+			<Settings state="PATHING_HOME"/>
 		</Node>
 	</Node>
 	<Node BranchName="look" Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2391667584">
@@ -389,6 +431,12 @@
 				<Settings/>
 				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="2646753484">
 					<Settings condition="OBLIVIOUS"/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="94397332">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="933406997">
+					<Settings condition="PATHING_HOME"/>
 				</Condition>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3934657672">

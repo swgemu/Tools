@@ -20,6 +20,15 @@
 				<Settings slot="MOVE"/>
 			</Node>
 		</Node>
+		<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="1411814469">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3866536807">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckIsHome" Type="Single" uid="4198924774">
+					<Settings/>
+				</Condition>
+			</Node>
+		</Node>
 		<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="737159031">
 			<Settings duration="10.0"/>
 		</Node>
