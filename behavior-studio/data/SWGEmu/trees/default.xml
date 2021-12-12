@@ -162,6 +162,30 @@
 			</Node>
 		</Node>
 	</Node>
+	<Node BranchName="chatReaction" Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="419159391">
+		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1364298059">
+			<Settings/>
+			<Condition Lib="SWGEmuNodes" Name="CheckChatDelay" Type="Single" uid="60979689">
+				<Settings/>
+			</Condition>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="1420318389">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1539953131">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckIsInCombat" Type="Single" uid="3831395144">
+					<Settings/>
+				</Condition>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="LookForPlayer" Type="Decorator" uid="2451228289">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="SendChatGreeting" Type="Leaf" uid="1661636752">
+				<Settings/>
+			</Node>
+		</Node>
+	</Node>
 	<Node BranchName="crackdownScan" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="688534916">
 		<Settings/>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3269996958">
@@ -592,6 +616,9 @@
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="772402747">
 			<Settings slot="CRACKDOWNSCAN"/>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1709087547">
+			<Settings slot="CHATREACTION"/>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="2514877899">
 			<Settings slot="IDLE"/>

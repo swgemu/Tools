@@ -212,6 +212,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Task" type="Decorator" name="LookForAllies">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Checks close objects for allies of the Agent."/>
+      <shape name="triangle"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Task" type="Decorator" name="LookForPlayer">
       <children class="Task" use="yes"/>
       <children class="Condition" use="yes"/>
@@ -318,6 +326,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Task" type="Leaf" name="SendChatGreeting">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Send the Hi or Bye chat reactions."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Task" type="Composite" name="Sequence">
       <children class="Task" use="yes"/>
       <children class="Condition" use="yes"/>
@@ -384,7 +400,7 @@
       <description text="Holds modular reference to entire tree."/>
       <shape name="hexagon"/>
       <events/>
-      <attribute type="text" name="slot" default="NONE" available="NONE|NONE;AWARE;KILL;IDLE;ATTACK;EQUIP;TARGET;MOVE;LOOKAT;AGGRO;SCARE;STALK;CRACKDOWNSCAN;HEAL" description=""/>
+      <attribute type="text" name="slot" default="NONE" available="NONE|NONE;AWARE;KILL;IDLE;ATTACK;EQUIP;TARGET;MOVE;LOOKAT;AGGRO;SCARE;STALK;CRACKDOWNSCAN;HEAL;CHATREACTION;NOTIFYHELP" description=""/>
     </node>
     <!---->
     <node class="Task" type="Decorator" name="UntilFailure">
@@ -452,6 +468,14 @@
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
       <description text="Checks that the set attack is valid."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckChatDelay">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if AI chat delay has passed."/>
       <shape name="diamond"/>
       <events/>
     </node>
