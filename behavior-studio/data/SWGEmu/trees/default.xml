@@ -284,15 +284,6 @@
 	</Node>
 	<Node BranchName="heal" Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3412645993">
 		<Settings/>
-		<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="3070384900">
-			<Settings/>
-			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="136362440">
-				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckPosture" Type="Single" uid="2378733296">
-					<Settings condition="KNOCKEDDOWN"/>
-				</Condition>
-			</Node>
-		</Node>
 		<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2638573300">
 			<Settings/>
 			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2194304589">
@@ -306,12 +297,6 @@
 				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3673985997">
 					<Settings/>
 					<Condition Lib="SWGEmuNodes" Name="CheckIsHealer" Type="Single" uid="4043069176">
-						<Settings/>
-					</Condition>
-				</Node>
-				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3665716442">
-					<Settings/>
-					<Condition Lib="SWGEmuNodes" Name="CheckIsInCombat" Type="Single" uid="1601692717">
 						<Settings/>
 					</Condition>
 				</Node>
@@ -555,10 +540,73 @@
 			</Node>
 		</Node>
 	</Node>
+	<Node BranchName="notifyHelp" Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="801960668">
+		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1696799548">
+			<Settings/>
+			<Condition Lib="SWGEmuNodes" Name="CheckCallForHelp" Type="Single" uid="2818754924">
+				<Settings/>
+			</Condition>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="708981659">
+			<Settings/>
+			<Condition Lib="SWGEmuNodes" Name="CheckIsType" Type="Single" uid="1970598206">
+				<Settings condition="NPCTYPE"/>
+			</Condition>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="1993112640">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="996086380">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="4074755753">
+					<Settings condition="MOVING_TO_HEAL"/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="LookForAllies" Type="Decorator" uid="4049270502">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="CallForHelp" Type="Leaf" uid="1419427323">
+					<Settings/>
+				</Node>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="3173027259">
+			<Settings key="moveMode" val="RUN"/>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="3649208780">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="837811894">
+				<Settings slot="MOVE"/>
+			</Node>
+		</Node>
+	</Node>
 	<Node BranchName="root" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="714360210">
 		<Settings/>
-		<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1083123564">
-			<Settings slot="HEAL"/>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3684005064">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2242560418">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckIsInCombat" Type="Single" uid="891055589">
+					<Settings/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="1730788281">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3644134237">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckPosture" Type="Single" uid="3429751858">
+						<Settings condition="KNOCKEDDOWN"/>
+					</Condition>
+				</Node>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="3093046551">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1083123564">
+					<Settings slot="HEAL"/>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="2192079094">
+					<Settings slot="NOTIFYHELP"/>
+				</Node>
+			</Node>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="4192507528">
 			<Settings/>
