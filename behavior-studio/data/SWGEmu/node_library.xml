@@ -28,6 +28,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Task" type="Leaf" name="CallForHelp">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Sets AI to path to nearby Ally and notifyPackMobs"/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Task" type="Leaf" name="CompleteMove">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
@@ -472,6 +480,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Condition" type="Single" name="CheckCallForHelp">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if AI timer has passed to call for help."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Condition" type="Single" name="CheckChatDelay">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
@@ -644,6 +660,15 @@
       <description text="Checks the agent to see if the have the creature flag STATIONARY."/>
       <shape name="diamond"/>
       <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckIsType">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Check the target prospect against the type specified."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="text" name="condition" default="NPCTYPE" available="NPCTYPE;MONSTERTYPE;DROIDTYPE;ANDROIDTYPE;HUMANOIDTYPE" description=""/>
     </node>
     <!---->
     <node class="Condition" type="Single" name="CheckMovementState">
