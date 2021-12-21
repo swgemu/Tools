@@ -64,8 +64,20 @@
 			<Node Lib="SWGEmuNodes" Name="EnqueueAttack" Type="Leaf" uid="2327622682">
 				<Settings/>
 			</Node>
-			<Node Lib="SWGEmuNodes" Name="SetAttackPosture" Type="Leaf" uid="179413845">
+			<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="1409207115">
 				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3375230030">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3190669470">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckIsType" Type="Single" uid="4134473136">
+							<Settings condition="NPCTYPE"/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="SetAttackPosture" Type="Leaf" uid="179413845">
+						<Settings/>
+					</Node>
+				</Node>
 			</Node>
 		</Node>
 	</Node>
@@ -526,7 +538,7 @@
 					</Condition>
 				</Node>
 				<Node Lib="SWGEmuNodes" Name="Flee" Type="Leaf" uid="3377670639">
-					<Settings delay="15"/>
+					<Settings delay="60"/>
 				</Node>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="ParallelSelector" Type="Composite" uid="3937110156">
@@ -711,7 +723,7 @@
 			</Condition>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="RunAway" Type="Leaf" uid="2633134651">
-			<Settings dist="64.0"/>
+			<Settings dist="32.0"/>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="SetAlert" Type="Leaf" uid="2259218024">
 			<Settings duration="5.0" show="false"/>

@@ -20,8 +20,14 @@
 				</Node>
 			</Node>
 		</Node>
-		<Node Lib="SWGEmuNodes" Name="FindNextPosition" Type="Leaf" uid="3085578776">
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2851757642">
 			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="2120314997">
+				<Settings key="moveMode" val="RUN"/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="FindNextPosition" Type="Leaf" uid="3085578776">
+				<Settings/>
+			</Node>
 		</Node>
 	</Node>
 	<Node BranchName="run" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2928311771">
