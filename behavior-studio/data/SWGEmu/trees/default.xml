@@ -364,6 +364,15 @@
 					</Condition>
 				</Node>
 			</Node>
+			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="3395906854">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2189282822">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="3904790446">
+						<Settings condition="LEASHING"/>
+					</Condition>
+				</Node>
+			</Node>
 			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="487154563">
 				<Settings/>
 				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3807314026">
@@ -401,6 +410,21 @@
 				<Settings key="moveMode" val="WALK"/>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1979932461">
+				<Settings slot="MOVE"/>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1398319073">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2757532336">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="3270011669">
+					<Settings condition="LEASHING"/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="1349815697">
+				<Settings key="moveMode" val="RUN"/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="681545628">
 				<Settings slot="MOVE"/>
 			</Node>
 		</Node>
@@ -742,6 +766,15 @@
 			<Condition Lib="SWGEmuNodes" Name="CheckOutdoors" Type="Single" uid="3970049935">
 				<Settings/>
 			</Condition>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="3327894366">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2682867169">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="4037126453">
+					<Settings condition="LEASHING"/>
+				</Condition>
+			</Node>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="2548145200">
 			<Settings/>
