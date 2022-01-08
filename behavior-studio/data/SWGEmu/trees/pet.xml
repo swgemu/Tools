@@ -360,14 +360,11 @@
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2780806186">
 				<Settings/>
-				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1463571926">
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="494241456">
 					<Settings/>
-					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="494241456">
+					<Condition Lib="SWGEmuNodes" Name="CheckTargetIsValid" Type="Single" uid="2930289772">
 						<Settings/>
-						<Condition Lib="SWGEmuNodes" Name="CheckTargetIsValid" Type="Single" uid="2930289772">
-							<Settings/>
-						</Condition>
-					</Node>
+					</Condition>
 				</Node>
 				<Node Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="734829524">
 					<Settings/>
