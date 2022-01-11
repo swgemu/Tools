@@ -138,6 +138,48 @@
 			<Settings param="followRange"/>
 		</Node>
 	</Node>
+	<Node BranchName="harvest" Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1067142705">
+		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="4118537921">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1280510381">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckIsInCombat" Type="Single" uid="4057328645">
+					<Settings/>
+				</Condition>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3285446615">
+			<Settings/>
+			<Condition Lib="SWGEmuNodes" Name="CheckIsDroid" Type="Single" uid="81979381">
+				<Settings/>
+			</Condition>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3275634488">
+			<Settings/>
+			<Condition Lib="SWGEmuNodes" Name="CheckIsHarvester" Type="Single" uid="1696967841">
+				<Settings/>
+			</Condition>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2997531046">
+			<Settings/>
+			<Condition Lib="SWGEmuNodes" Name="CheckOutdoors" Type="Single" uid="418167462">
+				<Settings/>
+			</Condition>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3273106585">
+			<Settings/>
+			<Condition Lib="SWGEmuNodes" Name="CheckHasHarvestTargets" Type="Single" uid="1682748011">
+				<Settings/>
+			</Condition>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="DroidHarvest" Type="Leaf" uid="3307465105">
+			<Settings/>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="933872980">
+			<Settings slot="MOVE"/>
+		</Node>
+	</Node>
 	<Node BranchName="idle" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2602839395">
 		<Settings/>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1196938563">
@@ -277,6 +319,78 @@
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="FindNextPosition" Type="Leaf" uid="4111934468">
 			<Settings/>
+		</Node>
+	</Node>
+	<Node BranchName="root" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="1392695167">
+		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1145947200">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="237728831">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckIsInCombat" Type="Single" uid="1833272288">
+					<Settings/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="3540658805">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2406229846">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckPosture" Type="Single" uid="912453904">
+						<Settings condition="KNOCKEDDOWN"/>
+					</Condition>
+				</Node>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1287307442">
+				<Settings slot="HEAL"/>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="654152705">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="1421120974">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2004961848">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="318962656">
+						<Settings condition="MOVING_TO_HEAL"/>
+					</Condition>
+				</Node>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3054290862">
+				<Settings slot="TARGET"/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="ParallelSelector" Type="Composite" uid="1472598970">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="706963786">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1315818962">
+						<Settings slot="TARGET"/>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="9283471">
+						<Settings slot="ATTACK"/>
+					</Node>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2065378848">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="2976729954">
+						<Settings key="moveMode" val="RUN"/>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="2364005951">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="476655997">
+							<Settings slot="MOVE"/>
+						</Node>
+					</Node>
+				</Node>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="846004893">
+			<Settings slot="HARVEST"/>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="4251953986">
+			<Settings slot="AWARE"/>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3476219463">
+			<Settings slot="IDLE"/>
 		</Node>
 	</Node>
 	<Node BranchName="target" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2727643421">
