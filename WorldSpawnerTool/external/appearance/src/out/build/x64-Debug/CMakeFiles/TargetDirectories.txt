@@ -1,0 +1,3 @@
+C:/Users/Adam/Documents/GitHub/SWGIntended/Tools/WorldSpawnerTool/external/appearance/src/out/build/x64-Debug/CMakeFiles/appearancetemplates.dir
+C:/Users/Adam/Documents/GitHub/SWGIntended/Tools/WorldSpawnerTool/external/appearance/src/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/Adam/Documents/GitHub/SWGIntended/Tools/WorldSpawnerTool/external/appearance/src/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
