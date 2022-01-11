@@ -52,14 +52,6 @@
       <events/>
     </node>
     <!---->
-    <node class="Task" type="Leaf" name="DroidHarvest">
-      <children class="Task" use="yes"/>
-      <children class="Condition" use="no"/>
-      <description text="Harvest corpse of killed created by player for resources."/>
-      <shape name="ring"/>
-      <events/>
-    </node>
-    <!---->
     <node class="Task" type="Leaf" name="DropProspectFromDefenders">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
@@ -416,7 +408,7 @@
       <description text="Holds modular reference to entire tree."/>
       <shape name="hexagon"/>
       <events/>
-      <attribute type="text" name="slot" default="NONE" available="NONE|NONE;AWARE;KILL;IDLE;ATTACK;EQUIP;TARGET;MOVE;LOOKAT;AGGRO;SCARE;STALK;CRACKDOWNSCAN;HEAL;CHATREACTION;NOTIFYHELP;HARVEST" description=""/>
+      <attribute type="text" name="slot" default="NONE" available="NONE|NONE;AWARE;KILL;IDLE;ATTACK;EQUIP;TARGET;MOVE;LOOKAT;AGGRO;SCARE;STALK;CRACKDOWNSCAN;HEAL;CHATREACTION;NOTIFYHELP" description=""/>
     </node>
     <!---->
     <node class="Task" type="Decorator" name="UntilFailure">
@@ -590,14 +582,6 @@
       <events/>
     </node>
     <!---->
-    <node class="Condition" type="Single" name="CheckHasHarvestTargets">
-      <children class="Task" use="no"/>
-      <children class="Condition" use="yes"/>
-      <description text="New node created by user."/>
-      <shape name="diamond"/>
-      <events/>
-    </node>
-    <!---->
     <node class="Condition" type="Single" name="CheckHasPatrol">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
@@ -626,14 +610,6 @@
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
       <description text="Returns true if agent is droid."/>
-      <shape name="diamond"/>
-      <events/>
-    </node>
-    <!---->
-    <node class="Condition" type="Single" name="CheckIsHarvester">
-      <children class="Task" use="no"/>
-      <children class="Condition" use="yes"/>
-      <description text="New node created by user."/>
       <shape name="diamond"/>
       <events/>
     </node>
@@ -719,14 +695,6 @@
       <shape name="diamond"/>
       <events/>
       <attribute type="float" name="condition" default="128.0" description=""/>
-    </node>
-    <!---->
-    <node class="Condition" type="Single" name="CheckPendingHarvestTarget">
-      <children class="Task" use="no"/>
-      <children class="Condition" use="yes"/>
-      <description text="Checkfs for pending harvest target stored on the blackboard;"/>
-      <shape name="diamond"/>
-      <events/>
     </node>
     <!---->
     <node class="Condition" type="Single" name="CheckPetCommand">
