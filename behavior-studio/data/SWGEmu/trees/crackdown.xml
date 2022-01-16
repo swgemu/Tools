@@ -82,6 +82,12 @@
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3420905314">
 			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2778093536">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckOutdoors" Type="Single" uid="861335548">
+					<Settings/>
+				</Condition>
+			</Node>
 			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="4284793712">
 				<Settings/>
 				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2689461598">
@@ -196,12 +202,6 @@
 					<Settings condition="PATHING_HOME"/>
 				</Condition>
 			</Node>
-			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3477974716">
-				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="1793565763">
-					<Settings condition="WATCHING"/>
-				</Condition>
-			</Node>
 			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3305550153">
 				<Settings/>
 				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="1751494098">
@@ -225,7 +225,7 @@
 			</Node>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="SetMovementState" Type="Leaf" uid="3588181178">
-			<Settings state="FOLLOWING"/>
+			<Settings state="WATCHING"/>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="348153104">
 			<Settings/>
