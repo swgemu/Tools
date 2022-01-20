@@ -161,12 +161,6 @@
 				<Settings/>
 			</Condition>
 		</Node>
-		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2997531046">
-			<Settings/>
-			<Condition Lib="SWGEmuNodes" Name="CheckOutdoors" Type="Single" uid="418167462">
-				<Settings/>
-			</Condition>
-		</Node>
 		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3273106585">
 			<Settings/>
 			<Condition Lib="SWGEmuNodes" Name="CheckHasHarvestTargets" Type="Single" uid="1682748011">
