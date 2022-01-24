@@ -120,6 +120,12 @@
 						<Settings slot="LOOKAT"/>
 					</Node>
 				</Node>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1533332073">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckIsCamouflaged" Type="Single" uid="1436716103">
+						<Settings/>
+					</Condition>
+				</Node>
 				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3702045485">
 					<Settings/>
 					<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="3753019142">
@@ -800,9 +806,15 @@
 				<Settings/>
 			</Condition>
 		</Node>
-		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1047936480">
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3649042844">
 			<Settings/>
-			<Condition Lib="SWGEmuNodes" Name="CheckProspectLOS" Type="Single" uid="1298894483">
+			<Condition Lib="SWGEmuNodes" Name="CheckProspectAggression" Type="Single" uid="894470915">
+				<Settings/>
+			</Condition>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1209684945">
+			<Settings/>
+			<Condition Lib="SWGEmuNodes" Name="CheckIsCamouflaged" Type="Single" uid="3138234806">
 				<Settings/>
 			</Condition>
 		</Node>
