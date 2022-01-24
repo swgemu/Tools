@@ -622,6 +622,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Condition" type="Single" name="CheckIsCamouflaged">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if the prospect target is camouflaged."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Condition" type="Single" name="CheckIsDroid">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
