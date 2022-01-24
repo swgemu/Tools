@@ -357,7 +357,7 @@
 				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="706963786">
 					<Settings/>
 					<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1315818962">
-						<Settings slot="TARGET"/>
+						<Settings slot="EQUIP"/>
 					</Node>
 					<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="9283471">
 						<Settings slot="ATTACK"/>
