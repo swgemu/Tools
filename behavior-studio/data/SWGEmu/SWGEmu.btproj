@@ -12,4 +12,5 @@
 	<behavior_tree path="trees/enclaveSentinel.xml"/>
 	<behavior_tree path="trees/villageRaider.xml"/>
 	<behavior_tree path="trees/crackdown.xml"/>
+	<behavior_tree path="trees/cityPatrol.xml"/>
 </btproject>
