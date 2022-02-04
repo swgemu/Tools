@@ -223,6 +223,12 @@
 					</Condition>
 				</Node>
 			</Node>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1539366576">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckDestination" Type="Single" uid="1266622134">
+					<Settings condition="0.0"/>
+				</Condition>
+			</Node>
 			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="4036559077">
 				<Settings key="moveMode" val="RUN"/>
 			</Node>
@@ -275,21 +281,6 @@
 					<Condition Lib="SWGEmuNodes" Name="CheckDestination" Type="Single" uid="2565025743">
 						<Settings condition="0.0"/>
 					</Condition>
-				</Node>
-			</Node>
-		</Node>
-		<Node Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="1780994926">
-			<Settings/>
-			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1891282080">
-				<Settings/>
-				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1556803780">
-					<Settings/>
-					<Condition Lib="SWGEmuNodes" Name="CheckSpeed" Type="Single" uid="1543236352">
-						<Settings condition="0.0"/>
-					</Condition>
-				</Node>
-				<Node Lib="SWGEmuNodes" Name="CompleteMove" Type="Leaf" uid="2113831125">
-					<Settings/>
 				</Node>
 			</Node>
 		</Node>
