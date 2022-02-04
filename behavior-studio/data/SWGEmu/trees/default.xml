@@ -341,6 +341,57 @@
 	</Node>
 	<Node BranchName="idle" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2434234854">
 		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1398319073">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2478467976">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="496166575">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="3240544028">
+						<Settings condition="FLEEING"/>
+					</Condition>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2757532336">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="3270011669">
+						<Settings condition="LEASHING"/>
+					</Condition>
+				</Node>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2186343870">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckDestination" Type="Single" uid="935976306">
+					<Settings condition="0.0"/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="1349815697">
+				<Settings key="moveMode" val="RUN"/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="681545628">
+				<Settings slot="MOVE"/>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="4129527278">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3690571869">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="4009188085">
+					<Settings condition="PATHING_HOME"/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="663900148">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckDestination" Type="Single" uid="3881405125">
+					<Settings condition="0.0"/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="1596358304">
+				<Settings key="moveMode" val="WALK"/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1979932461">
+				<Settings slot="MOVE"/>
+			</Node>
+		</Node>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3408558848">
 			<Settings/>
 			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="480022165">
@@ -396,42 +447,6 @@
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="GeneratePatrol" Type="Leaf" uid="1547268873">
 				<Settings distFromHome="10.0" numPoints="5"/>
-			</Node>
-		</Node>
-		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="4129527278">
-			<Settings/>
-			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3690571869">
-				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="4009188085">
-					<Settings condition="PATHING_HOME"/>
-				</Condition>
-			</Node>
-			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="663900148">
-				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckDestination" Type="Single" uid="3881405125">
-					<Settings condition="0.0"/>
-				</Condition>
-			</Node>
-			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="1596358304">
-				<Settings key="moveMode" val="WALK"/>
-			</Node>
-			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1979932461">
-				<Settings slot="MOVE"/>
-			</Node>
-		</Node>
-		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1398319073">
-			<Settings/>
-			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2757532336">
-				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="3270011669">
-					<Settings condition="LEASHING"/>
-				</Condition>
-			</Node>
-			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="1349815697">
-				<Settings key="moveMode" val="RUN"/>
-			</Node>
-			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="681545628">
-				<Settings slot="MOVE"/>
 			</Node>
 		</Node>
 	</Node>
