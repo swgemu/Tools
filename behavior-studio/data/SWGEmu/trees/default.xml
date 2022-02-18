@@ -599,32 +599,29 @@
 	</Node>
 	<Node BranchName="notifyHelp" Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="801960668">
 		<Settings/>
-		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1696799548">
-			<Settings/>
-			<Condition Lib="SWGEmuNodes" Name="CheckCallForHelp" Type="Single" uid="2818754924">
-				<Settings/>
-			</Condition>
-		</Node>
 		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="708981659">
 			<Settings/>
 			<Condition Lib="SWGEmuNodes" Name="CheckIsType" Type="Single" uid="1970598206">
 				<Settings condition="NPCTYPE"/>
 			</Condition>
 		</Node>
-		<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="1993112640">
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1696799548">
 			<Settings/>
-			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="996086380">
+			<Condition Lib="SWGEmuNodes" Name="CheckCallForHelp" Type="Single" uid="2818754924">
 				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="4074755753">
-					<Settings condition="MOVING_TO_HEAL"/>
-				</Condition>
-			</Node>
-			<Node Lib="SWGEmuNodes" Name="LookForAllies" Type="Decorator" uid="4049270502">
+			</Condition>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="LookForAllies" Type="Decorator" uid="4049270502">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="CallForHelp" Type="Leaf" uid="1419427323">
 				<Settings/>
-				<Node Lib="SWGEmuNodes" Name="CallForHelp" Type="Leaf" uid="1419427323">
-					<Settings/>
-				</Node>
 			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="407552319">
+			<Settings/>
+			<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="784166790">
+				<Settings condition="NOTIFY_ALLY"/>
+			</Condition>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="3173027259">
 			<Settings key="moveMode" val="RUN"/>
@@ -769,9 +766,6 @@
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="RunAway" Type="Leaf" uid="2633134651">
 			<Settings dist="32.0"/>
-		</Node>
-		<Node Lib="SWGEmuNodes" Name="SetAlert" Type="Leaf" uid="2259218024">
-			<Settings duration="5.0" show="false"/>
 		</Node>
 	</Node>
 	<Node BranchName="stalk" Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1672513422">

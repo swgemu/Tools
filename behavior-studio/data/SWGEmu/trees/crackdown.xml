@@ -169,6 +169,12 @@
 					<Settings key="moveMode" val="WALK"/>
 				</Node>
 			</Node>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1742603408">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckDestination" Type="Single" uid="2307864494">
+					<Settings condition="0.0"/>
+				</Condition>
+			</Node>
 			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3869875258">
 				<Settings slot="MOVE"/>
 			</Node>
