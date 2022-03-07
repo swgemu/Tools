@@ -14,8 +14,41 @@
 				<Settings key="moveMode" val="RUN"/>
 			</Node>
 		</Node>
-		<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="159935104">
-			<Settings duration="-1.0"/>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1385797022">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2945227650">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckIsHome" Type="Single" uid="3999041037">
+					<Settings/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="159935104">
+				<Settings duration="-1.0"/>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1372879556">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="2219758424">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="287468497">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckIsHome" Type="Single" uid="181320507">
+						<Settings/>
+					</Condition>
+				</Node>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="4108853419">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckDestination" Type="Single" uid="868445040">
+					<Settings condition="0.0"/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="SetMovementState" Type="Leaf" uid="3188812381">
+				<Settings state="PATHING_HOME"/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="2912171934">
+				<Settings slot="MOVE"/>
+			</Node>
 		</Node>
 	</Node>
 	<Node BranchName="root" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="1049923712">
@@ -24,7 +57,7 @@
 			<Settings slot="IDLE"/>
 		</Node>
 	</Node>
-	<Node BranchName="wander" Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2998071590">
+	<Node BranchName="wander" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="451209044">
 		<Settings/>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1736612732">
 			<Settings/>
