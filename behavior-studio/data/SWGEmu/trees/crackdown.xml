@@ -21,16 +21,37 @@
 						<Settings slot="LOOKAT"/>
 					</Node>
 				</Node>
-				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="18871188">
+				<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="3062242634">
 					<Settings/>
-					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="4136091177">
+					<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="18871188">
 						<Settings/>
-						<Condition Lib="SWGEmuNodes" Name="CheckAggroDelayPast" Type="Single" uid="2086029926">
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="4136091177">
 							<Settings/>
-						</Condition>
+							<Condition Lib="SWGEmuNodes" Name="CheckAggroDelayPast" Type="Single" uid="2086029926">
+								<Settings/>
+							</Condition>
+						</Node>
+						<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1560531894">
+							<Settings slot="AGGRO"/>
+						</Node>
 					</Node>
-					<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1560531894">
-						<Settings slot="AGGRO"/>
+					<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="522831005">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3946143935">
+							<Settings/>
+							<Condition Lib="SWGEmuNodes" Name="CheckAggroDelayPast" Type="Single" uid="2720846832">
+								<Settings/>
+							</Condition>
+						</Node>
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3550667578">
+							<Settings/>
+							<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="1603545260">
+								<Settings condition="WATCHING"/>
+							</Condition>
+						</Node>
+						<Node Lib="SWGEmuNodes" Name="SetMovementState" Type="Leaf" uid="1192723871">
+							<Settings state="PATHING_HOME"/>
+						</Node>
 					</Node>
 				</Node>
 			</Node>

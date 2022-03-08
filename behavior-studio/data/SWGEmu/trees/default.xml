@@ -160,6 +160,24 @@
 						<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3558245448">
 							<Settings slot="SCARE"/>
 						</Node>
+						<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3566509875">
+							<Settings/>
+							<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3358671712">
+								<Settings/>
+								<Condition Lib="SWGEmuNodes" Name="CheckAggroDelayPast" Type="Single" uid="949599403">
+									<Settings/>
+								</Condition>
+							</Node>
+							<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3221004594">
+								<Settings/>
+								<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="3269126187">
+									<Settings condition="WATCHING"/>
+								</Condition>
+							</Node>
+							<Node Lib="SWGEmuNodes" Name="SetMovementState" Type="Leaf" uid="1045481078">
+								<Settings state="PATHING_HOME"/>
+							</Node>
+						</Node>
 					</Node>
 				</Node>
 			</Node>
@@ -214,6 +232,24 @@
 					<Settings/>
 				</Condition>
 			</Node>
+			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="2297093552">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3681096532">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="3031426391">
+						<Settings condition="LEASHING"/>
+					</Condition>
+				</Node>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="3190226495">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2092025033">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="637022394">
+						<Settings condition="CRACKDOWN_SCANNING"/>
+					</Condition>
+				</Node>
+			</Node>
 			<Node Lib="SWGEmuNodes" Name="LookForPlayer" Type="Decorator" uid="2904764039">
 				<Settings/>
 				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2120293750">
@@ -232,6 +268,9 @@
 					</Node>
 					<Node Lib="SWGEmuNodes" Name="ContrabandScan" Type="Leaf" uid="1840897137">
 						<Settings/>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="SetMovementState" Type="Leaf" uid="1892817699">
+						<Settings state="CRACKDOWN_SCANNING"/>
 					</Node>
 				</Node>
 			</Node>
