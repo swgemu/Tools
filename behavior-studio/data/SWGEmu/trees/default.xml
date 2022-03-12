@@ -269,9 +269,6 @@
 					<Node Lib="SWGEmuNodes" Name="ContrabandScan" Type="Leaf" uid="1840897137">
 						<Settings/>
 					</Node>
-					<Node Lib="SWGEmuNodes" Name="SetMovementState" Type="Leaf" uid="1892817699">
-						<Settings state="CRACKDOWN_SCANNING"/>
-					</Node>
 				</Node>
 			</Node>
 		</Node>
