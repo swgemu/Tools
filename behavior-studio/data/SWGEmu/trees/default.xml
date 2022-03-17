@@ -2,6 +2,15 @@
 <BehaviorTree version="1.3.0">
 	<Node BranchName="aggro" Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2009948435">
 		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="474715055">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3853408410">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckProspectIsIncapacitated" Type="Single" uid="934996932">
+					<Settings/>
+				</Condition>
+			</Node>
+		</Node>
 		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1351912750">
 			<Settings/>
 			<Condition Lib="SWGEmuNodes" Name="CheckProspectAggression" Type="Single" uid="3646194541">
