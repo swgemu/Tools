@@ -492,6 +492,9 @@
 				<Node Lib="SWGEmuNodes" Name="StopResting" Type="Leaf" uid="2362734698">
 					<Settings/>
 				</Node>
+				<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="1864140521">
+					<Settings duration="5.0"/>
+				</Node>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="4072235030">
 				<Settings/>
