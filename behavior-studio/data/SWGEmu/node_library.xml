@@ -300,6 +300,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Task" type="Leaf" name="Rest">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Puts the creature AI into a resting position."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Task" type="Leaf" name="RestoreFollow">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
@@ -390,7 +398,7 @@
       <description text="Sets the movement state to state. Fails if targetProspect is not written to the blackboard and tries to set movement state."/>
       <shape name="ring"/>
       <events/>
-      <attribute type="text" name="state" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING;EVADING;PATHING_HOME;FOLLOW_FORMATION;MOVING_TO_HEAL;NOTIFY_ALLY;CRACKDOWN_SCANNING" description="Follow state enumerations."/>
+      <attribute type="text" name="state" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING;EVADING;PATHING_HOME;FOLLOW_FORMATION;MOVING_TO_HEAL;NOTIFY_ALLY;CRACKDOWN_SCANNING;RESTING" description="Follow state enumerations."/>
     </node>
     <!---->
     <node class="Task" type="Leaf" name="StageRangedWeapon">
@@ -406,6 +414,14 @@
       <children class="Task" use="yes"/>
       <children class="Condition" use="no"/>
       <description text="New node created by user."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="Leaf" name="StopResting">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Ends the creatures rest period."/>
       <shape name="ring"/>
       <events/>
     </node>
@@ -678,6 +694,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Condition" type="Single" name="CheckIsResting">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="New node created by user."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Condition" type="Composite" name="CheckIsStalker">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
@@ -709,7 +733,7 @@
       <description text="Returns SUCCESS if follow state is the same as condition."/>
       <shape name="diamond"/>
       <events/>
-      <attribute type="text" name="condition" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING;EVADING;PATHING_HOME;FOLLOW_FORMATION;MOVING_TO_HEAL;NOTIFY_ALLY;CRACKDOWN_SCANNING" description="Follow state enumerations."/>
+      <attribute type="text" name="condition" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING;EVADING;PATHING_HOME;FOLLOW_FORMATION;MOVING_TO_HEAL;NOTIFY_ALLY;CRACKDOWN_SCANNING;RESTING" description="Follow state enumerations."/>
     </node>
     <!---->
     <node class="Condition" type="Single" name="CheckOutdoors">
@@ -864,6 +888,14 @@
       <attribute type="int" name="condition" description="Range to be away from home location before retreating."/>
     </node>
     <!---->
+    <node class="Condition" type="Single" name="CheckShouldRest">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if the AI has rested recently."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Condition" type="Single" name="CheckSpeed">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
@@ -871,6 +903,14 @@
       <shape name="diamond"/>
       <events/>
       <attribute type="float" name="condition" description="Speed to be above."/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckStopResting">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if time has passed to stop resting. "/>
+      <shape name="diamond"/>
+      <events/>
     </node>
     <!---->
     <node class="Condition" type="Single" name="CheckTargetInOwnerRange">

@@ -455,43 +455,94 @@
 				<Settings duration="5.0"/>
 			</Node>
 		</Node>
-		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="4072235030">
+		<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="3547969451">
 			<Settings/>
-			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="401182658">
+			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3817274653">
 				<Settings/>
-				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2752118648">
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="328045801">
 					<Settings/>
-					<Condition Lib="SWGEmuNodes" Name="CheckHomeIsCell" Type="Single" uid="1816846537">
+					<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="2722902584">
+						<Settings condition="PATROLLING"/>
+					</Condition>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="4052143469">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckShouldRest" Type="Single" uid="999959848">
 						<Settings/>
 					</Condition>
 				</Node>
-			</Node>
-			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="3395906854">
-				<Settings/>
-				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2189282822">
+				<Node Lib="SWGEmuNodes" Name="Rest" Type="Leaf" uid="3419015031">
 					<Settings/>
-					<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="3904790446">
-						<Settings condition="LEASHING"/>
-					</Condition>
 				</Node>
 			</Node>
-			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="487154563">
+			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3620709194">
 				<Settings/>
-				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3807314026">
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="47291811">
 					<Settings/>
-					<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="1384587681">
-						<Settings condition="PATHING_HOME"/>
+					<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="518478080">
+						<Settings condition="RESTING"/>
 					</Condition>
 				</Node>
-			</Node>
-			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3483017378">
-				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckOutdoors" Type="Single" uid="776089883">
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="4292153828">
 					<Settings/>
-				</Condition>
+					<Condition Lib="SWGEmuNodes" Name="CheckStopResting" Type="Single" uid="78723978">
+						<Settings/>
+					</Condition>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="StopResting" Type="Leaf" uid="2362734698">
+					<Settings/>
+				</Node>
 			</Node>
-			<Node Lib="SWGEmuNodes" Name="GeneratePatrol" Type="Leaf" uid="1547268873">
-				<Settings distFromHome="10.0" numPoints="5"/>
+			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="4072235030">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="401182658">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2752118648">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckHomeIsCell" Type="Single" uid="1816846537">
+							<Settings/>
+						</Condition>
+					</Node>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2675315481">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="936689026">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="650924015">
+							<Settings/>
+							<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="3768722657">
+								<Settings condition="RESTING"/>
+							</Condition>
+						</Node>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="3395906854">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2189282822">
+							<Settings/>
+							<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="3904790446">
+								<Settings condition="LEASHING"/>
+							</Condition>
+						</Node>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="487154563">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3807314026">
+							<Settings/>
+							<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="1384587681">
+								<Settings condition="PATHING_HOME"/>
+							</Condition>
+						</Node>
+					</Node>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3483017378">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckOutdoors" Type="Single" uid="776089883">
+						<Settings/>
+					</Condition>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="GeneratePatrol" Type="Leaf" uid="1547268873">
+					<Settings distFromHome="15.0" numPoints="5"/>
+				</Node>
 			</Node>
 		</Node>
 	</Node>
@@ -542,6 +593,12 @@
 				<Settings/>
 				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="2646753484">
 					<Settings condition="OBLIVIOUS"/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1717128607">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="1074130214">
+					<Settings condition="RESTING"/>
 				</Condition>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="94397332">
