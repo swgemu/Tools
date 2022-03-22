@@ -123,17 +123,17 @@
 						<Settings condition="0.0"/>
 					</Condition>
 				</Node>
-				<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="1799248528">
-					<Settings/>
-					<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3025856600">
-						<Settings slot="LOOKAT"/>
-					</Node>
-				</Node>
 				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1533332073">
 					<Settings/>
 					<Condition Lib="SWGEmuNodes" Name="CheckIsCamouflaged" Type="Single" uid="1436716103">
 						<Settings/>
 					</Condition>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="1799248528">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3025856600">
+						<Settings slot="LOOKAT"/>
+					</Node>
 				</Node>
 				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3702045485">
 					<Settings/>
