@@ -383,6 +383,9 @@
 		<Node Lib="SWGEmuNodes" Name="HealTarget" Type="Leaf" uid="2037341348">
 			<Settings/>
 		</Node>
+		<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="2730487382">
+			<Settings duration="6.0"/>
+		</Node>
 	</Node>
 	<Node BranchName="idle" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2434234854">
 		<Settings/>
