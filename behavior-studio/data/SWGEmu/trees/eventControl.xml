@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTree version="1.3.0">
+	<Node BranchName="idle" Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="353070738">
+		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3863818570">
+			<Settings/>
+			<Condition Lib="SWGEmuNodes" Name="CheckHasPatrol" Type="Single" uid="2164142352">
+				<Settings/>
+			</Condition>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3868733591">
+			<Settings/>
+			<Condition Lib="SWGEmuNodes" Name="CheckDestination" Type="Single" uid="725675163">
+				<Settings condition="0.0"/>
+			</Condition>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="FindNextPosition" Type="Leaf" uid="2811013882">
+			<Settings/>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3440948677">
+			<Settings slot="MOVE"/>
+		</Node>
+	</Node>
+</BehaviorTree>

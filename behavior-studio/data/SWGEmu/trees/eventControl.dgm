@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTree version="1.3.0">
+	<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-19.0" sceneY="-268.0" uid="353070738" vAuto="1" vx="0.0" vy="0.0">
+		<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-161.5" sceneY="-198.5" uid="3863818570" vAuto="1" vx="-142.5" vy="69.5">
+			<Condition expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-161.5" sceneY="-129.0" uid="2164142352" vAuto="1" vx="0.0" vy="69.5"/>
+		</Node>
+		<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-59.5" sceneY="-198.5" uid="3868733591" vAuto="1" vx="-40.5" vy="69.5">
+			<Condition expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-59.5" sceneY="-129.0" uid="725675163" vAuto="1" vx="0.0" vy="69.5"/>
+		</Node>
+		<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="45.0" sceneY="-198.5" uid="2811013882" vAuto="1" vx="64.0" vy="69.5"/>
+		<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="134.5" sceneY="-198.5" uid="3440948677" vAuto="1" vx="153.5" vy="69.5"/>
+	</Node>
+</BehaviorTree>

@@ -13,4 +13,5 @@
 	<behavior_tree path="trees/villageRaider.xml"/>
 	<behavior_tree path="trees/crackdown.xml"/>
 	<behavior_tree path="trees/cityPatrol.xml"/>
+	<behavior_tree path="trees/eventControl.xml"/>
 </btproject>
