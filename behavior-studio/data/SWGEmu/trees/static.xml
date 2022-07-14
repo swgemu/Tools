@@ -10,8 +10,17 @@
 					<Settings condition="LEASHING"/>
 				</Condition>
 			</Node>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="325859733">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckDestination" Type="Single" uid="626416296">
+					<Settings condition="0.0"/>
+				</Condition>
+			</Node>
 			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="3416313250">
 				<Settings key="moveMode" val="RUN"/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1769616369">
+				<Settings slot="MOVE"/>
 			</Node>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1385797022">
