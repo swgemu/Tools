@@ -35,6 +35,15 @@
 	</Node>
 	<Node BranchName="attack" Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="4024177786">
 		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="2284645252">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2988398068">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckQueueSize" Type="Single" uid="1262112190">
+					<Settings/>
+				</Condition>
+			</Node>
+		</Node>
 		<Node Lib="SWGEmuNodes" Name="RandomSelector" Type="Composite" uid="2812006626">
 			<Settings/>
 			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="169743063">

@@ -870,6 +870,14 @@
       <attribute type="text" name="condition" default="STATIONARY" available="STATIONARY;SLOW;FAST" description="Speed to be above."/>
     </node>
     <!---->
+    <node class="Condition" type="Single" name="CheckQueueSize">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Returns true if the queue size is &gt;= passed variable."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Condition" type="Single" name="CheckRandomLevel">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
