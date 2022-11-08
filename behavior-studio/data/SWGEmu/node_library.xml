@@ -284,6 +284,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Task" type="Leaf" name="PetSelectWeapon" creator="Hakry">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Selects either ranged or melee pet weapon depending on the toggle useRanged."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Task" type="Composite" name="RandomSelector">
       <children class="Task" use="yes"/>
       <children class="Condition" use="yes"/>
@@ -614,10 +622,26 @@
       <events/>
     </node>
     <!---->
+    <node class="Condition" type="Single" name="CheckHasMeleeWeapon">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if the agent has a melee weapon."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Condition" type="Single" name="CheckHasPatrol">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
       <description text="Checks to see if self has any patrol points defined."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckHasRangedWeapon">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if the agent has a ranged weapon."/>
       <shape name="diamond"/>
       <events/>
     </node>
