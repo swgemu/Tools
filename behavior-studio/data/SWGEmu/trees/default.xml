@@ -556,7 +556,7 @@
 					</Condition>
 				</Node>
 				<Node Lib="SWGEmuNodes" Name="GeneratePatrol" Type="Leaf" uid="1547268873">
-					<Settings distFromHome="15.0" numPoints="5"/>
+					<Settings distFromHome="30.0" numPoints="5"/>
 				</Node>
 			</Node>
 		</Node>
