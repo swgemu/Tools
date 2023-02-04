@@ -31,8 +31,17 @@
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="308986874">
 			<Settings/>
-			<Node Lib="SWGEmuNodes" Name="PetReturn" Type="Leaf" uid="2381505880">
+			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1334114988">
 				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="433055137">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckOwnerInRange" Type="Single" uid="3404289191">
+						<Settings condition="128.0"/>
+					</Condition>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="PetReturn" Type="Leaf" uid="2381505880">
+					<Settings/>
+				</Node>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="SetMovementState" Type="Leaf" uid="3351684077">
 				<Settings state="FOLLOWING"/>
@@ -304,28 +313,13 @@
 			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3054290862">
 				<Settings slot="TARGET"/>
 			</Node>
-			<Node Lib="SWGEmuNodes" Name="ParallelSelector" Type="Composite" uid="1472598970">
+			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="706963786">
 				<Settings/>
-				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="706963786">
-					<Settings/>
-					<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1315818962">
-						<Settings slot="EQUIP"/>
-					</Node>
-					<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="9283471">
-						<Settings slot="ATTACK"/>
-					</Node>
+				<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1315818962">
+					<Settings slot="EQUIP"/>
 				</Node>
-				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2065378848">
-					<Settings/>
-					<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="2976729954">
-						<Settings key="moveMode" val="RUN"/>
-					</Node>
-					<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="2364005951">
-						<Settings/>
-						<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="476655997">
-							<Settings slot="MOVE"/>
-						</Node>
-					</Node>
+				<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="9283471">
+					<Settings slot="ATTACK"/>
 				</Node>
 			</Node>
 		</Node>
@@ -420,11 +414,20 @@
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2780806186">
 				<Settings/>
-				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="494241456">
+				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3340731485">
 					<Settings/>
-					<Condition Lib="SWGEmuNodes" Name="CheckTargetIsValid" Type="Single" uid="2930289772">
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="494241456">
 						<Settings/>
-					</Condition>
+						<Condition Lib="SWGEmuNodes" Name="CheckTargetIsValid" Type="Single" uid="2930289772">
+							<Settings/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2519156342">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckTargetInOwnerRange" Type="Single" uid="3430728011">
+							<Settings condition="128.0"/>
+						</Condition>
+					</Node>
 				</Node>
 				<Node Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="734829524">
 					<Settings/>
@@ -437,21 +440,6 @@
 							<Settings param="targetProspect"/>
 						</Node>
 					</Node>
-				</Node>
-			</Node>
-			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3396084436">
-				<Settings/>
-				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2519156342">
-					<Settings/>
-					<Condition Lib="SWGEmuNodes" Name="CheckTargetInOwnerRange" Type="Single" uid="3430728011">
-						<Settings condition="128.0"/>
-					</Condition>
-				</Node>
-				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1977209620">
-					<Settings/>
-					<Condition Lib="SWGEmuNodes" Name="CheckOwnerInRange" Type="Single" uid="706949249">
-						<Settings condition="128.0"/>
-					</Condition>
 				</Node>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="SetDefenderFromProspect" Type="Leaf" uid="2191514309">
