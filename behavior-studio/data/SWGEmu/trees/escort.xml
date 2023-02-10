@@ -43,13 +43,13 @@
 						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="811268585">
 							<Settings/>
 							<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="4022376893">
-								<Settings condition="OBLIVIOUS"/>
+								<Settings condition="WATCHING"/>
 							</Condition>
 						</Node>
 						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1679770289">
 							<Settings/>
 							<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="2862541032">
-								<Settings condition="OBLIVIOUS"/>
+								<Settings condition="STALKING"/>
 							</Condition>
 						</Node>
 					</Node>
@@ -114,28 +114,22 @@
 			</Node>
 		</Node>
 	</Node>
-	<Node BranchName="run" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2928311771">
+	<Node BranchName="run" Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3097333621">
 		<Settings/>
-		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3097333621">
+		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="911353460">
 			<Settings/>
-			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="911353460">
+			<Condition Lib="SWGEmuNodes" Name="CheckIsEscort" Type="Single" uid="1225716325">
 				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckIsEscort" Type="Single" uid="1225716325">
-					<Settings/>
-				</Condition>
-			</Node>
-			<Node Lib="SWGEmuNodes" Name="SetMovementState" Type="Leaf" uid="2773567267">
-				<Settings state="FOLLOWING"/>
-			</Node>
-			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="3216658477">
-				<Settings key="moveMode" val="RUN"/>
-			</Node>
-			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3054819924">
-				<Settings slot="MOVE"/>
-			</Node>
+			</Condition>
 		</Node>
-		<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="599779045">
-			<Settings duration="-1.0"/>
+		<Node Lib="SWGEmuNodes" Name="SetMovementState" Type="Leaf" uid="2773567267">
+			<Settings state="FOLLOWING"/>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="3216658477">
+			<Settings key="moveMode" val="RUN"/>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3054819924">
+			<Settings slot="MOVE"/>
 		</Node>
 	</Node>
 	<Node BranchName="walk" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="437268100">
