@@ -521,6 +521,15 @@
 				</Node>
 				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2675315481">
 					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="2300404191">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="910333348">
+							<Settings/>
+							<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="1431589090">
+								<Settings condition="CONVERSING"/>
+							</Condition>
+						</Node>
+					</Node>
 					<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="936689026">
 						<Settings/>
 						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="650924015">

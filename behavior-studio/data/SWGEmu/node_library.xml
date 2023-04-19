@@ -406,7 +406,7 @@
       <description text="Sets the movement state to state. Fails if targetProspect is not written to the blackboard and tries to set movement state."/>
       <shape name="ring"/>
       <events/>
-      <attribute type="text" name="state" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING;EVADING;PATHING_HOME;FOLLOW_FORMATION;MOVING_TO_HEAL;NOTIFY_ALLY;CRACKDOWN_SCANNING;RESTING" description="Follow state enumerations."/>
+      <attribute type="text" name="state" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING;EVADING;PATHING_HOME;FOLLOW_FORMATION;MOVING_TO_HEAL;NOTIFY_ALLY;CRACKDOWN_SCANNING;RESTING;CONVERSING" description="Follow state enumerations."/>
     </node>
     <!---->
     <node class="Task" type="Leaf" name="StageRangedWeapon">
@@ -773,7 +773,7 @@
       <description text="Returns SUCCESS if follow state is the same as condition."/>
       <shape name="diamond"/>
       <events/>
-      <attribute type="text" name="condition" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING;EVADING;PATHING_HOME;FOLLOW_FORMATION;MOVING_TO_HEAL;NOTIFY_ALLY;CRACKDOWN_SCANNING;RESTING" description="Follow state enumerations."/>
+      <attribute type="text" name="condition" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING;EVADING;PATHING_HOME;FOLLOW_FORMATION;MOVING_TO_HEAL;NOTIFY_ALLY;CRACKDOWN_SCANNING;RESTING;CONVERSING" description="Follow state enumerations."/>
     </node>
     <!---->
     <node class="Condition" type="Single" name="CheckOutdoors">
