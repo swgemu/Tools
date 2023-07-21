@@ -1,0 +1,515 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LibData version="1.3.0">
+  <!-- ====================================================================================================================== -->
+  <library name="SWGEmuSpaceNodes">
+    <!-- ********************************************************************************************************* -->
+    <!-- TASKS -->
+    <node class="Task" type="DecoratorSpace" name="AlwaysFailSpace">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="yes"/>
+      <description text="Executes its child and fails regardless of the result."/>
+      <shape name="triangle"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="DecoratorSpace" name="AlwaysSucceedSpace">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="yes"/>
+      <description text="Executes its child and succeeds regardless of the result."/>
+      <shape name="triangle"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="CalculateAggroMod">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Uses targetProspect from the blackboard to calculate the aggroMod and write it to the blackboard. Fails if targetProspect isn't available or if aggroMod fails to write."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="CompleteMove">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Internally sets the next position calculated from last called FindNextPosition. Intended to be called at the end of the update cycle because future position is calculated in FindNetPosition. Will currently always succeed."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="DropProspectFromDefenders">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Checks blackboard for targetProspect and drops it from the defender list. Also erases targetProspect regardless of result. Fails if targetProspect remains a defender."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="DummySpace">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Does nothing -- always returns SUCCESS. Useful as a child to an AlwaysXX DecoratorSpace."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="EraseBlackboard">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Erases a key from the blackboard. Always succeeds."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="string" name="param" description="Key to store on the blackboard."/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="Evade">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Random chance to generate a random patrol point within the agent weapon's max aggro range around its target if the agent is not melee only."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="float" name="maxEvadeChance" description="Maximum chance (0 to 1.0) for the agent to generate a random evade patrol point."/>
+      <attribute type="float" name="minEvadeChance" description="Minimum chance (0 to 1.0) for the agent to generate a random evade patrol point."/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="ExitCombat">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Attempts to remove self from combat. Fails if still in combat after attempt."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="bool" name="clearDefenders" default="True" description="Clear defender list when attempting to exit combat?"/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="FindNextPosition">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Reads the blackboard for moveMode of WALK or RUN (default of WALK) and initiates the movement cycle. Will return RUNNING until the destination is reached, and SUCCESS when it is complete."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="GeneratePatrol">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Generates a patrol using the given arguments. Fails if the patrol failed to generate."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="float" name="distFromHome" description="Furthest distance from home location to patrol."/>
+      <attribute type="int" name="numPoints" description="An integer number of patrol points to generate."/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="GetProspectFromThreatMap">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Updates targetProspect on the blackboard with a target from the threat map. Value is erased if failure. Succeeds if new target was found and written to blackboard."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="IfSpace">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Just passes the result of the child."/>
+      <shape name="triangle"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="Leash">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Calls the leash logic. Always succeeds."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="DecoratorSpace" name="LookForTargetSpace">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="yes"/>
+      <description text="Finds and sets a target for use in the child. Tries multiple target prospects until a non-failure result is returned and returns that result. If no non-failures are returned or no targets are found, failure is returned."/>
+      <shape name="triangle"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="DecoratorSpace" name="NotSpace">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="yes"/>
+      <description text="Executes its child and returns the opposite of the result -- SUCCESS -&gt; FAILURE or FAILURE -&gt; SUCCESS. Any other result is passed transparently."/>
+      <shape name="triangle"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="Composite" name="ParallelSelectorSpace">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="yes"/>
+      <description text="Tries to execute all of its children simultaneously. If all of the children fail, then ParallelSelector fails too."/>
+      <shape name="parallel_selector"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="Composite" name="ParallelSequenceSpace">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="yes"/>
+      <description text="Tries to execute all of its children simultaneously. If any child fails then ParallelSequence fails too."/>
+      <shape name="parallel_sequence"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="Composite" name="RandomSelectorSpace">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="yes"/>
+      <description text="Tries to execute a random child and if it finishes with state SUCCESS then RandomSelector finishes with state SUCCESS too. Otherwise, it selects another (unselected) child and launches it, and so on. If all children fail then RandomSelector fails too."/>
+      <shape name="random_selector"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="Composite" name="RandomSequenceSpace">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="yes"/>
+      <description text="Tries to execute a random child and if it finishes with SUCCESS, then tries to execute another (unselected) child, and so on. If any child fails then RandomSequence fails too."/>
+      <shape name="random_sequence"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="RestoreFollow">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Attempts to restore a stored follow object. Fails if follow object ends up empty."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="SelectAttack">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Reads attackType from blackboard to select an attack to use. If attackType is DEFAULT, attempt to select a default attack. If attackType is RANDOM, attempt to select a special attack. If attackType is not written on the blackboard, use the attackNum (default of -1) to attempt a selection. Succeeds if an attack was set."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="int" name="attackNum" description="Optional specification for attackNum"/>
+    </node>
+    <!---->
+    <node class="Task" type="Composite" name="SelectorSpace">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="yes"/>
+      <description text="Tries to execute the first child and if it finishes with state SUCCESS then Selector finishes with state SUCCESS too. Otherwise, it selects the next child and launches it, and so on. If all children fail then Selector fails too."/>
+      <shape name="selector"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="Leaf" name="SendChatGreeting">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Send the Hi or Bye chat reactions."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="Composite" name="SequenceSpace">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="yes"/>
+      <description text="Tries to execute the first child and if it finishes with SUCCESS, then tries to execute the next child, and so on. If any child fails then Sequence fails too."/>
+      <shape name="sequence"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="SetAlert">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Sets self to be alert for duration. Always succeeds."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="float" name="duration" description="Seconds to be alert. Should be positive."/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="SetDefenderFromProspect">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Sets the main defender to the targetProspect from the blackboard. Fails if there is no targetProspect, or it fails to be set to the main defender."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="SetMovementState">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Sets the movement state to state. Fails if targetProspect is not written to the blackboard and tries to set movement state."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="text" name="state" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING;EVADING;PATHING_HOME;FOLLOW_FORMATION" description="Follow state enumerations."/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="TreeSocketSpace">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Holds modular reference to entire tree."/>
+      <shape name="hexagon"/>
+      <events/>
+      <attribute type="text" name="slot" default="NONESPACE" available="NONESPACE|NONESPACE;AWARESPACE;IDLESPACE;ATTACKSPACE;MOVESPACE;TARGETSPACE;LOOKATSPACE;AGGROSPACE" description=""/>
+    </node>
+    <!---->
+    <node class="Task" type="DecoratorSpace" name="UntilFailure">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="yes"/>
+      <description text="Executes its child repeatedly until the child fails, and then returns the non-successful result."/>
+      <shape name="triangle"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="DecoratorSpace" name="UntilSuccess">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="yes"/>
+      <description text="Executes its child repeatedly until the child doesn't fail and returns the non-failure result."/>
+      <shape name="triangle"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="Wait">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Attempts to set a wait for the duration. Implicitly writes isWaiting of true to blackboard, and erases it when called again and completed. Returns RUNNING while waiting and SUCCESS once the wait has completed."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="float" name="duration" description="Seconds to wait. A negative value means indefinite."/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="WriteBlackboard">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Writes a key/value pair to the blackboard. Always succeeds."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="string" name="key" description="Key to store on the blackboard."/>
+      <attribute type="text" name="val" description="Value to store under key -- this should be an available enum value. TODO -- add all available enumerations?"/>
+    </node>
+    <!---->
+    <!-- ********************************************************************************************************* -->
+    <!-- CONDITIONS -->
+    <node class="Condition" type="Single" name="CheckAggroDelayPast">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Check if the time the agent delays aggro after an alert trigger has past."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckAttackInRange">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks that the follow object is in the set attack's maximum range (taking into account weapon range)."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckAttackIsValid">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks that the set attack is valid."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckDestination">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Check is in range {x} from destination."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckFlee">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Check is AI should FLEE when their HAM drops below the given condition."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="float" name="condition" description=""/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckFollowAggression">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Returns SUCCESS if follow is aggressive to self."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckFollowClosestIdealRange">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Returns SUCCESS if the condition's ideal range is greater than the followRange written to the blackboard."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="text" name="condition" default="PRIMARYWEAPON" available="PRIMARYWEAPON;SECONDARYWEAPON" description="Weapon enumerations."/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckFollowHasState">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Returns SUCCESS if the follow object's creature state is the same as condition."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="text" name="condition" default="PEACE" available="INVALID;COVER;COMBAT;PEACE;AIMING;ALERT;BERSERK;FEIGNDEATH;COMBATATTITUDEEVASIVE;COMBATATTITUDENORMAL;COMBATATTITUDEAGGRESSIVE;TUMBLING;RALLIED;STUNNED;BLINDED;DIZZYINTIMIDATED;IMMOBILIZED;FROZEN;SWIMMING;SITTINGONCHAIR;CRAFTING;GLOWINGJEDI;MASKSCENT;POISONED;BLEEDING;DISEASED;ONFIRE;RIDINGMOUNT;MOUNTEDCREATURE;PILOTINGSHIP;SHIPOPERATIONS;SHIPGUNNER;SHIPINTERIOR;PILOTINGPOBSHIP" description="Creature state enumerations."/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckFollowInWeaponRange">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Returns SUCCESS if the condition's maximum range is greater than the followRange written to the blackboard."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="text" name="condition" default="PRIMARYWEAPON" available="PRIMARYWEAPON;SECONDARYWEAPON" description="Weapon enumerations."/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckHasFollow">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Returns SUCCESS if the follow object exists."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckHasMeleeWeapon">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if the agent has a melee weapon."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckHasPatrol">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Checks to see if self has any patrol points defined."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckIsHome">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if the AI is at their home location."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckIsInCombat">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if self is in combat."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckIsType">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Check the target prospect against the type specified."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="text" name="condition" default="NPCTYPE" available="NPCTYPE;MONSTERTYPE;DROIDTYPE;ANDROIDTYPE;HUMANOIDTYPE" description=""/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckMovementState">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Returns SUCCESS if follow state is the same as condition."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="text" name="condition" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING;EVADING;PATHING_HOME;FOLLOW_FORMATION;MOVING_TO_HEAL;NOTIFY_ALLY;CRACKDOWN_SCANNING;RESTING;CONVERSING" description="Follow state enumerations."/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckPendingHarvestTarget">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checkfs for pending harvest target stored on the blackboard;"/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckPosture">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Returns SUCCESS if postures is the same as condition."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="text" name="condition" default="UPRIGHT" available="INVALID;UPRIGHT;CROUCHED;PRONE;SNEAKING;BLOCKING;CLIMBING;FLYING;LYINGDOWN;SITTING;SKILLANIMATING;DRIVINGVEHICLE;RIDINGCREATURE;KNOCKEDDOWN;INCAPACITATED;DEAD" description="Posture enumerations."/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckProspectAggression">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Returns SUCCESS if prospective target (targetProspect on blackboard) is aggressive to self."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckProspectBackAggression">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if targetProspect on blackboard is aggressive to self (always true is targetProspect is a player)."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckProspectInRange">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Returns SUCCESS if the prospective target (targetProspect on blackboard) is in condition range. If condition is less than 0, use the aggroMod on the blackboard to calculate a default aggro radius."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckProspectIsType">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Check the target prospect against the type specified."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="text" name="condition" default="PLAYERTYPE" available="PLAYERTYPE;CREATURETYPE;NPCTYPE;TANGIBLETYPE;AGENTTYPE" description=""/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckProspectLOS">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if self has line of sight to targetProspect on blackboard."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckProspectLevel">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if self level times aggroMod on blackboard is less than level of targetProspect on blackboard."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckProspectSpeed">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks to see if targetProspect on blackboard has speed above condition."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="text" name="condition" default="STATIONARY" available="STATIONARY;SLOW;FAST" description="Speed to be above."/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckSpeed">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks to see if speed is above condition."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="float" name="condition" description="Speed to be above."/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckTargetIsValid">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks that the proposed target (targetProspect on the blackboard) is valid."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <!-- ********************************************************************************************************* -->
+  </library>
+  <!-- ====================================================================================================================== -->
+</LibData>

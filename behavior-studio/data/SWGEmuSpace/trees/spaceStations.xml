@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTree version="1.3.0">
+	<Node BranchName="root" Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="1521991168">
+		<Settings/>
+		<Node Lib="SWGEmuSpaceNodes" Name="Wait" Type="LeafSpace" uid="1029300703">
+			<Settings duration="-1.0"/>
+		</Node>
+	</Node>
+</BehaviorTree>

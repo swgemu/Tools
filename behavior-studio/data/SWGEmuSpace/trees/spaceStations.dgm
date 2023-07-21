@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTree version="1.3.0">
+	<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-5.0" sceneY="-215.0" uid="1521991168" vAuto="1" vx="0.0" vy="0.0">
+		<Node expanded="1" hAuto="1" hx="92.0" hy="0.0" sceneX="-5.0" sceneY="-145.5" uid="1029300703" vAuto="1" vx="0.0" vy="69.5"/>
+	</Node>
+</BehaviorTree>

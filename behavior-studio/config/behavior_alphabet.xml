@@ -23,6 +23,18 @@
 			<children class="Task" min="1" max="999"/>
 			<children class="Condition" min="0" max="999"/>
 		</type>
+		<type name="LeafSpace">
+			<children class="Task" min="0" max="0"/>
+			<children class="Condition" min="0" max="1"/>
+		</type>
+		<type name="DecoratorSpace" allowSingleBlock="yes">
+			<children class="Task" min="1" max="1"/>
+			<children class="Condition" min="0" max="1"/>
+		</type>
+		<type name="CompositeSpace" allowSingleBlock="yes">
+			<children class="Task" min="1" max="999"/>
+			<children class="Condition" min="0" max="999"/>
+		</type>
 		<type name="Reference" link="1" targetTag="Name" copyTarget="no"/>
 		<type name="Branch" link="1" targetTag="Name" copyTarget="yes"/>
 		<codeGenerator namespace="ai" interface="INode ITask" baseclass="ITask::CTask INode::TreeNode" appendix="ITask::Task INode::Node">
@@ -54,6 +66,12 @@
 			<children class="Condition" min="1" max="1"/>
 		</type>
 		<type name="Composite">
+			<children class="Condition" min="1" max="999"/>
+		</type>
+		<type name="DecoratorSpace">
+			<children class="Condition" min="1" max="1"/>
+		</type>
+		<type name="CompositeSpace">
 			<children class="Condition" min="1" max="999"/>
 		</type>
 		<codeGenerator namespace="ai" interface="INode ICondition" baseclass="ICondition::CCondition INode::TreeNode" appendix="ICondition::Condition INode::Node">
