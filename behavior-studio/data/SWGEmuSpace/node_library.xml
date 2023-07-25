@@ -28,14 +28,6 @@
       <events/>
     </node>
     <!---->
-    <node class="Task" type="LeafSpace" name="CompleteMove">
-      <children class="Task" use="no"/>
-      <children class="Condition" use="no"/>
-      <description text="Internally sets the next position calculated from last called FindNextPosition. Intended to be called at the end of the update cycle because future position is calculated in FindNetPosition. Will currently always succeed."/>
-      <shape name="ring"/>
-      <events/>
-    </node>
-    <!---->
     <node class="Task" type="LeafSpace" name="DropProspectFromDefenders">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
@@ -52,6 +44,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Task" type="LeafSpace" name="EngageTarget">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text=""/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Task" type="LeafSpace" name="EraseBlackboard">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
@@ -64,11 +64,10 @@
     <node class="Task" type="LeafSpace" name="Evade">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
-      <description text="Random chance to generate a random patrol point within the agent weapon's max aggro range around its target if the agent is not melee only."/>
+      <description text="Puts the ship into evasion flight for the set delay time before re-engaging the current defender."/>
       <shape name="ring"/>
       <events/>
-      <attribute type="float" name="maxEvadeChance" description="Maximum chance (0 to 1.0) for the agent to generate a random evade patrol point."/>
-      <attribute type="float" name="minEvadeChance" description="Minimum chance (0 to 1.0) for the agent to generate a random evade patrol point."/>
+      <attribute type="long" name="evadeDelay" description="Maximum chance (0 to 1.0) for the agent to generate a random evade patrol point."/>
     </node>
     <!---->
     <node class="Task" type="LeafSpace" name="ExitCombat">
@@ -77,7 +76,6 @@
       <description text="Attempts to remove self from combat. Fails if still in combat after attempt."/>
       <shape name="ring"/>
       <events/>
-      <attribute type="bool" name="clearDefenders" default="True" description="Clear defender list when attempting to exit combat?"/>
     </node>
     <!---->
     <node class="Task" type="LeafSpace" name="FindNextPosition">
@@ -217,6 +215,7 @@
       <description text="Sets self to be alert for duration. Always succeeds."/>
       <shape name="ring"/>
       <events/>
+      <attribute type="float" name="aggroDelay" default="5.0" description=""/>
       <attribute type="float" name="duration" description="Seconds to be alert. Should be positive."/>
     </node>
     <!---->
@@ -228,13 +227,21 @@
       <events/>
     </node>
     <!---->
+    <node class="Task" type="LeafSpace" name="SetDisabledEngineSpeed">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Updates the ship speed to 0 when their engines are disabled."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Task" type="LeafSpace" name="SetMovementState">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
       <description text="Sets the movement state to state. Fails if targetProspect is not written to the blackboard and tries to set movement state."/>
       <shape name="ring"/>
       <events/>
-      <attribute type="text" name="state" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING;EVADING;PATHING_HOME;FOLLOW_FORMATION" description="Follow state enumerations."/>
+      <attribute type="text" name="state" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;FOLLOWING;PATROLLING;ATTACKING;FLEEING;LEASHING;EVADING;PATHING_HOME;FOLLOW_FORMATION" description="Follow state enumerations."/>
     </node>
     <!---->
     <node class="Task" type="LeafSpace" name="TreeSocketSpace">
@@ -243,7 +250,7 @@
       <description text="Holds modular reference to entire tree."/>
       <shape name="hexagon"/>
       <events/>
-      <attribute type="text" name="slot" default="NONESPACE" available="NONESPACE|NONESPACE;AWARESPACE;IDLESPACE;ATTACKSPACE;MOVESPACE;TARGETSPACE;LOOKATSPACE;AGGROSPACE" description=""/>
+      <attribute type="text" name="slot" default="NONESPACE" available="NONESPACE|NONESPACE;AWARESPACE;IDLESPACE;ATTACKSPACE;MOVESPACE;TARGETSPACE;LOOKATSPACE;AGGROSPACE;EVADESPACE" description=""/>
     </node>
     <!---->
     <node class="Task" type="DecoratorSpace" name="UntilFailure">
@@ -315,6 +322,31 @@
       <events/>
     </node>
     <!---->
+    <node class="Condition" type="Single" name="CheckEnginesDisabled">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Returns true if the ships engines have been disabled."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckEvadeChance">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Percent chance to evade attacker."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="uint" name="chance" description=""/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckEvadeDelayPast">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="This will return true if a ship should stop evading and return to attacking;"/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Condition" type="Single" name="CheckFlee">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
@@ -367,14 +399,6 @@
       <events/>
     </node>
     <!---->
-    <node class="Condition" type="Single" name="CheckHasMeleeWeapon">
-      <children class="Task" use="no"/>
-      <children class="Condition" use="yes"/>
-      <description text="Checks if the agent has a melee weapon."/>
-      <shape name="diamond"/>
-      <events/>
-    </node>
-    <!---->
     <node class="Condition" type="Single" name="CheckHasPatrol">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
@@ -414,15 +438,7 @@
       <description text="Returns SUCCESS if follow state is the same as condition."/>
       <shape name="diamond"/>
       <events/>
-      <attribute type="text" name="condition" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;STALKING;FOLLOWING;PATROLLING;FLEEING;LEASHING;EVADING;PATHING_HOME;FOLLOW_FORMATION;MOVING_TO_HEAL;NOTIFY_ALLY;CRACKDOWN_SCANNING;RESTING;CONVERSING" description="Follow state enumerations."/>
-    </node>
-    <!---->
-    <node class="Condition" type="Single" name="CheckPendingHarvestTarget">
-      <children class="Task" use="no"/>
-      <children class="Condition" use="yes"/>
-      <description text="Checkfs for pending harvest target stored on the blackboard;"/>
-      <shape name="diamond"/>
-      <events/>
+      <attribute type="text" name="condition" default="OBLIVIOUS" available="OBLIVIOUS;WATCHING;FOLLOWING;PATROLLING;ATTACKING;FLEEING;LEASHING;EVADING;PATHING_HOME;FOLLOW_FORMATION" description="Follow state enumerations."/>
     </node>
     <!---->
     <node class="Condition" type="Single" name="CheckPosture">
@@ -490,6 +506,24 @@
       <shape name="diamond"/>
       <events/>
       <attribute type="text" name="condition" default="STATIONARY" available="STATIONARY;SLOW;FAST" description="Speed to be above."/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckRefireRate">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if a ship should fire a projectile again."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="long" name="condition" description=""/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckRetreat">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="no"/>
+      <description text="Checks if the Ship Agent is too far from their home location."/>
+      <shape name="diamond"/>
+      <events/>
+      <attribute type="int" name="condition" default="1500" description=""/>
     </node>
     <!---->
     <node class="Condition" type="Single" name="CheckSpeed">
