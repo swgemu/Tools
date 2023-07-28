@@ -14,7 +14,7 @@
 				<Settings state="EVADING"/>
 			</Node>
 			<Node Lib="SWGEmuSpaceNodes" Name="Evade" Type="LeafSpace" uid="1083156400">
-				<Settings evadeDelay="10000"/>
+				<Settings evadeDelay="7500"/>
 			</Node>
 		</Node>
 		<Node Lib="SWGEmuSpaceNodes" Name="AlwaysSucceedSpace" Type="DecoratorSpace" uid="2274822948">
@@ -131,7 +131,7 @@
 		<Node Lib="SWGEmuSpaceNodes" Name="AlwaysSucceedSpace" Type="DecoratorSpace" uid="1344506751">
 			<Settings/>
 			<Node Lib="SWGEmuSpaceNodes" Name="SetAlert" Type="LeafSpace" uid="811185371">
-				<Settings aggroDelay="2.5" duration="5.0"/>
+				<Settings aggroDelay="5.0" duration="5.0"/>
 			</Node>
 		</Node>
 	</Node>
@@ -224,10 +224,28 @@
 	</Node>
 	<Node BranchName="target" Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="295814316">
 		<Settings/>
-		<Node Lib="SWGEmuSpaceNodes" Name="AlwaysSucceedSpace" Type="DecoratorSpace" uid="465778897">
+		<Node Lib="SWGEmuSpaceNodes" Name="AlwaysSucceedSpace" Type="DecoratorSpace" uid="1628727004">
 			<Settings/>
-			<Node Lib="SWGEmuSpaceNodes" Name="GetProspectFromThreatMap" Type="LeafSpace" uid="4219427160">
+			<Node Lib="SWGEmuSpaceNodes" Name="SelectorSpace" Type="Composite" uid="3051594756">
 				<Settings/>
+				<Node Lib="SWGEmuSpaceNodes" Name="GetProspectFromThreatMap" Type="LeafSpace" uid="4219427160">
+					<Settings/>
+				</Node>
+				<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="1280314588">
+					<Settings/>
+					<Node Lib="SWGEmuSpaceNodes" Name="NotSpace" Type="DecoratorSpace" uid="1485266457">
+						<Settings/>
+						<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="3575964598">
+							<Settings/>
+							<Condition Lib="SWGEmuSpaceNodes" Name="CheckMovementState" Type="Single" uid="1056287644">
+								<Settings condition="FLEEING"/>
+							</Condition>
+						</Node>
+					</Node>
+					<Node Lib="SWGEmuSpaceNodes" Name="GetProspectFromDefenders" Type="LeafSpace" uid="260549053">
+						<Settings/>
+					</Node>
+				</Node>
 			</Node>
 		</Node>
 		<Node Lib="SWGEmuSpaceNodes" Name="SelectorSpace" Type="Composite" uid="3669711549">

@@ -96,6 +96,14 @@
       <attribute type="int" name="numPoints" description="An integer number of patrol points to generate."/>
     </node>
     <!---->
+    <node class="Task" type="LeafSpace" name="GetProspectFromDefenders">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Selects target prospect from the agents main defender."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Task" type="LeafSpace" name="GetProspectFromThreatMap">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>

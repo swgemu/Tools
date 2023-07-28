@@ -4,7 +4,7 @@ attackDefault = {
 	{id="445019167",	name="IfSpace",	pid="2870874038"},
 	{id="830690666",	name="CheckEvadeChance",	pid="445019167",	args={chance=10}},
 	{id="2209712730",	name="SetMovementState",	pid="2870874038",	args={state=EVADING}},
-	{id="1083156400",	name="Evade",	pid="2870874038",	args={evadeDelay=10000}},
+	{id="1083156400",	name="Evade",	pid="2870874038",	args={evadeDelay=7500}},
 	{id="2274822948",	name="AlwaysSucceedSpace",	pid="682767326"},
 	{id="420201148",	name="SequenceSpace",	pid="2274822948"},
 	{id="2376148965",	name="IfSpace",	pid="420201148"},
@@ -55,7 +55,7 @@ lookDefault = {
 	{id="1948820794",	name="CheckMovementState",	pid="3742455244",	args={condition=PATROLLING}},
 	{id="622023069",	name="SetMovementState",	pid="2349982047",	args={state=WATCHING}},
 	{id="1344506751",	name="AlwaysSucceedSpace",	pid="2349982047"},
-	{id="811185371",	name="SetAlert",	pid="1344506751",	args={duration=5.0, aggroDelay=2.5}}}
+	{id="811185371",	name="SetAlert",	pid="1344506751",	args={duration=5.0, aggroDelay=5.0}}}
 addAiTemplate("lookDefault", lookDefault)
 
 moveDefault = {
@@ -95,8 +95,14 @@ addAiTemplate("rootDefault", rootDefault)
 
 targetDefault = {
 	{id="295814316",	name="SequenceSpace",	pid="none"},
-	{id="465778897",	name="AlwaysSucceedSpace",	pid="295814316"},
-	{id="4219427160",	name="GetProspectFromThreatMap",	pid="465778897"},
+	{id="1628727004",	name="AlwaysSucceedSpace",	pid="295814316"},
+	{id="3051594756",	name="SelectorSpace",	pid="1628727004"},
+	{id="4219427160",	name="GetProspectFromThreatMap",	pid="3051594756"},
+	{id="1280314588",	name="SequenceSpace",	pid="3051594756"},
+	{id="1485266457",	name="NotSpace",	pid="1280314588"},
+	{id="3575964598",	name="IfSpace",	pid="1485266457"},
+	{id="1056287644",	name="CheckMovementState",	pid="3575964598",	args={condition=FLEEING}},
+	{id="260549053",	name="GetProspectFromDefenders",	pid="1280314588"},
 	{id="3669711549",	name="SelectorSpace",	pid="295814316"},
 	{id="2292606827",	name="SequenceSpace",	pid="3669711549"},
 	{id="2668746033",	name="NotSpace",	pid="2292606827"},
