@@ -347,14 +347,6 @@
       <attribute type="uint" name="chance" description=""/>
     </node>
     <!---->
-    <node class="Condition" type="Single" name="CheckEvadeDelayPast">
-      <children class="Task" use="no"/>
-      <children class="Condition" use="yes"/>
-      <description text="This will return true if a ship should stop evading and return to attacking;"/>
-      <shape name="diamond"/>
-      <events/>
-    </node>
-    <!---->
     <node class="Condition" type="Single" name="CheckFlee">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
@@ -541,6 +533,14 @@
       <shape name="diamond"/>
       <events/>
       <attribute type="float" name="condition" description="Speed to be above."/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckStopEvading">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="This will return true if a ship should stop evading and return to attacking;"/>
+      <shape name="diamond"/>
+      <events/>
     </node>
     <!---->
     <node class="Condition" type="Single" name="CheckTargetIsValid">

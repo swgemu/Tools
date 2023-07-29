@@ -14,7 +14,7 @@
 				<Settings state="EVADING"/>
 			</Node>
 			<Node Lib="SWGEmuSpaceNodes" Name="Evade" Type="LeafSpace" uid="1083156400">
-				<Settings evadeDelay="7500"/>
+				<Settings evadeDelay="1500"/>
 			</Node>
 		</Node>
 		<Node Lib="SWGEmuSpaceNodes" Name="AlwaysSucceedSpace" Type="DecoratorSpace" uid="2274822948">
@@ -75,7 +75,7 @@
 			<Settings/>
 			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="959847675">
 				<Settings/>
-				<Condition Lib="SWGEmuSpaceNodes" Name="CheckEvadeDelayPast" Type="Single" uid="2856197994">
+				<Condition Lib="SWGEmuSpaceNodes" Name="CheckStopEvading" Type="Single" uid="1108311886">
 					<Settings/>
 				</Condition>
 			</Node>
