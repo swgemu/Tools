@@ -14,6 +14,6 @@ Windows:
 4. Add C:\Python27 and C:\Python27\Scripts
 5. Run "pip install -r requirements.txt" from behavior-studio
 6. Run py compileall in behavior-studio/source
-7. Run pip install regex 
+7. Run pip install regex
 NOTE: Requires MS Visual C++ 9.0 for python2.7 found: https://web.archive.org/web/20190720195601/http://www.microsoft.com/en-us/download/confirmation.aspx?id=44266
 8. Open "run_behavior_studio" batch file
