@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTree version="1.3.0">
+	<Node BranchName="idle" Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="3878147956">
+		<Settings/>
+		<Node Lib="SWGEmuSpaceNodes" Name="NotSpace" Type="DecoratorSpace" uid="4233020465">
+			<Settings/>
+			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="3024864836">
+				<Settings/>
+				<Condition Lib="SWGEmuSpaceNodes" Name="CheckMovementState" Type="Single" uid="1614536018">
+					<Settings condition="FOLLOWING"/>
+				</Condition>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuSpaceNodes" Name="NotSpace" Type="DecoratorSpace" uid="3826170193">
+			<Settings/>
+			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="1569932203">
+				<Settings/>
+				<Condition Lib="SWGEmuSpaceNodes" Name="CheckHasPatrol" Type="Single" uid="1062834130">
+					<Settings/>
+				</Condition>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuSpaceNodes" Name="GeneratePatrol" Type="LeafSpace" uid="1111847443">
+			<Settings distFromHome="256.0" numPoints="5"/>
+		</Node>
+	</Node>
+	<Node BranchName="move" Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="3162096793">
+		<Settings/>
+		<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="3119158273">
+			<Settings/>
+			<Condition Lib="SWGEmuSpaceNodes" Name="CheckDestination" Type="Single" uid="311662512">
+				<Settings/>
+			</Condition>
+		</Node>
+		<Node Lib="SWGEmuSpaceNodes" Name="AlwaysFailSpace" Type="DecoratorSpace" uid="4219492080">
+			<Settings/>
+			<Node Lib="SWGEmuSpaceNodes" Name="FindNextPosition" Type="LeafSpace" uid="145123387">
+				<Settings/>
+			</Node>
+		</Node>
+	</Node>
+	<Node BranchName="root" Lib="SWGEmuSpaceNodes" Name="SelectorSpace" Type="Composite" uid="763915188">
+		<Settings/>
+		<Node Lib="SWGEmuSpaceNodes" Name="TreeSocketSpace" Type="LeafSpace" uid="2765964998">
+			<Settings slot="MOVESPACE"/>
+		</Node>
+		<Node Lib="SWGEmuSpaceNodes" Name="TreeSocketSpace" Type="LeafSpace" uid="3409670866">
+			<Settings slot="IDLESPACE"/>
+		</Node>
+	</Node>
+</BehaviorTree>
