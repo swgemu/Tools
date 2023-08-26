@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTree version="1.3.0">
+	<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-2.0" sceneY="-216.0" uid="3878147956" vAuto="1" vx="0.0" vy="0.0">
+		<Node expanded="1" hAuto="1" hx="117.5" hy="-49.5" sceneX="-99.0" sceneY="-146.5" uid="4233020465" vAuto="1" vx="-97.0" vy="69.5">
+			<Node expanded="1" hAuto="1" hx="98.0" hy="0.0" sceneX="-99.0" sceneY="-77.0" uid="3024864836" vAuto="1" vx="0.0" vy="69.5">
+				<Condition expanded="1" hAuto="1" hx="114.0" hy="0.0" sceneX="-99.0" sceneY="-7.5" uid="1614536018" vAuto="1" vx="0.0" vy="69.5"/>
+			</Node>
+		</Node>
+		<Node expanded="1" hAuto="1" hx="117.5" hy="0.0" sceneX="14.0" sceneY="-146.5" uid="3826170193" vAuto="1" vx="16.0" vy="69.5">
+			<Node expanded="1" hAuto="1" hx="98.0" hy="0.0" sceneX="14.0" sceneY="-77.0" uid="1569932203" vAuto="1" vx="0.0" vy="69.5">
+				<Condition expanded="1" hAuto="1" hx="99.0" hy="0.0" sceneX="14.0" sceneY="-7.5" uid="1062834130" vAuto="1" vx="0.0" vy="69.5"/>
+			</Node>
+		</Node>
+		<Node expanded="1" hAuto="1" hx="117.5" hy="49.5" sceneX="111.0" sceneY="-146.5" uid="1111847443" vAuto="1" vx="113.0" vy="69.5"/>
+	</Node>
+	<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-16.0" sceneY="-235.0" uid="3162096793" vAuto="1" vx="0.0" vy="0.0">
+		<Node expanded="1" hAuto="1" hx="120.0" hy="-24.75" sceneX="-67.5" sceneY="-165.5" uid="3119158273" vAuto="1" vx="-51.5" vy="69.5">
+			<Condition expanded="1" hAuto="1" hx="123.5" hy="0.0" sceneX="-67.5" sceneY="-96.0" uid="311662512" vAuto="1" vx="0.0" vy="69.5"/>
+		</Node>
+		<Node expanded="1" hAuto="1" hx="120.0" hy="24.75" sceneX="37.0" sceneY="-165.5" uid="4219492080" vAuto="1" vx="53.0" vy="69.5">
+			<Node expanded="1" hAuto="1" hx="122.0" hy="0.0" sceneX="37.0" sceneY="-96.0" uid="145123387" vAuto="1" vx="0.0" vy="69.5"/>
+		</Node>
+	</Node>
+	<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-23.0" sceneY="-233.0" uid="763915188" vAuto="1" vx="0.0" vy="0.0">
+		<Node expanded="1" hAuto="1" hx="118.0" hy="-24.75" sceneX="-75.5" sceneY="-163.5" uid="2765964998" vAuto="1" vx="-52.5" vy="69.5"/>
+		<Node expanded="1" hAuto="1" hx="118.0" hy="24.75" sceneX="29.5" sceneY="-163.5" uid="3409670866" vAuto="1" vx="52.5" vy="69.5"/>
+	</Node>
+</BehaviorTree>
