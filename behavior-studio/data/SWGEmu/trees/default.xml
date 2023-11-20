@@ -761,6 +761,12 @@
 	</Node>
 	<Node BranchName="root" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="714360210">
 		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="934957231">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="4224133747">
+				<Settings slot="MOVE"/>
+			</Node>
+		</Node>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3684005064">
 			<Settings/>
 			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2242560418">
@@ -825,17 +831,8 @@
 						<Settings slot="ATTACK"/>
 					</Node>
 				</Node>
-				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3434357109">
-					<Settings/>
-					<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="2676240638">
-						<Settings key="moveMode" val="RUN"/>
-					</Node>
-					<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="4148461600">
-						<Settings/>
-						<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="4224133747">
-							<Settings slot="MOVE"/>
-						</Node>
-					</Node>
+				<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="2676240638">
+					<Settings key="moveMode" val="RUN"/>
 				</Node>
 			</Node>
 		</Node>
