@@ -263,6 +263,33 @@
 	</Node>
 	<Node BranchName="root" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="3448069951">
 		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3281848717">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2411220363">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1092511889">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3798852741">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckIsInCombat" Type="Single" uid="2561729607">
+							<Settings/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="300809128">
+						<Settings key="moveMode" val="RUN"/>
+					</Node>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="2814641736">
+					<Settings key="moveMod" val="WALK"/>
+				</Node>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="2744587752">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1512143592">
+					<Settings slot="MOVE"/>
+				</Node>
+			</Node>
+		</Node>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1535795012">
 			<Settings/>
 			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="3812183071">
@@ -277,41 +304,11 @@
 			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="4186622147">
 				<Settings slot="TARGET"/>
 			</Node>
-			<Node Lib="SWGEmuNodes" Name="ParallelSelector" Type="Composite" uid="9271994">
-				<Settings/>
-				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3801372768">
-					<Settings/>
-					<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1114709841">
-						<Settings slot="EQUIP"/>
-					</Node>
-					<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="417864954">
-						<Settings slot="ATTACK"/>
-					</Node>
-				</Node>
-				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2572943843">
-					<Settings/>
-					<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2411220363">
-						<Settings/>
-						<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1092511889">
-							<Settings/>
-							<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3798852741">
-								<Settings/>
-								<Condition Lib="SWGEmuNodes" Name="CheckIsInCombat" Type="Single" uid="2561729607">
-									<Settings/>
-								</Condition>
-							</Node>
-							<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="300809128">
-								<Settings key="moveMode" val="RUN"/>
-							</Node>
-						</Node>
-						<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="2814641736">
-							<Settings key="moveMod" val="WALK"/>
-						</Node>
-					</Node>
-					<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1512143592">
-						<Settings slot="MOVE"/>
-					</Node>
-				</Node>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1114709841">
+				<Settings slot="EQUIP"/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="417864954">
+				<Settings slot="ATTACK"/>
 			</Node>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="617162459">
