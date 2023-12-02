@@ -38,7 +38,7 @@ moveEscort = {
 	{id="2851757642",	name="Sequence",	pid="824192424"},
 	{id="2074092638",	name="If",	pid="2851757642"},
 	{id="2988186562",	name="CheckPosture",	pid="2074092638",	args={condition=UPRIGHT}},
-	{id="2120314997",	name="WriteBlackboard",	pid="2851757642",	args={key="moveMode", val=RUN}},
+	{id="2120314997",	name="WriteBlackboard",	pid="2851757642",	args={val=RUN, key="moveMode"}},
 	{id="3085578776",	name="FindNextPosition",	pid="2851757642"}}
 addAiTemplate("moveEscort", moveEscort)
 
@@ -47,14 +47,14 @@ runEscort = {
 	{id="911353460",	name="If",	pid="3097333621"},
 	{id="1225716325",	name="CheckIsEscort",	pid="911353460"},
 	{id="2773567267",	name="SetMovementState",	pid="3097333621",	args={state=FOLLOWING}},
-	{id="3216658477",	name="WriteBlackboard",	pid="3097333621",	args={key="moveMode", val=RUN}},
+	{id="3216658477",	name="WriteBlackboard",	pid="3097333621",	args={val=RUN, key="moveMode"}},
 	{id="3054819924",	name="TreeSocket",	pid="3097333621",	args={slot=MOVE}}}
 addAiTemplate("runEscort", runEscort)
 
 walkEscort = {
 	{id="437268100",	name="Selector",	pid="none"},
 	{id="1489268495",	name="Sequence",	pid="437268100"},
-	{id="4183990835",	name="WriteBlackboard",	pid="1489268495",	args={key="moveMode", val=WALK}},
+	{id="4183990835",	name="WriteBlackboard",	pid="1489268495",	args={val=WALK, key="moveMode"}},
 	{id="3093889889",	name="TreeSocket",	pid="1489268495",	args={slot=MOVE}},
 	{id="70283378",	name="Wait",	pid="437268100",	args={duration=-1.0}}}
 addAiTemplate("walkEscort", walkEscort)
