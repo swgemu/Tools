@@ -460,7 +460,7 @@
 			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="2896409758">
 				<Settings key="moveMode" val="WALK"/>
 			</Node>
-			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1424165865">
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="2040876794">
 				<Settings slot="MOVE"/>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="852586211">
@@ -763,8 +763,20 @@
 		<Settings/>
 		<Node Lib="SWGEmuNodes" Name="AlwaysFail" Type="Decorator" uid="934957231">
 			<Settings/>
-			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="4224133747">
-				<Settings slot="MOVE"/>
+			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3027533517">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="2803689147">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3803724493">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="1224859368">
+							<Settings condition="PATROLLING"/>
+						</Condition>
+					</Node>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="4224133747">
+					<Settings slot="MOVE"/>
+				</Node>
 			</Node>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3684005064">
