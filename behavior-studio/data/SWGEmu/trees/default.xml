@@ -900,7 +900,7 @@
 			</Condition>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="RunAway" Type="Leaf" uid="2633134651">
-			<Settings dist="32.0"/>
+			<Settings delay="30" dist="32.0"/>
 		</Node>
 	</Node>
 	<Node BranchName="stalk" Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1672513422">
