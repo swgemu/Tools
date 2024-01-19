@@ -338,6 +338,7 @@
       <description text="Runs distance dist modified by aggro radius and aggroMod (from blackboard) away from targetProspect on blackboard. Fails only if targetProspect isn't available."/>
       <shape name="ring"/>
       <events/>
+      <attribute type="int" name="delay" default="15" min="15" max="90" description=""/>
       <attribute type="float" name="dist" description="Distance to run."/>
     </node>
     <!---->

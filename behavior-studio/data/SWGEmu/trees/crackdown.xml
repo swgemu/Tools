@@ -109,15 +109,6 @@
 					<Settings/>
 				</Condition>
 			</Node>
-			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="4284793712">
-				<Settings/>
-				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2689461598">
-					<Settings/>
-					<Condition Lib="SWGEmuNodes" Name="CheckDestination" Type="Single" uid="973784086">
-						<Settings condition="0.0"/>
-					</Condition>
-				</Node>
-			</Node>
 			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="1532669256">
 				<Settings/>
 				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2821616316">
@@ -172,6 +163,12 @@
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1025565676">
 			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1931706343">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="3855939006">
+					<Settings condition="PATROLLING"/>
+				</Condition>
+			</Node>
 			<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="3326622834">
 				<Settings/>
 				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3071138585">
@@ -199,17 +196,8 @@
 			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3869875258">
 				<Settings slot="MOVE"/>
 			</Node>
-			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2586149198">
-				<Settings/>
-				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1931706343">
-					<Settings/>
-					<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="3855939006">
-						<Settings condition="PATROLLING"/>
-					</Condition>
-				</Node>
-				<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="3694126116">
-					<Settings duration="5.0"/>
-				</Node>
+			<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="3694126116">
+				<Settings duration="5.0"/>
 			</Node>
 		</Node>
 	</Node>
