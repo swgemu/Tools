@@ -52,9 +52,6 @@
 			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="1932903383">
 				<Settings key="attackType" val="DEFAULT"/>
 			</Node>
-			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="2322819263">
-				<Settings key="attackType" val="DEFAULT"/>
-			</Node>
 			<Node Lib="SWGEmuNodes" Name="EraseBlackboard" Type="Leaf" uid="1163120514">
 				<Settings param="attackType"/>
 			</Node>
