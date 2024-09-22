@@ -38,7 +38,8 @@ __email__ = 'dannuic@gmail.com'
 ############################################################################
 
 import os
-import regex as re
+##import regex as re
+import re
 
 def matchNamedBrackets(matchString):
     # interestingly, this could also work but apparently returns 3 empty

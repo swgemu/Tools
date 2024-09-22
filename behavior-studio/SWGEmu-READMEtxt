@@ -1,0 +1,20 @@
+Setup Instructions for SWGEmu
+
+1. Install Python27 32bit from here: https://www.python.org/ftp/python/2.7.18/python-2.7.18.msi
+	During Installation make sure pip is installed as well and Python27 is added to paths (bottom of options).
+
+2. Install pip for Python 2.7
+	Open PowerShell
+	cd to C:/Python27
+	Input: curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
+	Input: python get-pip.py
+	Make sure pip is installed with Input: python -m pip help
+
+3. From the same PowerShell terminal
+	Input: pip install PySide==1.2.2
+	Input: pip install lxml==3.4.4
+	Input: pip install -U sortedcontainers
+
+4. cd to the directory in which behavior_studio is checked out to.
+
+5. Input: ./run_behavior_studio.bat
