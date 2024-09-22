@@ -1,7 +1,11 @@
 Setup Instructions for SWGEmu
 
+Wiki: https://github.com/cas4ey/behavior-studio/wiki
+Setup Written using: https://github.com/cas4ey/behavior-studio/wiki/1.-Install
+
 1. Install Python27 32bit from here: https://www.python.org/ftp/python/2.7.18/python-2.7.18.msi
-	During Installation make sure pip is installed as well and Python27 is added to paths (bottom of options).
+	During Installation make sure pip is installed as well and Python27 select Add python.exe to Path. (bottom of options).
+	RESTART YOUR COMPUTER.
 
 2. Install pip for Python 2.7
 	Open PowerShell
@@ -18,3 +22,9 @@ Setup Instructions for SWGEmu
 4. cd to the directory in which behavior_studio is checked out to.
 
 5. Input: ./run_behavior_studio.bat
+	Select File, Open Project.
+	Navigate to data and then either SWGEmu or SWGEmuSpace directory for ground or space AI.
+	Then select the .btprof file within the selected directory.
+
+6. When changing any portion of the tree, upon selecting the disk to save, the application will output an updated Lua file.
+	Ensure to not push any Lua changes to Core3 without pushing the modified files from the selected directory to the Tools repository.
