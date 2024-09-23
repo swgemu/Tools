@@ -224,7 +224,6 @@
       <shape name="ring"/>
       <events/>
       <attribute type="float" name="aggroDelay" default="5.0" description=""/>
-      <attribute type="float" name="duration" description="Seconds to be alert. Should be positive."/>
     </node>
     <!---->
     <node class="Task" type="LeafSpace" name="SetDefenderFromProspect">
