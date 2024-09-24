@@ -41,10 +41,12 @@ evadeDefault = {
 	{id="4002815204",	name="IfSpace",	pid="2602567462"},
 	{id="2649809160",	name="CheckMovementState",	pid="4002815204",	args={condition=EVADING}},
 	{id="3017093125",	name="AlwaysSucceedSpace",	pid="2602567462"},
-	{id="2820082591",	name="SequenceSpace",	pid="3017093125"},
+	{id="3880616062",	name="SelectorSpace",	pid="3017093125"},
+	{id="2820082591",	name="SequenceSpace",	pid="3880616062"},
 	{id="2968774197",	name="IfSpace",	pid="2820082591"},
 	{id="666306794",	name="CheckStopEvading",	pid="2968774197"},
 	{id="1144510400",	name="SetMovementState",	pid="2820082591",	args={state=ATTACKING}},
+	{id="209398235",	name="TreeSocketSpace",	pid="3880616062",	args={slot=ATTACKSPACE}},
 	{id="688192376",	name="SequenceSpace",	pid="312238841"},
 	{id="3972827323",	name="IfSpace",	pid="688192376"},
 	{id="2565166350",	name="CheckEvadeChance",	pid="3972827323",	args={chance=10}},
@@ -60,7 +62,7 @@ idleDefault = {
 	{id="3521391142",	name="NotSpace",	pid="3154429038"},
 	{id="3390840483",	name="IfSpace",	pid="3521391142"},
 	{id="2770349133",	name="CheckHasPatrol",	pid="3390840483"},
-	{id="3954328391",	name="GeneratePatrol",	pid="3154429038",	args={distFromHome=256.0, numPoints=5}}}
+	{id="3954328391",	name="GeneratePatrol",	pid="3154429038",	args={distFromHome=1024.0, numPoints=5}}}
 addAiTemplate("idleDefault", idleDefault)
 
 lookDefault = {
