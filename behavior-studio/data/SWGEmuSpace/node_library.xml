@@ -44,8 +44,16 @@
       <events/>
     </node>
     <!---->
-    <node class="Task" type="LeafSpace" name="EngageTarget">
+    <node class="Task" type="LeafSpace" name="EngageSingleTarget">
       <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text=""/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Task" type="LeafSpace" name="EngageTurrets">
+      <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
       <description text=""/>
       <shape name="ring"/>
@@ -343,7 +351,7 @@
       <description text="Percent chance to evade attacker."/>
       <shape name="diamond"/>
       <events/>
-      <attribute type="uint" name="chance" description=""/>
+      <attribute type="int" name="condition" default="10" description=""/>
     </node>
     <!---->
     <node class="Condition" type="Single" name="CheckFlee">
@@ -546,6 +554,14 @@
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
       <description text="Checks that the proposed target (targetProspect on the blackboard) is valid."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckWeapons">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks to ensure the ship has valid weapons."/>
       <shape name="diamond"/>
       <events/>
     </node>

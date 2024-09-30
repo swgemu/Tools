@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTree version="1.3.0">
+	<Node BranchName="attack" Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="1295149021">
+		<Settings/>
+		<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="1337075883">
+			<Settings/>
+			<Condition Lib="SWGEmuSpaceNodes" Name="CheckRefireRate" Type="Single" uid="1839608236">
+				<Settings condition="500"/>
+			</Condition>
+		</Node>
+		<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="652020583">
+			<Settings/>
+			<Condition Lib="SWGEmuSpaceNodes" Name="CheckWeapons" Type="Single" uid="2624176723">
+				<Settings/>
+			</Condition>
+		</Node>
+		<Node Lib="SWGEmuSpaceNodes" Name="EngageTurrets" Type="LeafSpace" uid="1070459205">
+			<Settings/>
+		</Node>
+	</Node>
+</BehaviorTree>

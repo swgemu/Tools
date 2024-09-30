@@ -32,7 +32,13 @@
 				<Settings condition="500"/>
 			</Condition>
 		</Node>
-		<Node Lib="SWGEmuSpaceNodes" Name="EngageTarget" Type="LeafSpace" uid="2510868304">
+		<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="1982099467">
+			<Settings/>
+			<Condition Lib="SWGEmuSpaceNodes" Name="CheckWeapons" Type="Single" uid="930829653">
+				<Settings/>
+			</Condition>
+		</Node>
+		<Node Lib="SWGEmuSpaceNodes" Name="EngageSingleTarget" Type="LeafSpace" uid="2510868304">
 			<Settings/>
 		</Node>
 	</Node>
@@ -121,7 +127,7 @@
 			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="3972827323">
 				<Settings/>
 				<Condition Lib="SWGEmuSpaceNodes" Name="CheckEvadeChance" Type="Single" uid="2565166350">
-					<Settings chance="10"/>
+					<Settings condition="40"/>
 				</Condition>
 			</Node>
 			<Node Lib="SWGEmuSpaceNodes" Name="SetMovementState" Type="LeafSpace" uid="3110218052">
@@ -261,62 +267,65 @@
 			<Settings slot="IDLESPACE"/>
 		</Node>
 	</Node>
-	<Node BranchName="target" Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="295814316">
+	<Node BranchName="target" Lib="SWGEmuSpaceNodes" Name="SelectorSpace" Type="Composite" uid="1876748355">
 		<Settings/>
-		<Node Lib="SWGEmuSpaceNodes" Name="SelectorSpace" Type="Composite" uid="3051594756">
+		<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="2258474644">
 			<Settings/>
-			<Node Lib="SWGEmuSpaceNodes" Name="GetProspectFromThreatMap" Type="LeafSpace" uid="4219427160">
+			<Node Lib="SWGEmuSpaceNodes" Name="SelectorSpace" Type="Composite" uid="3051594756">
 				<Settings/>
-			</Node>
-			<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="1280314588">
-				<Settings/>
-				<Node Lib="SWGEmuSpaceNodes" Name="NotSpace" Type="DecoratorSpace" uid="1485266457">
-					<Settings/>
-					<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="3575964598">
-						<Settings/>
-						<Condition Lib="SWGEmuSpaceNodes" Name="CheckMovementState" Type="Single" uid="1056287644">
-							<Settings condition="FLEEING"/>
-						</Condition>
-					</Node>
-				</Node>
-				<Node Lib="SWGEmuSpaceNodes" Name="GetProspectFromDefenders" Type="LeafSpace" uid="260549053">
+				<Node Lib="SWGEmuSpaceNodes" Name="GetProspectFromThreatMap" Type="LeafSpace" uid="4219427160">
 					<Settings/>
 				</Node>
-			</Node>
-		</Node>
-		<Node Lib="SWGEmuSpaceNodes" Name="SelectorSpace" Type="Composite" uid="3669711549">
-			<Settings/>
-			<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="2292606827">
-				<Settings/>
-				<Node Lib="SWGEmuSpaceNodes" Name="NotSpace" Type="DecoratorSpace" uid="2668746033">
+				<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="1280314588">
 					<Settings/>
-					<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="1453715206">
+					<Node Lib="SWGEmuSpaceNodes" Name="NotSpace" Type="DecoratorSpace" uid="1485266457">
 						<Settings/>
-						<Condition Lib="SWGEmuSpaceNodes" Name="CheckTargetIsValid" Type="Single" uid="1228992601">
+						<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="3575964598">
 							<Settings/>
-						</Condition>
+							<Condition Lib="SWGEmuSpaceNodes" Name="CheckMovementState" Type="Single" uid="1056287644">
+								<Settings condition="FLEEING"/>
+							</Condition>
+						</Node>
 					</Node>
-				</Node>
-				<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="627960272">
-					<Settings/>
-					<Node Lib="SWGEmuSpaceNodes" Name="EraseBlackboard" Type="LeafSpace" uid="3767183712">
-						<Settings param="aggroMod"/>
-					</Node>
-					<Node Lib="SWGEmuSpaceNodes" Name="EraseBlackboard" Type="LeafSpace" uid="4195634024">
-						<Settings param="targetShipProspect"/>
-					</Node>
-					<Node Lib="SWGEmuSpaceNodes" Name="ExitCombat" Type="LeafSpace" uid="3661684207">
+					<Node Lib="SWGEmuSpaceNodes" Name="GetProspectFromDefenders" Type="LeafSpace" uid="260549053">
 						<Settings/>
 					</Node>
 				</Node>
-			</Node>
-			<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="3784699471">
-				<Settings/>
 				<Node Lib="SWGEmuSpaceNodes" Name="SetDefenderFromProspect" Type="LeafSpace" uid="3308935710">
 					<Settings/>
 				</Node>
-				<Node Lib="SWGEmuSpaceNodes" Name="SetMovementState" Type="LeafSpace" uid="3792515791">
-					<Settings state="ATTACKING"/>
+			</Node>
+			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="1453715206">
+				<Settings/>
+				<Condition Lib="SWGEmuSpaceNodes" Name="CheckTargetIsValid" Type="Single" uid="1228992601">
+					<Settings/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuSpaceNodes" Name="SetMovementState" Type="LeafSpace" uid="3792515791">
+				<Settings state="ATTACKING"/>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuSpaceNodes" Name="AlwaysFailSpace" Type="DecoratorSpace" uid="1283033720">
+			<Settings/>
+			<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="627960272">
+				<Settings/>
+				<Node Lib="SWGEmuSpaceNodes" Name="EraseBlackboard" Type="LeafSpace" uid="3767183712">
+					<Settings param="aggroMod"/>
+				</Node>
+				<Node Lib="SWGEmuSpaceNodes" Name="EraseBlackboard" Type="LeafSpace" uid="4195634024">
+					<Settings param="targetShipProspect"/>
+				</Node>
+				<Node Lib="SWGEmuSpaceNodes" Name="ExitCombat" Type="LeafSpace" uid="3661684207">
+					<Settings/>
+				</Node>
+				<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="3553364391">
+					<Settings/>
+					<Condition Lib="SWGEmuSpaceNodes" Name="CheckMovementState" Type="Single" uid="4107670032">
+						<Settings condition="ATTACKING"/>
+					</Condition>
+				</Node>
+				<Node Lib="SWGEmuSpaceNodes" Name="SetMovementState" Type="LeafSpace" uid="1537483837">
+					<Settings state="PATROLLING"/>
 				</Node>
 			</Node>
 		</Node>
