@@ -127,7 +127,7 @@
 			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="3972827323">
 				<Settings/>
 				<Condition Lib="SWGEmuSpaceNodes" Name="CheckEvadeChance" Type="Single" uid="2565166350">
-					<Settings condition="40"/>
+					<Settings/>
 				</Condition>
 			</Node>
 			<Node Lib="SWGEmuSpaceNodes" Name="SetMovementState" Type="LeafSpace" uid="3110218052">
