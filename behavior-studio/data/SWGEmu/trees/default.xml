@@ -129,6 +129,12 @@
 						<Settings condition="0.0"/>
 					</Condition>
 				</Node>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2140827718">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckProspectLOS" Type="Single" uid="1894016080">
+						<Settings/>
+					</Condition>
+				</Node>
 				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1533332073">
 					<Settings/>
 					<Condition Lib="SWGEmuNodes" Name="CheckIsCamouflaged" Type="Single" uid="1436716103">
@@ -355,6 +361,12 @@
 		<Settings/>
 		<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2638573300">
 			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="136283888">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="2230112002">
+					<Settings condition="LAIR_HEALING"/>
+				</Condition>
+			</Node>
 			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2194304589">
 				<Settings/>
 				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="2199358504">
@@ -641,12 +653,6 @@
 				</Condition>
 			</Node>
 		</Node>
-		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="1650016708">
-			<Settings/>
-			<Condition Lib="SWGEmuNodes" Name="CheckProspectLOS" Type="Single" uid="638753146">
-				<Settings/>
-			</Condition>
-		</Node>
 		<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="411818367">
 			<Settings/>
 			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3870509434">
@@ -776,6 +782,36 @@
 				</Node>
 			</Node>
 		</Node>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2623013711">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2922652730">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="4260218892">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckIsInCombat" Type="Single" uid="3359006747">
+						<Settings/>
+					</Condition>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="4245658935">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="795887328">
+						<Settings condition="LAIR_HEALING"/>
+					</Condition>
+				</Node>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="2181640478">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3921147734">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckPosture" Type="Single" uid="1163259085">
+						<Settings condition="KNOCKEDDOWN"/>
+					</Condition>
+				</Node>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="3121825781">
+				<Settings slot="HEAL"/>
+			</Node>
+		</Node>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3684005064">
 			<Settings/>
 			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2242560418">
@@ -793,20 +829,23 @@
 					</Condition>
 				</Node>
 			</Node>
-			<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="3093046551">
-				<Settings/>
-				<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1083123564">
-					<Settings slot="HEAL"/>
-				</Node>
-				<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="2192079094">
-					<Settings slot="NOTIFYHELP"/>
-				</Node>
+			<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="2192079094">
+				<Settings slot="NOTIFYHELP"/>
 			</Node>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="4192507528">
 			<Settings/>
 			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2466392703">
 				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="238747921">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2720795120">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="2802818979">
+							<Settings condition="LAIR_HEALING"/>
+						</Condition>
+					</Node>
+				</Node>
 				<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="217738262">
 					<Settings/>
 					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2153845340">
@@ -887,12 +926,6 @@
 		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="4278456295">
 			<Settings/>
 			<Condition Lib="SWGEmuNodes" Name="CheckProspectFacing" Type="Single" uid="4154513359">
-				<Settings/>
-			</Condition>
-		</Node>
-		<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3009279984">
-			<Settings/>
-			<Condition Lib="SWGEmuNodes" Name="CheckProspectLOS" Type="Single" uid="1391512006">
 				<Settings/>
 			</Condition>
 		</Node>
