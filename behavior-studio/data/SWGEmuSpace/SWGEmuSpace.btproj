@@ -7,4 +7,5 @@
 	<behavior_tree path="trees/spaceStations.xml"/>
 	<behavior_tree path="trees/escort.xml"/>
 	<behavior_tree path="trees/turretship.xml"/>
+	<behavior_tree path="trees/waveAttack.xml"/>
 </btproject>

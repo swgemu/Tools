@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTree version="1.3.0">
+	<Node BranchName="move" Lib="SWGEmuSpaceNodes" Name="SelectorSpace" Type="Composite" uid="2047096269">
+		<Settings/>
+		<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="2726820896">
+			<Settings/>
+			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="3499818116">
+				<Settings/>
+				<Condition Lib="SWGEmuSpaceNodes" Name="CheckEnginesDisabled" Type="Single" uid="3004739680">
+					<Settings/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuSpaceNodes" Name="SetDisabledEngineSpeed" Type="LeafSpace" uid="2694634428">
+				<Settings/>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="1232766482">
+			<Settings/>
+			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="2548093309">
+				<Settings/>
+				<Condition Lib="SWGEmuSpaceNodes" Name="CheckDestination" Type="Single" uid="2990870941">
+					<Settings/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuSpaceNodes" Name="AlwaysFailSpace" Type="DecoratorSpace" uid="1338767648">
+				<Settings/>
+				<Node Lib="SWGEmuSpaceNodes" Name="FindNextPosition" Type="LeafSpace" uid="4112371132">
+					<Settings/>
+				</Node>
+			</Node>
+		</Node>
+	</Node>
+</BehaviorTree>
