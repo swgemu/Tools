@@ -14,6 +14,12 @@
 				<Settings/>
 			</Node>
 		</Node>
+		<Node Lib="SWGEmuSpaceNodes" Name="AlwaysFailSpace" Type="DecoratorSpace" uid="3189833348">
+			<Settings/>
+			<Node Lib="SWGEmuSpaceNodes" Name="UpdateHomePosition" Type="LeafSpace" uid="2103241960">
+				<Settings useTargetPosition="1"/>
+			</Node>
+		</Node>
 		<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="1232766482">
 			<Settings/>
 			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="2548093309">

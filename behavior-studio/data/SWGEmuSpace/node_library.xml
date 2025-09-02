@@ -284,6 +284,15 @@
       <events/>
     </node>
     <!---->
+    <node class="Task" type="LeafSpace" name="UpdateHomePosition">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Updates the ship agents home location to the ships current position or the targets position for wave attack ships, to allow movement positions to properly calculate based off of current home position."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="bool" name="useTargetPosition" description=""/>
+    </node>
+    <!---->
     <node class="Task" type="LeafSpace" name="Wait">
       <children class="Task" use="no"/>
       <children class="Condition" use="no"/>
