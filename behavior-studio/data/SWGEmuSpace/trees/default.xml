@@ -8,12 +8,6 @@
 				<Settings/>
 			</Condition>
 		</Node>
-		<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="3897258376">
-			<Settings/>
-			<Condition Lib="SWGEmuSpaceNodes" Name="CheckProspectInRange" Type="Single" uid="487075687">
-				<Settings/>
-			</Condition>
-		</Node>
 		<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="2593013780">
 			<Settings/>
 			<Condition Lib="SWGEmuSpaceNodes" Name="CheckProspectLOS" Type="Single" uid="2407318360">
@@ -22,6 +16,9 @@
 		</Node>
 		<Node Lib="SWGEmuSpaceNodes" Name="SetDefenderFromProspect" Type="LeafSpace" uid="908237602">
 			<Settings/>
+		</Node>
+		<Node Lib="SWGEmuSpaceNodes" Name="SetMovementState" Type="LeafSpace" uid="308570118">
+			<Settings state="ATTACKING"/>
 		</Node>
 	</Node>
 	<Node BranchName="attack" Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="1824859964">

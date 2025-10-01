@@ -312,6 +312,16 @@
       <attribute type="text" name="val" description="Value to store under key -- this should be an available enum value. TODO -- add all available enumerations?"/>
     </node>
     <!---->
+    <node class="Task" type="Leaf" name="WriteBlackboardFloat">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="Writes a float key/value pair to the blackboard. Always succeeds."/>
+      <shape name="ring"/>
+      <events/>
+      <attribute type="string" name="key" description=""/>
+      <attribute type="float" name="val" default="0.5" description=""/>
+    </node>
+    <!---->
     <!-- ********************************************************************************************************* -->
     <!-- CONDITIONS -->
     <node class="Condition" type="Single" name="CheckAggroDelayPast">
