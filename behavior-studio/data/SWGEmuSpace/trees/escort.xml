@@ -11,22 +11,40 @@
 				</Condition>
 			</Node>
 		</Node>
+		<Node Lib="SWGEmuSpaceNodes" Name="SetMovementState" Type="LeafSpace" uid="4198534688">
+			<Settings state="PATROLLING"/>
+		</Node>
 		<Node Lib="SWGEmuSpaceNodes" Name="GeneratePatrol" Type="LeafSpace" uid="1111847443">
 			<Settings distFromHome="256.0" numPoints="5"/>
 		</Node>
 	</Node>
-	<Node BranchName="move" Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="3162096793">
+	<Node BranchName="move" Lib="SWGEmuSpaceNodes" Name="AlwaysFailSpace" Type="DecoratorSpace" uid="3227698097">
 		<Settings/>
-		<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="3119158273">
+		<Node Lib="SWGEmuSpaceNodes" Name="SelectorSpace" Type="Composite" uid="2674448538">
 			<Settings/>
-			<Condition Lib="SWGEmuSpaceNodes" Name="CheckDestination" Type="Single" uid="311662512">
+			<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="2722319745">
 				<Settings/>
-			</Condition>
-		</Node>
-		<Node Lib="SWGEmuSpaceNodes" Name="AlwaysFailSpace" Type="DecoratorSpace" uid="4219492080">
-			<Settings/>
-			<Node Lib="SWGEmuSpaceNodes" Name="FindNextPosition" Type="LeafSpace" uid="145123387">
+				<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="2982140199">
+					<Settings/>
+					<Condition Lib="SWGEmuSpaceNodes" Name="CheckShipDisabled" Type="Single" uid="3127822930">
+						<Settings/>
+					</Condition>
+				</Node>
+				<Node Lib="SWGEmuSpaceNodes" Name="SetDisabledEngineSpeed" Type="LeafSpace" uid="726138919">
+					<Settings/>
+				</Node>
+			</Node>
+			<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="3162096793">
 				<Settings/>
+				<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="3119158273">
+					<Settings/>
+					<Condition Lib="SWGEmuSpaceNodes" Name="CheckDestination" Type="Single" uid="311662512">
+						<Settings/>
+					</Condition>
+				</Node>
+				<Node Lib="SWGEmuSpaceNodes" Name="FindNextPosition" Type="LeafSpace" uid="145123387">
+					<Settings/>
+				</Node>
 			</Node>
 		</Node>
 	</Node>

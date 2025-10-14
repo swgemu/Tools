@@ -97,26 +97,14 @@
 					<Settings condition="EVADING"/>
 				</Condition>
 			</Node>
-			<Node Lib="SWGEmuSpaceNodes" Name="AlwaysSucceedSpace" Type="DecoratorSpace" uid="3017093125">
+			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="2968774197">
 				<Settings/>
-				<Node Lib="SWGEmuSpaceNodes" Name="SelectorSpace" Type="Composite" uid="3880616062">
+				<Condition Lib="SWGEmuSpaceNodes" Name="CheckStopEvading" Type="Single" uid="666306794">
 					<Settings/>
-					<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="2820082591">
-						<Settings/>
-						<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="2968774197">
-							<Settings/>
-							<Condition Lib="SWGEmuSpaceNodes" Name="CheckStopEvading" Type="Single" uid="666306794">
-								<Settings/>
-							</Condition>
-						</Node>
-						<Node Lib="SWGEmuSpaceNodes" Name="SetMovementState" Type="LeafSpace" uid="1144510400">
-							<Settings state="ATTACKING"/>
-						</Node>
-					</Node>
-					<Node Lib="SWGEmuSpaceNodes" Name="TreeSocketSpace" Type="LeafSpace" uid="209398235">
-						<Settings slot="ATTACKSPACE"/>
-					</Node>
-				</Node>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuSpaceNodes" Name="SetMovementState" Type="LeafSpace" uid="1144510400">
+				<Settings state="ATTACKING"/>
 			</Node>
 		</Node>
 		<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="688192376">
@@ -186,22 +174,16 @@
 			</Node>
 		</Node>
 	</Node>
-	<Node BranchName="move" Lib="SWGEmuSpaceNodes" Name="SelectorSpace" Type="Composite" uid="438025397">
+	<Node BranchName="move" Lib="SWGEmuSpaceNodes" Name="SelectorSpace" Type="Composite" uid="737776424">
 		<Settings/>
-		<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="807381555">
+		<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="2561598181">
 			<Settings/>
-			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="3765071638">
+			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="1903740331">
 				<Settings/>
-				<Condition Lib="SWGEmuSpaceNodes" Name="CheckEnginesDisabled" Type="Single" uid="1573749740">
+				<Condition Lib="SWGEmuSpaceNodes" Name="CheckEngineSpeed" Type="Single" uid="871654547">
 					<Settings/>
 				</Condition>
 			</Node>
-			<Node Lib="SWGEmuSpaceNodes" Name="SetDisabledEngineSpeed" Type="LeafSpace" uid="1831944128">
-				<Settings/>
-			</Node>
-		</Node>
-		<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="2561598181">
-			<Settings/>
 			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="904574168">
 				<Settings/>
 				<Condition Lib="SWGEmuSpaceNodes" Name="CheckRetreat" Type="Single" uid="323979800">
@@ -215,18 +197,33 @@
 				<Settings/>
 			</Node>
 		</Node>
-		<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="368441587">
+		<Node Lib="SWGEmuSpaceNodes" Name="AlwaysFailSpace" Type="DecoratorSpace" uid="3694068757">
 			<Settings/>
-			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="3848206840">
+			<Node Lib="SWGEmuSpaceNodes" Name="SelectorSpace" Type="Composite" uid="3770487453">
 				<Settings/>
-				<Condition Lib="SWGEmuSpaceNodes" Name="CheckDestination" Type="Single" uid="539785228">
+				<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="1971265470">
 					<Settings/>
-				</Condition>
-			</Node>
-			<Node Lib="SWGEmuSpaceNodes" Name="AlwaysFailSpace" Type="DecoratorSpace" uid="910186084">
-				<Settings/>
-				<Node Lib="SWGEmuSpaceNodes" Name="FindNextPosition" Type="LeafSpace" uid="1331314218">
+					<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="4059445686">
+						<Settings/>
+						<Condition Lib="SWGEmuSpaceNodes" Name="CheckShipDisabled" Type="Single" uid="1232444497">
+							<Settings/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuSpaceNodes" Name="SetDisabledEngineSpeed" Type="LeafSpace" uid="286243758">
+						<Settings/>
+					</Node>
+				</Node>
+				<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="368441587">
 					<Settings/>
+					<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="3848206840">
+						<Settings/>
+						<Condition Lib="SWGEmuSpaceNodes" Name="CheckDestination" Type="Single" uid="539785228">
+							<Settings/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuSpaceNodes" Name="FindNextPosition" Type="LeafSpace" uid="1331314218">
+						<Settings/>
+					</Node>
 				</Node>
 			</Node>
 		</Node>
@@ -236,8 +233,20 @@
 		<Node Lib="SWGEmuSpaceNodes" Name="TreeSocketSpace" Type="LeafSpace" uid="1729558672">
 			<Settings slot="MOVESPACE"/>
 		</Node>
-		<Node Lib="SWGEmuSpaceNodes" Name="TreeSocketSpace" Type="LeafSpace" uid="1447247403">
-			<Settings slot="EVADESPACE"/>
+		<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="2962550237">
+			<Settings/>
+			<Node Lib="SWGEmuSpaceNodes" Name="NotSpace" Type="DecoratorSpace" uid="464210289">
+				<Settings/>
+				<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="2157444133">
+					<Settings/>
+					<Condition Lib="SWGEmuSpaceNodes" Name="CheckShipDisabled" Type="Single" uid="1367447894">
+						<Settings/>
+					</Condition>
+				</Node>
+			</Node>
+			<Node Lib="SWGEmuSpaceNodes" Name="TreeSocketSpace" Type="LeafSpace" uid="1447247403">
+				<Settings slot="EVADESPACE"/>
+			</Node>
 		</Node>
 		<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="4225713865">
 			<Settings/>

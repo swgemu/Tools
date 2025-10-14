@@ -3,15 +3,21 @@ idleEscort = {
 	{id="3826170193",	name="NotSpace",	pid="3878147956"},
 	{id="1569932203",	name="IfSpace",	pid="3826170193"},
 	{id="1062834130",	name="CheckHasPatrol",	pid="1569932203"},
+	{id="4198534688",	name="SetMovementState",	pid="3878147956",	args={state=PATROLLING}},
 	{id="1111847443",	name="GeneratePatrol",	pid="3878147956",	args={distFromHome=256.0, numPoints=5}}}
 addAiTemplate("idleEscort", idleEscort)
 
 moveEscort = {
-	{id="3162096793",	name="SequenceSpace",	pid="none"},
+	{id="3227698097",	name="AlwaysFailSpace",	pid="none"},
+	{id="2674448538",	name="SelectorSpace",	pid="3227698097"},
+	{id="2722319745",	name="SequenceSpace",	pid="2674448538"},
+	{id="2982140199",	name="IfSpace",	pid="2722319745"},
+	{id="3127822930",	name="CheckShipDisabled",	pid="2982140199"},
+	{id="726138919",	name="SetDisabledEngineSpeed",	pid="2722319745"},
+	{id="3162096793",	name="SequenceSpace",	pid="2674448538"},
 	{id="3119158273",	name="IfSpace",	pid="3162096793"},
 	{id="311662512",	name="CheckDestination",	pid="3119158273"},
-	{id="4219492080",	name="AlwaysFailSpace",	pid="3162096793"},
-	{id="145123387",	name="FindNextPosition",	pid="4219492080"}}
+	{id="145123387",	name="FindNextPosition",	pid="3162096793"}}
 addAiTemplate("moveEscort", moveEscort)
 
 rootEscort = {

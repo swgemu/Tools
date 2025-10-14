@@ -356,10 +356,10 @@
       <events/>
     </node>
     <!---->
-    <node class="Condition" type="Single" name="CheckEnginesDisabled">
+    <node class="Condition" type="Single" name="CheckEngineSpeed">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
-      <description text="Returns true if the ships engines have been disabled."/>
+      <description text="Returns true if the engine speed is greater then 0.f."/>
       <shape name="diamond"/>
       <events/>
     </node>
@@ -549,6 +549,14 @@
       <shape name="diamond"/>
       <events/>
       <attribute type="int" name="condition" default="1500" description=""/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckShipDisabled">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Returns true if the ships engines have been disabled."/>
+      <shape name="diamond"/>
+      <events/>
     </node>
     <!---->
     <node class="Condition" type="Single" name="CheckSpeed">

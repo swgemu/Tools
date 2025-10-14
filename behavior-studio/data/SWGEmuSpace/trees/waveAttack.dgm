@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <BehaviorTree version="1.3.0">
-	<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="0.0" sceneY="-163.0" uid="2047096269" vAuto="1" vx="0.0" vy="0.0">
-		<Node expanded="1" hAuto="1" hx="116.0" hy="-74.25" sceneX="-165.5" sceneY="-93.5" uid="2726820896" vAuto="1" vx="-165.5" vy="69.5">
-			<Node expanded="1" hAuto="1" hx="141.0" hy="-24.75" sceneX="-236.0" sceneY="-24.0" uid="3499818116" vAuto="1" vx="-70.5" vy="69.5">
-				<Condition expanded="1" hAuto="1" hx="155.0" hy="0.0" sceneX="-236.0" sceneY="45.5" uid="3004739680" vAuto="1" vx="0.0" vy="69.5"/>
+	<Node expanded="1" hAuto="1" hx="0.0" hy="0.0" sceneX="-13.44" sceneY="-252.16" uid="250448126" vAuto="1" vx="0.0" vy="0.0">
+		<Node expanded="1" hAuto="1" hx="111.0" hy="0.0" sceneX="-13.44" sceneY="-183.16" uid="2047096269" vAuto="1" vx="0.0" vy="69.0">
+			<Node expanded="1" hAuto="1" hx="111.0" hy="-73.5" sceneX="-170.94" sceneY="-114.16" uid="2726820896" vAuto="1" vx="-157.5" vy="69.0">
+				<Node expanded="1" hAuto="1" hx="134.5" hy="-24.5" sceneX="-237.44" sceneY="-45.16" uid="3499818116" vAuto="1" vx="-66.5" vy="69.0">
+					<Condition expanded="1" hAuto="1" hx="141.0" hy="0.0" sceneX="-237.44" sceneY="23.84" uid="3004739680" vAuto="1" vx="0.0" vy="69.0"/>
+				</Node>
+				<Node expanded="1" hAuto="1" hx="134.5" hy="24.5" sceneX="-116.44" sceneY="-45.16" uid="2694634428" vAuto="1" vx="54.5" vy="69.0"/>
 			</Node>
-			<Node expanded="1" hAuto="1" hx="141.0" hy="24.75" sceneX="-101.0" sceneY="-24.0" uid="2694634428" vAuto="1" vx="64.5" vy="69.5"/>
-		</Node>
-		<Node expanded="1" hAuto="1" hx="116.0" hy="0.0" sceneX="30.5" sceneY="-93.5" uid="3189833348" vAuto="1" vx="30.5" vy="69.5">
-			<Node expanded="1" hAuto="1" hx="131.5" hy="0.0" sceneX="30.5" sceneY="-24.0" uid="2103241960" vAuto="1" vx="0.0" vy="69.5"/>
-		</Node>
-		<Node expanded="1" hAuto="1" hx="116.0" hy="74.25" sceneX="196.0" sceneY="-93.5" uid="1232766482" vAuto="1" vx="196.0" vy="69.5">
-			<Node expanded="1" hAuto="1" hx="121.0" hy="-24.75" sceneX="144.5" sceneY="-24.0" uid="2548093309" vAuto="1" vx="-51.5" vy="69.5">
-				<Condition expanded="1" hAuto="1" hx="123.5" hy="0.0" sceneX="144.5" sceneY="45.5" uid="2990870941" vAuto="1" vx="0.0" vy="69.5"/>
+			<Node expanded="1" hAuto="1" hx="111.0" hy="0.0" sceneX="8.06" sceneY="-114.16" uid="2357046776" vAuto="1" vx="21.5" vy="69.0">
+				<Node expanded="1" hAuto="1" hx="126.0" hy="0.0" sceneX="8.06" sceneY="-45.16" uid="2103241960" vAuto="1" vx="0.0" vy="69.0"/>
 			</Node>
-			<Node expanded="1" hAuto="1" hx="121.0" hy="24.75" sceneX="249.0" sceneY="-24.0" uid="1338767648" vAuto="1" vx="53.0" vy="69.5">
-				<Node expanded="1" hAuto="1" hx="122.0" hy="0.0" sceneX="249.0" sceneY="45.5" uid="4112371132" vAuto="1" vx="0.0" vy="69.5"/>
+			<Node expanded="1" hAuto="1" hx="111.0" hy="73.5" sceneX="165.56" sceneY="-114.16" uid="1232766482" vAuto="1" vx="179.0" vy="69.0">
+				<Node expanded="1" hAuto="1" hx="117.0" hy="-24.5" sceneX="116.56" sceneY="-45.16" uid="2548093309" vAuto="1" vx="-49.0" vy="69.0">
+					<Condition expanded="1" hAuto="1" hx="119.5" hy="0.0" sceneX="116.56" sceneY="23.84" uid="2990870941" vAuto="1" vx="0.0" vy="69.0"/>
+				</Node>
+				<Node expanded="1" hAuto="1" hx="117.0" hy="24.5" sceneX="216.06" sceneY="-45.16" uid="4112371132" vAuto="1" vx="50.5" vy="69.0"/>
 			</Node>
 		</Node>
 	</Node>
