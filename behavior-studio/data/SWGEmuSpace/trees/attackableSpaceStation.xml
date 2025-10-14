@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTree version="1.3.0">
+	<Node BranchName="idle" Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="3514328923">
+		<Settings/>
+	</Node>
+</BehaviorTree>

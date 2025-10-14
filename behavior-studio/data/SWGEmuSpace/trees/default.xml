@@ -146,6 +146,18 @@
 		<Node Lib="SWGEmuSpaceNodes" Name="GeneratePatrol" Type="LeafSpace" uid="3954328391">
 			<Settings distFromHome="1024.0" numPoints="5"/>
 		</Node>
+		<Node Lib="SWGEmuSpaceNodes" Name="NotSpace" Type="DecoratorSpace" uid="2466828617">
+			<Settings/>
+			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="1745513383">
+				<Settings/>
+				<Condition Lib="SWGEmuSpaceNodes" Name="CheckMovementState" Type="Single" uid="3719992652">
+					<Settings condition="WATCHING"/>
+				</Condition>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuSpaceNodes" Name="SetMovementState" Type="LeafSpace" uid="2700262997">
+			<Settings state="PATROLLING"/>
+		</Node>
 	</Node>
 	<Node BranchName="look" Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="2349982047">
 		<Settings/>

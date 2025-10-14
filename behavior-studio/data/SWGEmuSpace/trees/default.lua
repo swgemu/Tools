@@ -59,7 +59,11 @@ idleDefault = {
 	{id="3521391142",	name="NotSpace",	pid="3154429038"},
 	{id="3390840483",	name="IfSpace",	pid="3521391142"},
 	{id="2770349133",	name="CheckHasPatrol",	pid="3390840483"},
-	{id="3954328391",	name="GeneratePatrol",	pid="3154429038",	args={distFromHome=1024.0, numPoints=5}}}
+	{id="3954328391",	name="GeneratePatrol",	pid="3154429038",	args={distFromHome=1024.0, numPoints=5}},
+	{id="2466828617",	name="NotSpace",	pid="3154429038"},
+	{id="1745513383",	name="IfSpace",	pid="2466828617"},
+	{id="3719992652",	name="CheckMovementState",	pid="1745513383",	args={condition=WATCHING}},
+	{id="2700262997",	name="SetMovementState",	pid="3154429038",	args={state=PATROLLING}}}
 addAiTemplate("idleDefault", idleDefault)
 
 lookDefault = {

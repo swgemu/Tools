@@ -8,4 +8,5 @@
 	<behavior_tree path="trees/escort.xml"/>
 	<behavior_tree path="trees/turretship.xml"/>
 	<behavior_tree path="trees/waveAttack.xml"/>
+	<behavior_tree path="trees/attackableSpaceStation.xml"/>
 </btproject>
