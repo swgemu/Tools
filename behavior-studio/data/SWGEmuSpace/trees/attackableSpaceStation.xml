@@ -3,4 +3,31 @@
 	<Node BranchName="idle" Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="3514328923">
 		<Settings/>
 	</Node>
+	<Node BranchName="root" Lib="SWGEmuSpaceNodes" Name="SelectorSpace" Type="Composite" uid="3348004110">
+		<Settings/>
+		<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="372913136">
+			<Settings/>
+			<Node Lib="SWGEmuSpaceNodes" Name="SelectorSpace" Type="Composite" uid="567071168">
+				<Settings/>
+				<Node Lib="SWGEmuSpaceNodes" Name="TreeSocketSpace" Type="LeafSpace" uid="2982020736">
+					<Settings slot="TARGETSPACE"/>
+				</Node>
+				<Node Lib="SWGEmuSpaceNodes" Name="TreeSocketSpace" Type="LeafSpace" uid="2089452580">
+					<Settings slot="AWARESPACE"/>
+				</Node>
+				<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="3500631497">
+					<Settings/>
+					<Condition Lib="SWGEmuSpaceNodes" Name="CheckMovementState" Type="Single" uid="3281121397">
+						<Settings condition="ATTACKING"/>
+					</Condition>
+				</Node>
+			</Node>
+			<Node Lib="SWGEmuSpaceNodes" Name="TreeSocketSpace" Type="LeafSpace" uid="3575304462">
+				<Settings slot="ATTACKSPACE"/>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuSpaceNodes" Name="TreeSocketSpace" Type="LeafSpace" uid="2155200216">
+			<Settings slot="IDLESPACE"/>
+		</Node>
+	</Node>
 </BehaviorTree>
