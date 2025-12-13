@@ -872,8 +872,11 @@
 				<Settings/>
 				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3085594992">
 					<Settings/>
-					<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="2197461733">
-						<Settings slot="EQUIP"/>
+					<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="4005807570">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="2197461733">
+							<Settings slot="EQUIP"/>
+						</Node>
 					</Node>
 					<Node Lib="SWGEmuNodes" Name="TreeSocket" Type="Leaf" uid="1754584012">
 						<Settings slot="ATTACK"/>
