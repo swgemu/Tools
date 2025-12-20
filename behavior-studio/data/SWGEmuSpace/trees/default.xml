@@ -97,18 +97,30 @@
 					<Settings condition="EVADING"/>
 				</Condition>
 			</Node>
-			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="2968774197">
+			<Node Lib="SWGEmuSpaceNodes" Name="AlwaysSucceedSpace" Type="DecoratorSpace" uid="100606749">
 				<Settings/>
-				<Condition Lib="SWGEmuSpaceNodes" Name="CheckStopEvading" Type="Single" uid="666306794">
+				<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="1224718405">
 					<Settings/>
-				</Condition>
-			</Node>
-			<Node Lib="SWGEmuSpaceNodes" Name="SetMovementState" Type="LeafSpace" uid="1144510400">
-				<Settings state="ATTACKING"/>
+					<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="2968774197">
+						<Settings/>
+						<Condition Lib="SWGEmuSpaceNodes" Name="CheckStopEvading" Type="Single" uid="666306794">
+							<Settings/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuSpaceNodes" Name="SetMovementState" Type="LeafSpace" uid="1144510400">
+						<Settings state="ATTACKING"/>
+					</Node>
+				</Node>
 			</Node>
 		</Node>
 		<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="688192376">
 			<Settings/>
+			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="4108545327">
+				<Settings/>
+				<Condition Lib="SWGEmuSpaceNodes" Name="CheckMovementState" Type="Single" uid="3895790068">
+					<Settings condition="ATTACKING"/>
+				</Condition>
+			</Node>
 			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="3972827323">
 				<Settings/>
 				<Condition Lib="SWGEmuSpaceNodes" Name="CheckEvadeChance" Type="Single" uid="2565166350">
@@ -125,6 +137,15 @@
 	</Node>
 	<Node BranchName="idle" Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="3154429038">
 		<Settings/>
+		<Node Lib="SWGEmuSpaceNodes" Name="NotSpace" Type="DecoratorSpace" uid="1969087292">
+			<Settings/>
+			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="3447089863">
+				<Settings/>
+				<Condition Lib="SWGEmuSpaceNodes" Name="CheckMovementState" Type="Single" uid="1710296524">
+					<Settings condition="EVADING"/>
+				</Condition>
+			</Node>
+		</Node>
 		<Node Lib="SWGEmuSpaceNodes" Name="NotSpace" Type="DecoratorSpace" uid="2950938112">
 			<Settings/>
 			<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="1976821924">
@@ -245,25 +266,25 @@
 		<Node Lib="SWGEmuSpaceNodes" Name="TreeSocketSpace" Type="LeafSpace" uid="1729558672">
 			<Settings slot="MOVESPACE"/>
 		</Node>
-		<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="2962550237">
-			<Settings/>
-			<Node Lib="SWGEmuSpaceNodes" Name="NotSpace" Type="DecoratorSpace" uid="464210289">
-				<Settings/>
-				<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="2157444133">
-					<Settings/>
-					<Condition Lib="SWGEmuSpaceNodes" Name="CheckShipDisabled" Type="Single" uid="1367447894">
-						<Settings/>
-					</Condition>
-				</Node>
-			</Node>
-			<Node Lib="SWGEmuSpaceNodes" Name="TreeSocketSpace" Type="LeafSpace" uid="1447247403">
-				<Settings slot="EVADESPACE"/>
-			</Node>
-		</Node>
 		<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="4225713865">
 			<Settings/>
 			<Node Lib="SWGEmuSpaceNodes" Name="SelectorSpace" Type="Composite" uid="2182549780">
 				<Settings/>
+				<Node Lib="SWGEmuSpaceNodes" Name="SequenceSpace" Type="Composite" uid="2962550237">
+					<Settings/>
+					<Node Lib="SWGEmuSpaceNodes" Name="NotSpace" Type="DecoratorSpace" uid="464210289">
+						<Settings/>
+						<Node Lib="SWGEmuSpaceNodes" Name="IfSpace" Type="LeafSpace" uid="2157444133">
+							<Settings/>
+							<Condition Lib="SWGEmuSpaceNodes" Name="CheckShipDisabled" Type="Single" uid="1367447894">
+								<Settings/>
+							</Condition>
+						</Node>
+					</Node>
+					<Node Lib="SWGEmuSpaceNodes" Name="TreeSocketSpace" Type="LeafSpace" uid="1447247403">
+						<Settings slot="EVADESPACE"/>
+					</Node>
+				</Node>
 				<Node Lib="SWGEmuSpaceNodes" Name="TreeSocketSpace" Type="LeafSpace" uid="763273353">
 					<Settings slot="TARGETSPACE"/>
 				</Node>
