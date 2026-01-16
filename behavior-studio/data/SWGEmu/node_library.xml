@@ -663,6 +663,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Condition" type="Single" name="CheckIsBaby">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks for the ceatureBitmask BABY."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Condition" type="Single" name="CheckIsCamouflaged">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>

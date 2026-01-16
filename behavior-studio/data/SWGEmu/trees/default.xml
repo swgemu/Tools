@@ -168,6 +168,15 @@
 						<Settings/>
 						<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="188522178">
 							<Settings/>
+							<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="171908096">
+								<Settings/>
+								<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3772624234">
+									<Settings/>
+									<Condition Lib="SWGEmuNodes" Name="CheckIsBaby" Type="Single" uid="1015646603">
+										<Settings/>
+									</Condition>
+								</Node>
+							</Node>
 							<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2785404516">
 								<Settings/>
 								<Condition Lib="SWGEmuNodes" Name="CheckAggroDelayPast" Type="Single" uid="178753499">
@@ -1088,16 +1097,16 @@
 				<Settings/>
 				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1092122064">
 					<Settings/>
-					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="760406382">
-						<Settings/>
-						<Condition Lib="SWGEmuNodes" Name="CheckFollowHasState" Type="Single" uid="1263807142">
-							<Settings condition="PEACE"/>
-						</Condition>
-					</Node>
 					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3243539519">
 						<Settings/>
 						<Condition Lib="SWGEmuNodes" Name="CheckRandomLevel" Type="Single" uid="907649009">
 							<Settings condition="1"/>
+						</Condition>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="760406382">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckFollowHasState" Type="Single" uid="1263807142">
+							<Settings condition="PEACE"/>
 						</Condition>
 					</Node>
 					<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="4235079436">
@@ -1109,8 +1118,17 @@
 							</Condition>
 						</Node>
 					</Node>
-					<Node Lib="SWGEmuNodes" Name="ExitCombat" Type="Leaf" uid="2102245599">
-						<Settings clearDefenders="1"/>
+					<Node Lib="SWGEmuNodes" Name="ParallelSequence" Type="Composite" uid="997144981">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="ExitCombat" Type="Leaf" uid="2102245599">
+							<Settings clearDefenders="1"/>
+						</Node>
+						<Node Lib="SWGEmuNodes" Name="DropProspectFromDefenders" Type="Leaf" uid="2601112466">
+							<Settings/>
+						</Node>
+						<Node Lib="SWGEmuNodes" Name="EraseBlackboard" Type="Leaf" uid="890872896">
+							<Settings param="targetProspect"/>
+						</Node>
 					</Node>
 				</Node>
 			</Node>
@@ -1128,8 +1146,17 @@
 						</Condition>
 					</Node>
 				</Node>
-				<Node Lib="SWGEmuNodes" Name="ExitCombat" Type="Leaf" uid="3752919331">
-					<Settings clearDefenders="1"/>
+				<Node Lib="SWGEmuNodes" Name="ParallelSequence" Type="Composite" uid="384243060">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="ExitCombat" Type="Leaf" uid="3752919331">
+						<Settings clearDefenders="1"/>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="DropProspectFromDefenders" Type="Leaf" uid="64883208">
+						<Settings/>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="EraseBlackboard" Type="Leaf" uid="1748526458">
+						<Settings param=""/>
+					</Node>
 				</Node>
 			</Node>
 		</Node>
