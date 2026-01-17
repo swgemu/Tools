@@ -137,6 +137,14 @@
       <attribute type="int" name="delay" description=""/>
     </node>
     <!---->
+    <node class="Task" type="Leaf" name="FollowHerd">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="This leaf task will ensure the agent is following the herd leaders movement and return the agent back to following afrer combat."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Task" type="Leaf" name="FollowSquadLeader">
       <children class="Task" use="yes"/>
       <children class="Condition" use="no"/>
@@ -598,6 +606,14 @@
       <attribute type="text" name="condition" default="PRIMARYWEAPON" available="PRIMARYWEAPON;SECONDARYWEAPON" description="Weapon enumerations."/>
     </node>
     <!---->
+    <node class="Condition" type="Single" name="CheckFollowIsHerdLeader">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if the agents current follow object is its herd leader."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Condition" type="Single" name="CheckFollowPosture">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
@@ -711,6 +727,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Condition" type="Single" name="CheckIsHerdLeader">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if the current agent is the herd leader."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Condition" type="Single" name="CheckIsHome">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
@@ -774,6 +798,14 @@
       <shape name="diamond"/>
       <events/>
       <attribute type="text" name="condition" default="NPCTYPE" available="NPCTYPE;MONSTERTYPE;DROIDTYPE;ANDROIDTYPE;HUMANOIDTYPE" description=""/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckIsWaiting">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="New node created by user."/>
+      <shape name="diamond"/>
+      <events/>
     </node>
     <!---->
     <node class="Condition" type="Single" name="CheckMovementState">

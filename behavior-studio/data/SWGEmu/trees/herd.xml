@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BehaviorTree version="1.3.0">
+	<Node BranchName="idle" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="3567301393">
+		<Settings/>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3294417074">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="195163317">
+				<Settings/>
+				<Condition Lib="SWGEmuNodes" Name="CheckIsHerdLeader" Type="Single" uid="348206776">
+					<Settings/>
+				</Condition>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="2954366442">
+				<Settings key="moveMode" val="WALK"/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="2704711532">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="2826757068">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="3626218478">
+						<Settings/>
+						<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="3006309375">
+							<Settings/>
+							<Condition Lib="SWGEmuNodes" Name="CheckHasPatrol" Type="Single" uid="1568150506">
+								<Settings/>
+							</Condition>
+						</Node>
+					</Node>
+					<Node Lib="SWGEmuNodes" Name="GeneratePatrol" Type="Leaf" uid="383327892">
+						<Settings distFromHome="40.0" numPoints="5"/>
+					</Node>
+				</Node>
+			</Node>
+		</Node>
+		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="505873291">
+			<Settings/>
+			<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="1558329068">
+				<Settings/>
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2146384398">
+					<Settings/>
+					<Condition Lib="SWGEmuNodes" Name="CheckFollowIsHerdLeader" Type="Single" uid="2963031111">
+						<Settings/>
+					</Condition>
+				</Node>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="FollowHerd" Type="Leaf" uid="2256881794">
+				<Settings/>
+			</Node>
+			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="244234023">
+				<Settings key="moveMode" val="WALK"/>
+			</Node>
+		</Node>
+	</Node>
+</BehaviorTree>
