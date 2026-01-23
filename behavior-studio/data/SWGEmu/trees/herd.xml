@@ -4,11 +4,23 @@
 		<Settings/>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="3294417074">
 			<Settings/>
-			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="195163317">
+			<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2426014909">
 				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckIsHerdLeader" Type="Single" uid="348206776">
+				<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="195163317">
 					<Settings/>
-				</Condition>
+					<Condition Lib="SWGEmuNodes" Name="CheckIsHerdLeader" Type="Single" uid="348206776">
+						<Settings/>
+					</Condition>
+				</Node>
+				<Node Lib="SWGEmuNodes" Name="Not" Type="Decorator" uid="1044560513">
+					<Settings/>
+					<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2075598757">
+						<Settings/>
+						<Condition Lib="SWGEmuNodes" Name="CheckHasHerdObserver" Type="Single" uid="4122940892">
+							<Settings/>
+						</Condition>
+					</Node>
+				</Node>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="2954366442">
 				<Settings key="moveMode" val="WALK"/>

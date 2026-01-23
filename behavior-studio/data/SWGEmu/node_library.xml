@@ -647,6 +647,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Condition" type="Single" name="CheckHasHerdObserver">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Returns true if the agent has a assigned herd observer."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Condition" type="Single" name="CheckHasMeleeWeapon">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
