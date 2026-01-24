@@ -68,7 +68,7 @@ idleCrackdown = {
 	{id="2512344057",	name="If",	pid="999171113"},
 	{id="1940331986",	name="CheckDestination",	pid="2512344057",	args={condition=0.0}},
 	{id="1620182271",	name="TreeSocket",	pid="999171113",	args={slot=MOVE}},
-	{id="1861326131",	name="Wait",	pid="999171113",	args={duration=5.0}}}
+	{id="1861326131",	name="Wait",	pid="999171113",	args={durationMax=10.0, durationMin=5.0}}}
 addAiTemplate("idleCrackdown", idleCrackdown)
 
 lookCrackdown = {

@@ -236,7 +236,7 @@
 				<Settings slot="MOVE"/>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="3694282813">
-				<Settings duration="5.0"/>
+				<Settings durationMax="10.0" durationMin="5.0"/>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="AlwaysSucceed" Type="Decorator" uid="673054985">
 				<Settings/>

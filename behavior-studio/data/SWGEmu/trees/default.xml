@@ -411,7 +411,7 @@
 			<Settings/>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="2730487382">
-			<Settings duration="6.0"/>
+			<Settings durationMax="4.0" durationMin="8.0"/>
 		</Node>
 	</Node>
 	<Node BranchName="idle" Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="2434234854">
@@ -433,12 +433,6 @@
 					</Condition>
 				</Node>
 			</Node>
-			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="2186343870">
-				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckDestination" Type="Single" uid="935976306">
-					<Settings condition="0.0"/>
-				</Condition>
-			</Node>
 			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="1349815697">
 				<Settings key="moveMode" val="RUN"/>
 			</Node>
@@ -449,12 +443,6 @@
 				<Settings/>
 				<Condition Lib="SWGEmuNodes" Name="CheckMovementState" Type="Single" uid="4009188085">
 					<Settings condition="PATHING_HOME"/>
-				</Condition>
-			</Node>
-			<Node Lib="SWGEmuNodes" Name="If" Type="Leaf" uid="663900148">
-				<Settings/>
-				<Condition Lib="SWGEmuNodes" Name="CheckDestination" Type="Single" uid="3881405125">
-					<Settings condition="0.0"/>
 				</Condition>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="WriteBlackboard" Type="Leaf" uid="1596358304">
@@ -473,7 +461,7 @@
 				<Settings key="moveMode" val="WALK"/>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="852586211">
-				<Settings duration="5.0"/>
+				<Settings durationMax="10.0" durationMin="5.0"/>
 			</Node>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="Selector" Type="Composite" uid="3547969451">
@@ -514,7 +502,7 @@
 					<Settings/>
 				</Node>
 				<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="1864140521">
-					<Settings duration="5.0"/>
+					<Settings durationMax="10.0" durationMin="5.0"/>
 				</Node>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="4072235030">

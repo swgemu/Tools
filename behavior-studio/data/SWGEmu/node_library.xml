@@ -482,7 +482,8 @@
       <description text="Attempts to set a wait for the duration. Implicitly writes isWaiting of true to blackboard, and erases it when called again and completed. Returns RUNNING while waiting and SUCCESS once the wait has completed."/>
       <shape name="ring"/>
       <events/>
-      <attribute type="float" name="duration" description="Seconds to wait. A negative value means indefinite."/>
+      <attribute type="float" name="durationMax" default="10.0" description=""/>
+      <attribute type="float" name="durationMin" default="5.0" description="Seconds to wait. A negative value means indefinite."/>
     </node>
     <!---->
     <node class="Task" type="Leaf" name="WriteBlackboard">

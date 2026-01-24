@@ -197,7 +197,7 @@
 				<Settings slot="MOVE"/>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="1861326131">
-				<Settings duration="5.0"/>
+				<Settings durationMax="10.0" durationMin="5.0"/>
 			</Node>
 		</Node>
 	</Node>

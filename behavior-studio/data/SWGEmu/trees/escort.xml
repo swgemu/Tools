@@ -144,7 +144,7 @@
 			</Node>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="70283378">
-			<Settings duration="-1.0"/>
+			<Settings durationMax="-1.0" durationMin="-1.0"/>
 		</Node>
 	</Node>
 </BehaviorTree>
