@@ -32,7 +32,7 @@
 				</Condition>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="159935104">
-				<Settings duration="-1.0"/>
+				<Settings durationMax="-1.0" durationMin="-1.0"/>
 			</Node>
 		</Node>
 		<Node Lib="SWGEmuNodes" Name="Sequence" Type="Composite" uid="1372879556">
@@ -104,7 +104,7 @@
 				</Node>
 			</Node>
 			<Node Lib="SWGEmuNodes" Name="Wait" Type="Leaf" uid="737159031">
-				<Settings duration="10.0"/>
+				<Settings durationMax="10.0" durationMin="5.0"/>
 			</Node>
 		</Node>
 	</Node>

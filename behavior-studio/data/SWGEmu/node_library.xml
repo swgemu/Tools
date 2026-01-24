@@ -137,6 +137,14 @@
       <attribute type="int" name="delay" description=""/>
     </node>
     <!---->
+    <node class="Task" type="Leaf" name="FollowHerd">
+      <children class="Task" use="yes"/>
+      <children class="Condition" use="no"/>
+      <description text="This leaf task will ensure the agent is following the herd leaders movement and return the agent back to following afrer combat."/>
+      <shape name="ring"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Task" type="Leaf" name="FollowSquadLeader">
       <children class="Task" use="yes"/>
       <children class="Condition" use="no"/>
@@ -474,7 +482,8 @@
       <description text="Attempts to set a wait for the duration. Implicitly writes isWaiting of true to blackboard, and erases it when called again and completed. Returns RUNNING while waiting and SUCCESS once the wait has completed."/>
       <shape name="ring"/>
       <events/>
-      <attribute type="float" name="duration" description="Seconds to wait. A negative value means indefinite."/>
+      <attribute type="float" name="durationMax" default="10.0" description=""/>
+      <attribute type="float" name="durationMin" default="5.0" description="Seconds to wait. A negative value means indefinite."/>
     </node>
     <!---->
     <node class="Task" type="Leaf" name="WriteBlackboard">
@@ -493,6 +502,14 @@
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
       <description text="Check if the time the agent delays aggro after an alert trigger has past."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckArrivedAtPatrol">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="New node created by user."/>
       <shape name="diamond"/>
       <events/>
     </node>
@@ -598,6 +615,14 @@
       <attribute type="text" name="condition" default="PRIMARYWEAPON" available="PRIMARYWEAPON;SECONDARYWEAPON" description="Weapon enumerations."/>
     </node>
     <!---->
+    <node class="Condition" type="Single" name="CheckFollowIsHerdLeader">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if the agents current follow object is its herd leader."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Condition" type="Single" name="CheckFollowPosture">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
@@ -619,6 +644,14 @@
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
       <description text="New node created by user."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckHasHerdObserver">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Returns true if the agent has a assigned herd observer."/>
       <shape name="diamond"/>
       <events/>
     </node>
@@ -663,6 +696,14 @@
       <events/>
     </node>
     <!---->
+    <node class="Condition" type="Single" name="CheckIsBaby">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks for the ceatureBitmask BABY."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
     <node class="Condition" type="Single" name="CheckIsCamouflaged">
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
@@ -699,6 +740,14 @@
       <children class="Task" use="no"/>
       <children class="Condition" use="yes"/>
       <description text="Checks for the healer bitmask."/>
+      <shape name="diamond"/>
+      <events/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckIsHerdLeader">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="Checks if the current agent is the herd leader."/>
       <shape name="diamond"/>
       <events/>
     </node>
@@ -766,6 +815,14 @@
       <shape name="diamond"/>
       <events/>
       <attribute type="text" name="condition" default="NPCTYPE" available="NPCTYPE;MONSTERTYPE;DROIDTYPE;ANDROIDTYPE;HUMANOIDTYPE" description=""/>
+    </node>
+    <!---->
+    <node class="Condition" type="Single" name="CheckIsWaiting">
+      <children class="Task" use="no"/>
+      <children class="Condition" use="yes"/>
+      <description text="New node created by user."/>
+      <shape name="diamond"/>
+      <events/>
     </node>
     <!---->
     <node class="Condition" type="Single" name="CheckMovementState">
